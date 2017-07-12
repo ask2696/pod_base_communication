@@ -1,0 +1,24 @@
+{
+  "name": "pod_base_comm",
+  "version": "1.0.0",
+  "description": "clientSendToNode.c :file has code which sends a data packet from client to node server\r \t\tfunc used is send\r clienRecFrmNode.c :file has code which receives data from node server and display it.\r                  function used  is recv",
+  "main": "nodeServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aakp10/pod_BS_comm.git"
+  },
+  "author": "ask2696,aakp10",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aakp10/pod_BS_comm/issues"
+  },
+  "homepage": "https://github.com/aakp10/pod_BS_comm#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "formidable": "^1.1.1"
+  }
+}
