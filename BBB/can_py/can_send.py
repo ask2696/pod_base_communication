@@ -12,16 +12,18 @@ def main():
 
 
    print "Send a message..."
-   Message.extended_id = True
+   Message.extended_id = False
    Message.is_remote_frame = False
-   Message.id_type = 1
+   Message.id_type = False
    Message.is_error_frame = False
-   Message.arbitration_id = 0x00E07123
-   Message.dlc = 1
-   Message.data = [ 0x01]
+   Message.arbitration_id = 001
+   Message.dlc = 8
+   Message.data = bytearray([1, 2, 3])
+  
+   print Message.data
+
    try:
-         while(true):
-                 bus.send(Message);
+    bus.send(Message);
    except:
        print "Ups something went wrong!"
 

@@ -16,7 +16,7 @@ host = 'Base Station';
 port = 3000;
  
 try:
-    remote_ip = "127.0.0.1"#socket.gethostbyname( host )
+    remote_ip = "192.168.0.51"#127.0.0.1"#socket.gethostbyname( host )
  
 except socket.gaierror:
     #could not resolve

@@ -20,7 +20,14 @@ def main():
            while True:
              Message = bus.recv(0.0)
              if Message:
-                check_rx(Message.arbitration_id, Message.data[0:8])
+                #check_rx(Message.arbitration_id, Message.data[0:8])
+		#print "extended",Message.extended_id
+		print "is_remote",Message.is_remote_frame
+		print "type",Message.id_type
+		print "is_error",Message.is_error_frame
+		print "arb_id",Message.arbitration_id
+		print "dlc",Message.dlc
+		print "data",Message.data
 
         except  KeyboardInterrupt:
                 bus.shutdown()
