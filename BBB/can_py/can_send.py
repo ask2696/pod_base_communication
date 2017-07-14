@@ -9,9 +9,10 @@ from can import Message
 def main():
    can_interface = 'can0'
    bus = Bus(can_interface)
-
+	
 
    print "Send a message..."
+   #Check the current message params
    Message.extended_id = False
    Message.is_remote_frame = False
    Message.id_type = False
