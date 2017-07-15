@@ -18,14 +18,14 @@ send_messages = {"Start": "00000000","Stop": "00000000", "Emergency Stop":"00000
                      "Engage Auxillary Propulsion":"00000000","Disengage Auxillary Propulsion":"00000000" }
 
 
-data_rcv = None;
+#data_rcv = None;
 
 def can_rcv(Message):
     now = datetime.datetime.now()
     timeString = now.strftime("%d.%m.%Y %H:%M:%S")
 
     #print "extended",Message.extended_id
-    data_rcv = Message.data[0:8]
+    #data_rcv = Message.data[0:8]
     print "is_remote",Message.is_remote_frame
     print "type",Message.id_type
     print "is_error",Message.is_error_frame
@@ -60,7 +60,7 @@ def main():
     try:
         while True:
             Message_rcv = bus.recv(0.0)
-            if Message:
+            if Message_rcv:
                 can_rcv(Message_rcv)
             if(send_flag):
                 Msg = can_send(data)
