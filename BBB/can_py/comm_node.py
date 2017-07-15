@@ -37,6 +37,7 @@ def can_rcv(Message):
     print "dlc",Message.dlc
     print "data",Message.data[0:8]
     print "Can Messgae Received!"
+    return Message.data[0:8]
 
 def can_send():
     
@@ -73,17 +74,19 @@ def main():
     
     try:
         while True:
-            s.sendall(message)
+            
             reply = s.recv(4096)
             print "Socket Data"
             print reply
 
             Message_rcv = bus.recv(0.0)
             if Message_rcv:
-                can_rcv(Message_rcv)
+                can_out = can_rcv(Message_rcv)
+                s.sendall(can_out)
             if(send_flag):
                 Msg = can_send(data)
                 bus.send(Message)
+
 
     except  KeyboardInterrupt:
         bus.shutdown()
