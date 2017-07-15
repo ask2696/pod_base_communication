@@ -58,7 +58,7 @@ def main():
     bus = Bus(can_interface)
 
     try:
-        s = sockets.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     except socket.error:
         print 'Failed to create socket'
         sys.exit()
@@ -79,7 +79,7 @@ def main():
             print reply
 
             Message_rcv = bus.recv(0.0)
-            if Message:
+            if Message_rcv:
                 can_rcv(Message_rcv)
             if(send_flag):
                 Msg = can_send(data)
