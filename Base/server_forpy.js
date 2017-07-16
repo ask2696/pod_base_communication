@@ -63,50 +63,16 @@ var server=net.createServer(function (socket) {
                     socket.on('data',function (data){
 
                         no_data_packet = no_data_packet +1;
-                        //console.log(no_data_packet)
+                        
                         console.log("Data Packet No."+ no_data_packet)
 
+                        //console.log(typeof(data));
                         console.log(data);
-                        //console.log('\n')
-                        
-
-                        /*    
-
-
-                        //console.dir(data);
-                        //console.log(data);
-                        /*dataJSON['no_data_packets'] = dataJSON['no_data_packets']+1; 
-                        var arr = Array.prototype.slice.call(data, 0,1);
-                         dataJSON.team_id=unpack8(arr);
-                        arr = Array.prototype.slice.call(data, 1,2);
-                         dataJSON.stat=unpack8(arr);
-                         arr = Array.prototype.slice.call(data, 2,6);
-                        dataJSON.acceleration=unpack(arr);
-                         arr = Array.prototype.slice.call(data, 6,10);
-                         dataJSON.position =unpack(arr);
-                        arr = Array.prototype.slice.call(data, 10,14);
-                         dataJSON.velocity=unpack(arr);
-                         arr = Array.prototype.slice.call(data,14,18);
-                        dataJSON.battery_voltage=unpack(arr);
-                         arr = Array.prototype.slice.call(data, 18,22);
-                         dataJSON.battery_current=unpack(arr);
-                          arr = Array.prototype.slice.call(data, 22,26);
-                         dataJSON.battery_temperature=unpack(arr);
-                         arr = Array.prototype.slice.call(data, 26,30);
-                        dataJSON.pod_temperature=unpack(arr);
-                         arr = Array.prototype.slice.call(data,30,34);
-                        dataJSON.stripe_count=unpack(arr);
-
-                        no_data_packet = no_data_packet +1;*/
-                        //console.log(no_data_packet)
-                        //console.log("Data Packet No."+ no_data_packet)
-                        //console.log(dataJSON);  
-                        
-                     //   app.get('/data.html', browserdisp );
+                        console.log();
+                        //console.log(typeof(data));
+                        //data_json = JSON.parse(data);
+                      
                          });
-                    //socket.write("input_base");
-
-                    //console.log(input_base);
                 
                     setInterval(function(){
                     if (input_base !== 'NULL'){
@@ -116,7 +82,7 @@ var server=net.createServer(function (socket) {
                         }
                         else{
 
-                            socket.write("hi");
+                            socket.write("NULL");
 
                         }
                     },0);
