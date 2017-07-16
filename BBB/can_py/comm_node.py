@@ -4,6 +4,7 @@ import time
 import can
 import socket   #for sockets
 import sys  #for exit
+import json
 
 can.rc['interface'] = 'socketcan_ctypes'
 
@@ -23,7 +24,17 @@ rcv_messgaes_socket = ["Start","Stop","Emergency Stop","Engage Brakes","Disengag
                     "Disengage Clutch","Actuate Levitation Module","Unactuate Levitation Module",
                     "Engage Auxillary Propulsion","Disengage Auxillary Propulsion"]
 
+pod_data_packet_can = {"team_id":0,"stat":0,"acceleration":0,"position":0,"velocity":0,"battery_voltage":0,
+                    "battery_current":0,"battery_temperature":0,"pod_temperature":0,"stripe_count":0}
 
+pod_data_packet_socket = {"team_id":0,"stat":0,"acceleration":0,"position":0,"velocity":0,"battery_voltage":0,
+                    "battery_current":0,"battery_temperature":0,"pod_temperature":0,"stripe_count":0}
+
+nodes_data_frames_id = {"power_node":"","nav_node":"","control_node":""}
+
+node_emergency_frames_id = {"power_node":"","nav_node":"","control_node":""}
+
+comm_node_header ={}
 
 data_rcv = None;
 
@@ -58,8 +69,21 @@ def can_send():
 
     return Message
 
+def update_canData(data,frame_header):
+    #update data in pod_data_packet_can according to Header frame
+    print""
+
+def update_socketData():
+    #update data in pod_data_packet_socket according to Header frame
+    print""
 
 
+def string_out(data):
+    buff =""
+    for key,value in data.items():
+        buff = buff + str(value)
+
+    return buff
 
 def main():
     can_interface = 'can0'
@@ -78,21 +102,27 @@ def main():
     #print "#"
     send_flag = False
     data =bytearray([1, 2, 3]);
-    print send_messages
-    
+    #print send_messages
+    no_packets_sent =0;    
     try:
         while True:
             #print "Sane"
+            #json_pod_data = json.dumps(pod_data_packet_socket)
+            #json_pod_data = json.loads(json_pod_data)
+
+            s.sendall(str(no_packets_sent)+str(pod_data_packet_socket))
+            no_packets_sent = no_packets_sent+1;
             reply = s.recv(4096)
-            print "Socket Data"
-            print reply
+            #print "Socket Data"
+            if(reply != "NULL"):
+                print reply
 
 
 
-            Message_rcv = bus.recv(0.0)
-            if Message_rcv:
-                can_out = can_rcv(Message_rcv)
-                s.sendall(can_out)
+            message_can_rcv = bus.recv(0.0)
+            if message_can_rcv:
+                can_out = can_rcv(message_can_rcv)
+                #s.sendall(str(pod_data_packet_socket))
             if(send_flag):
                 Msg = can_send(data)
                 bus.send(Message)
