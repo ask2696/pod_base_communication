@@ -85,7 +85,7 @@ var server=net.createServer(function (socket) {
                             socket.write("NULL");
 
                         }
-                    },0);
+                    },1);
 
         });
 /*var data_to_pod = {"Test1":"1","Test2":"2"};
