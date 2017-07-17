@@ -128,7 +128,7 @@ def main():
             reply = s.recv(4096)
             #print "Socket Data"
             #print type(reply)
-            if(reply != "NULL"):
+            if(str(type(reply)) == "<type 'str'>" and reply[0]!= 'N'):
                 print reply
 
 
