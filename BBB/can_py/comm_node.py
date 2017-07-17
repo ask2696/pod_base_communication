@@ -69,8 +69,10 @@ def can_rcv(Message):
     print "Can Messgae Received!"
     return Message.data[0:8]
 
-def can_send():
+def can_send(reply):
     #Set the can packet to send the data on the canbus
+    print "Data received from socket",reply
+    reply_data = reply[1:len(reply)]
     Message.extended_id = False
     Message.is_remote_frame = False
     Message.id_type = False
@@ -130,6 +132,7 @@ def main():
             #print type(reply)
             if(str(type(reply)) == "<type 'str'>" and reply[0]!= 'N'):
                 print reply
+                send_flag = True
 
 
 
@@ -138,8 +141,9 @@ def main():
                 can_out = can_rcv(message_can_rcv)
                 #s.sendall(str(pod_data_packet_socket))
             if(send_flag):
-                Msg = can_send(data)
-                bus.send(Message)
+                Msg = can_send(reply)
+                bus.send(Msg)
+                send_flag = False
 
 
     except  KeyboardInterrupt:
