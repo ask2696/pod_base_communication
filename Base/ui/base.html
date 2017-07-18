@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body class="">
+    <div class="overlay"></div>
+        <div class="row">
+            <div class="col l2 sidebar left-sidebar">
+                <div class="card-panel">
+                    <h5>HYPERLOOP INDIA</h5>
+                    <h6>Team ID: xxx12x1331</h6>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h5>Health Check</h5>
+                        <button class="btn teal darken-3 waves-effect waves-light">Start Health Check</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h5>Functional Controls</h5>
+                        <div class="row">
+                          Levitation
+                              <a href="#" class="toggle right toggle--on"></a>
+                        </div>
+                        <div class="row">
+                          
+                              <a href="#" class="toggle right toggle--on"></a>
+                        </div>
+                        <div class="row">
+                              <a href="#" class="toggle right toggle--on"></a>
+                        </div>
+                        <div class="row">
+                              <a href="#" class="toggle right toggle--on"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col l7 main-dash">
+                <div class="row">
+                    <div class="col l6">
+                        <div id="velocity"></div>
+                    </div>
+                    <div class="col l6">
+                        <div id="acceleration"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col l4">
+                        <div id="yaw" class="gauge-container">Yaw</div>
+                        <div id="pitch" class="gauge-container">Pitch</div>
+                        <div id="roll" class="gauge-container">Roll</div>
+
+                    </div>
+                    <div class="col l4 brakes">
+                        <h6> Brake Pad Distance</h6>
+                        <img src="img/brake-pad.png"/>
+                        <p> <span class="dotted-box">Dist</span> <span class="value">8</span><span class="unit"> mm</span></p>
+                    </div>
+                    <div class="col l4 levitation">
+                        <h6> Levitation </h6>
+                        <img src="img/levitation.png"/>
+                        <p> <span class="dotted-box">L1</span> <span class="value">12</span><span class="unit"> mm</span></p>
+                        <p> <span class="dotted-box">L2</span> <span class="value">12</span><span class="unit"> mm</span></p>
+                        <p> <span class="dotted-box">L3</span> <span class="value">12</span><span class="unit"> mm</span></p>
+                        <p> <span class="dotted-box">L4</span> <span class="value">12</span><span class="unit"> mm</span></p>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col l6">
+                      <a class=" btn1 btn teal darken-3 waves-effect waves-light">Start</a>
+                    </div>
+                    <div class="col l6" align="right">
+                      <a class="btn2 btn red darken-3 waves-effect waves-light" >Emergency Stop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col l3 sidebar left-sidebar">
+                <div class="card-panel communication">
+                    <h5>Communication</h5>
+                    <h6>Primary Channel</h6>
+                    <h6>Secondary Channel</h6>
+                </div>
+                <div class="card vitals">
+                    <div class="card-content">
+                        <h5>Pod Vitals</h5>
+                        <div class="row">
+                            <div class="col s6">
+                                <div class="battery">
+                                <span class="battery_item"></span>
+                                <span class="battery_item"></span>
+                                <span class="battery_item"></span>
+                                </div>
+                                <div class="battery">
+                                <span class="battery_item"></span>
+                                <span class="battery_item"></span>
+                                <span class="battery_item"></span>
+                                </div>
+                                <div class="battery">
+                                <span class="battery_item"></span>
+                                <span class="battery_item"></span>
+                                <span class="battery_item"></span>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="battery">
+                                <span class="battery_item"></span>
+                                <span class="battery_item"></span>
+                                <span class="battery_item"></span>
+                                </div>
+                                <div class="battery">
+                                <span class="battery_item"></span>
+                                <span class="battery_item"></span>
+                                <span class="battery_item"></span>
+                                </div>
+                                <div class="battery">
+                                <span class="battery_item"></span>
+                                <span class="battery_item"></span>
+                                <span class="battery_item"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card console">
+                    <div class="card-content">
+                        <h5>Console</h5>
+                        <div class="display">
+                            <p> [11:00:23:21] Running Checklist </p>
+                            <p> [11:00:23:25] Pod Ready to start! </p>
+                            <p> [11:00:23:21] Pod Started </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://unpkg.com/svg-gauge@1.0.2/dist/gauge.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+    <script src="js/buttons.js"></script>
+    <script src="js/graphs.js"></script>
+    <script src="js/gauge.js"></script>
+</body>
+
+</html>
