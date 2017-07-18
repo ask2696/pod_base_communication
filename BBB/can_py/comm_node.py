@@ -49,7 +49,7 @@ data_rcv = None;
 
 #Set the ip of the base station when deployed
 #Use the local ip in the network
-remote_ip = "127.0.0.1"#"192.168.0.51"
+remote_ip = "192.168.0.51"#"127.0.0.1"#"192.168.0.51"
 host = 'Base Station';
 port = 3000;#Port for TCP comm
 
@@ -77,7 +77,7 @@ def can_send(reply):
     Message.is_remote_frame = False
     Message.id_type = False
     Message.is_error_frame = False
-    Message.arbitration_id = 001
+    Message.arbitration_id = 000
     Message.dlc = 8
     Message.data = bytearray([1, 2, 3])
 
@@ -129,8 +129,8 @@ def main():
             no_packets_sent = no_packets_sent+1;
             reply = s.recv(4096)
             #print "Socket Data"
-            #print type(reply)
-            if(str(type(reply)) == "<type 'str'>" and reply[0]!= 'N'):
+            #print len(reply)
+            if(len(reply)>0 and reply[0]!= 'N'):
                 print reply
                 send_flag = True
 
