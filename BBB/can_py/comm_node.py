@@ -60,11 +60,11 @@ def can_rcv(Message):
 
     #print "extended",Message.extended_id
     data_rcv = Message.data[0:8]
-    print "is_remote",Message.is_remote_frame
-    print "type",Message.id_type
-    print "is_error",Message.is_error_frame
-    print "arb_id",Message.arbitration_id
-    print "dlc",Message.dlc
+    #print "is_remote",Message.is_remote_frame
+    #print "type",Message.id_type
+    #print "is_error",Message.is_error_frame
+    #print "arb_id",Message.arbitration_id
+    #print "dlc",Message.dlc
     print "data",Message.data[0:8]
     print "Can Messgae Received!"
     return Message.data[0:8]

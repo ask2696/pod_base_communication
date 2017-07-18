@@ -181,12 +181,12 @@
                   function poststart() {
                     $.ajax({
                         type: "POST",
-                        url: "http://0.0.0.0:8081/index.html",
+                        url: "http://192.168.0.51:8081/index.html",
                         
                         data: {name:"start" },
                         success: function(data) {
                             
-                            alert('Success!')
+                            //alert('Success!')
                         }
                         
                     });
@@ -219,7 +219,7 @@
                   function postEmgStop() {
                     $.ajax({
                         type: "POST",
-                        url: "http://0.0.0.0:8081/index.html",
+                        url: "http://192.168.0.51:8081/index.html",
                         
                         data: {name:"Emergency stop" },
                         success: function(data) {
