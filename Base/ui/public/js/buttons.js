@@ -32,16 +32,3 @@ $('.toggle').click(function(e) {
     $(toggle).removeClass('toggle--moving');
   }, 200)
 });
-
-
-(function() {
-  $("#range").slider({
-    range: "min",
-    max: 100,
-    value: 50,
-    slide: function(e, ui) {
-      $("#currentVal").html(ui.value);
-    }
-  });
-
-}).call(this);
