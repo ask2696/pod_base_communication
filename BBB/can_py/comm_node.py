@@ -104,11 +104,20 @@ def string_out(data):
 def main():
     can_interface = 'can0'
     bus = Bus(can_interface)
-
+    conn_status = 111
     try:
+        print "Listening For Connections"
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect((remote_ip , port))
-        #print "debug 1",conn
+        s.bind((remote_ip, port))
+        s.listen(1)
+        conn, addr = s.accept()
+        """
+        while(conn_status!=0):
+
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            conn_status = s.connect_ex((remote_ip , port))
+        """ 
+        print "Connected to the Base Station Server"
     except socket.error:
         print 'Failed to create socket'
         #sys.exit()
