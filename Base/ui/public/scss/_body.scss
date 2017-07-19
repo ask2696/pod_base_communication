@@ -21,14 +21,14 @@ body {
     -moz-osx-font-smoothing: grayscale;
     line-height: 1;
     color: #666;
-    -webkit-user-select: none;
+    /*-webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
+    user-select: none;*/
     background-color: #000;
     &:before {
         content: "";
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
@@ -38,19 +38,24 @@ body {
         opacity: 0.12;
         z-index: -1;
     }
+    padding-left: 300px;
 }
-
+@media only screen and (max-width : 992px) {
+    body {
+    padding-left: 0;
+    }
+}
 .overlay {
     pointer-events: none;
     &:before,
     &:after {
-        z-index: -1;
         content: "";
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
+        z-index: -1;
     }
     &:before {
         background-image: -webkit-radial-gradient(top left, circle, #25fabb, transparent);

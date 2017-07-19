@@ -11,192 +11,258 @@
 </head>
 <body class="">
     <div class="overlay"></div>
-        <div class="row">
-            <div class="col l2 sidebar left-sidebar">
-                <div class="card-panel branding">
-                    <img src="img/logo.png">
-                    <h6>Team ID: xxx12x1331</h6>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <h5>Health Check</h5>
-                        <button class="btn teal darken-3 waves-effect waves-light">Start Health Check</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <h5>Functional Controls</h5>
-                        <div class="row">
-                          Levitation
-                              <a href="#" class="toggle right toggle--on"></a>
-                        </div>
-                        <div class="row">
-                          Clutch
-                              <a href="#" class="toggle right toggle--on"></a>
-                        </div>
-                        <div class="row">
-                          <div class="range-container">
-                            Aux.Propulsion
-                            <div id="range">
-                                <span id="currentVal">0</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                            <div class="range-container">
-                              Breaking Actuation
-                              <div id="range1">
-                                <span id="currentVal">0</span>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col l7 main-dash">
-                <div class="row">
-                    <div class="col l10 offset-l1 top-center-bar">
-                        <div class="card-panel">
-                            POD STATUS
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col l6">
-                        <div id="velocity" ></div>
-                    </div>
-                    <div class="col l6">
-                        <div id="acceleration"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col l4">
-                        <div id="yaw" class="gauge-container">Yaw</div>
-                        <div id="pitch" class="gauge-container">Pitch</div>
-                        <div id="roll" class="gauge-container">Roll</div>
-
-                    </div>
-                    <div class="col l4 brakes">
-                        <h6> Brake Pad Distance</h6>
-                        <img src="img/brake-pad.png"/>
-                        <p> <span class="dotted-box">Dist</span> <span class="value">8</span><span class="unit"> mm</span></p>
-                    </div>
-                    <div class="col l4 levitation">
-                        <h6> Levitation </h6>
-                        <img src="img/levitation.png"/>
-                        <p> <span class="dotted-box">L1</span> <span class="value">12</span><span class="unit"> mm</span></p>
-                        <p> <span class="dotted-box">L2</span> <span class="value">12</span><span class="unit"> mm</span></p>
-                        <p> <span class="dotted-box">L3</span> <span class="value">12</span><span class="unit"> mm</span></p>
-                        <p> <span class="dotted-box">L4</span> <span class="value">12</span><span class="unit"> mm</span></p>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col l6">
-                      <a class=" btn1 btn teal darken-3 waves-effect waves-light">Start</a>
-                    </div>
-                    <div class="col l6" align="right">
-                      <a class="btn2 btn red darken-3 waves-effect waves-light" >Emergency Stop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col l3 sidebar left-sidebar">
-                <div class="card-panel communication">
-                    <h5>Communication</h5>
-                    <h6>Primary Channel</h6>
-                    <h6>Secondary Channel</h6>
-                </div>
-                <div class="card vitals">
-                    <div class="card-content">
-                        <h5>Pod Vitals</h5>
-                        <div class="row">
-                            <div class="col s6">
-                                <div class="battery-container">
-                                    <div class="battery left"></div>
-                                    <div class = "battery-info right ">
-                                        <h6> Battery 1 </h6>
-                                        <h6> <span class="value">12</span><span class="unit">A</span></h6>
-                                        <h6> <span class="value">30</span><span class="unit">C</span></h6>
-                                    </div>
-                                </div>
-                                <div class="battery-container">
-                                    <div class="battery left"></div>
-                                    <div class = "battery-info right ">
-                                        <h6> Battery 2 </h6>
-                                        <h6> <span class="value">12</span><span class="unit">A</span></h6>
-                                        <h6> <span class="value">30</span><span class="unit">C</span></h6>
-                                    </div>
-                                </div>
-                                <div class="battery-container">
-                                    <div class="battery left"></div>
-                                    <div class = "battery-info right ">
-                                        <h6> Battery 3 </h6>
-                                        <h6> <span class="value">12</span><span class="unit">A</span></h6>
-                                        <h6> <span class="value">30</span><span class="unit">C</span></h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col s6">
-                                <div class="battery-container">
-                                    <div class="battery left"></div>
-                                    <div class = "battery-info right ">
-                                        <h6> Battery 4 </h6>
-                                        <h6> <span class="value">12</span><span class="unit">A</span></h6>
-                                        <h6> <span class="value">30</span><span class="unit">C</span></h6>
-                                    </div>
-                                </div>
-                                <div class="battery-container">
-                                    <div class="battery left"></div>
-                                    <div class = "battery-info right ">
-                                        <h6> Battery 5 </h6>
-                                        <h6> <span class="value">12</span><span class="unit">A</span></h6>
-                                        <h6> <span class="value">30</span><span class="unit">C</span></h6>
-                                    </div>
-                                </div>
-                                <div class="battery-container">
-                                    <div class="battery left"></div>
-                                    <div class = "battery-info right ">
-                                        <h6> Battery 6 </h6>
-                                        <h6> <span class="value">12</span><span class="unit">A</span></h6>
-                                        <h6> <span class="value">30</span><span class="unit">C</span></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col l6">
-                              <h5>Temperature</h5>
-                                <span class="temp">0</span><span class="unit temp">C</span>
-                            </div>
-                            <div class="col l6">
-                                <h5>Pressure</h5>
-                                <span class="pressure">1</span><span class="unit pressure">Bar</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card console">
-                    <div class="card-content">
-                        <h5>Console</h5>
-                        <div class="display">
-                            <p> [11:00:23:21] Running Checklist </p>
-                            <p> [11:00:23:25] Pod Ready to start! </p>
-                            <p> [11:00:23:21] Pod Started </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="sidebar side-nav fixed" id="left-sidebar">
+        <div class="card-panel branding">
+            <img src="img/logo.png">
+            <h6>Team ID: xxx12x1331</h6>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <h5>Health Check</h5>
+                <a type="button" href="#health-check-screen" class="btn teal darken-3 waves-effect waves-light">Start Health Check</a>
+                <ul class="collection"> 
+                    <li class="collection-item"> Computer Mode -Operational </li>
+                    <li class="collection-item"> Telemetry Stream - Active </li>
+                    <li class="collection-item"> Motor drivers emergency brakes- disengaged </li>
+                    <li class="collection-item"> UI reading of Pod relay state (Hall sensor) * 4 -> 12.7 A </li>
+                    <li class="collection-item"> Battery packs are sufficiently charged. </li>
+                </ul>
             </div>
         </div>
+        <div class="card">
+            <div class="card-content">
+                <h5>Functional Controls</h5>
+                <div class="row">
+                    Levitation
+                        <a href="#" class="toggle right toggle--on"></a>
+                </div>
+                <div class="row">
+                    Clutch
+                        <a href="#" class="toggle right toggle--on"></a>
+                </div>
+                <div class="row">
+                    <div class="range-container">
+                    Aux.Propulsion
+                    <div id="range">
+                        <span id="currentVal">0</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="range-container">
+                        Breaking Actuation
+                        <div id="range1">
+                        <span id="currentVal">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <a href="#" data-activates="left-sidebar" class="button-collapse hide"><i class="material-icons">menu</i></a>
+        <div class="col l8 main-dash">
+            <div class="row">
+                <div class="col l10 offset-l1 top-center-bar">
+                    <div class="card-panel">
+                        POD STATUS
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l6">
+                    <div id="velocity" ></div>
+                </div>
+                <div class="col l6">
+                    <div id="acceleration"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l4">
+                    <div id="yaw" class="gauge-container">Yaw</div>
+                    <div id="pitch" class="gauge-container">Pitch</div>
+                    <div id="roll" class="gauge-container">Roll</div>
+
+                </div>
+                <div class="col l4 brakes">
+                    <h6> Brake Pad Distance</h6>
+                    <img src="img/brake-pad.png"/>
+                    <p> <span class="dotted-box">Dist</span> <span class="value">8</span><span class="unit"> mm</span></p>
+                </div>
+                <div class="col l4 levitation">
+                    <h6> Levitation </h6>
+                    <img src="img/levitation.png"/>
+                    <p> <span class="dotted-box">L1</span> <span class="value">12</span><span class="unit"> mm</span></p>
+                    <p> <span class="dotted-box">L2</span> <span class="value">12</span><span class="unit"> mm</span></p>
+                    <p> <span class="dotted-box">L3</span> <span class="value">12</span><span class="unit"> mm</span></p>
+                    <p> <span class="dotted-box">L4</span> <span class="value">12</span><span class="unit"> mm</span></p>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col l6">
+                    <a class=" btn1 btn teal darken-3 waves-effect waves-light">Start</a>
+                </div>
+                <div class="col l6" align="right">
+                    <a class="btn2 btn red darken-3 waves-effect waves-light" >Emergency Stop</a>
+                </div>
+            </div>
+        </div>
+        <div class="col l4 sidebar">
+            <div class="card-panel communication">
+                <h5>Communication</h5>
+                <h6>Primary Channel</h6>
+                <h6>Secondary Channel</h6>
+            </div>
+            <div class="card vitals">
+                <div class="card-content">
+                    <h5>Pod Vitals</h5>
+                    <div class="row">
+                        <div class="col s6">
+                            <div class="battery-container">
+                                <div class="battery left"></div>
+                                <div class = "battery-info right ">
+                                    <h6> Battery 1 </h6>
+                                    <h6> <span class="value">12</span><span class="unit">A</span></h6>
+                                    <h6> <span class="value">30</span><span class="unit">C</span></h6>
+                                </div>
+                            </div>
+                            <div class="battery-container">
+                                <div class="battery left"></div>
+                                <div class = "battery-info right ">
+                                    <h6> Battery 2 </h6>
+                                    <h6> <span class="value">12</span><span class="unit">A</span></h6>
+                                    <h6> <span class="value">30</span><span class="unit">C</span></h6>
+                                </div>
+                            </div>
+                            <div class="battery-container">
+                                <div class="battery left"></div>
+                                <div class = "battery-info right ">
+                                    <h6> Battery 3 </h6>
+                                    <h6> <span class="value">12</span><span class="unit">A</span></h6>
+                                    <h6> <span class="value">30</span><span class="unit">C</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="battery-container">
+                                <div class="battery left"></div>
+                                <div class = "battery-info right ">
+                                    <h6> Battery 4 </h6>
+                                    <h6> <span class="value">12</span><span class="unit">A</span></h6>
+                                    <h6> <span class="value">30</span><span class="unit">C</span></h6>
+                                </div>
+                            </div>
+                            <div class="battery-container">
+                                <div class="battery left"></div>
+                                <div class = "battery-info right ">
+                                    <h6> Battery 5 </h6>
+                                    <h6> <span class="value">12</span><span class="unit">A</span></h6>
+                                    <h6> <span class="value">30</span><span class="unit">C</span></h6>
+                                </div>
+                            </div>
+                            <div class="battery-container">
+                                <div class="battery left"></div>
+                                <div class = "battery-info right ">
+                                    <h6> Battery 6 </h6>
+                                    <h6> <span class="value">12</span><span class="unit">A</span></h6>
+                                    <h6> <span class="value">30</span><span class="unit">C</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l6">
+                            <h5>Temperature</h5>
+                            <span class="temp">0</span><span class="unit temp">C</span>
+                        </div>
+                        <div class="col l6">
+                            <h5>Pressure</h5>
+                            <span class="pressure">1</span><span class="unit pressure">Bar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card console">
+                <div class="card-content">
+                    <h5>Console</h5>
+                    <div class="display">
+                        <p> [11:00:23:21] Running Checklist </p>
+                        <p> [11:00:23:25] Pod Ready to start! </p>
+                        <p> [11:00:23:21] Pod Started </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="health-check-screen" class="modal bottom-sheet">
+        <div class="modal-content">
+            <div class="container">
+                <h3>Pod Health</h3>
+                <h5> Ready-to-go Checklist </h5>
+                <!--<div class="boxes">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box">
+                    <div class="health-progress">
+                    <div class="bar">
+                        <div class="bar__fill" style="width: 33%"></div>
+                    </div>
+                    <div class="point point--complete">
+                        <div class="bullet"></div>
+                        <label class="label">Select</label>
+                    </div>
+                    <div class="point point--active">
+                        <div class="bullet"></div>
+                        <label class="label">Review</label>
+                    </div>
+                    <div class="point">
+                        <div class="bullet"></div>
+                        <label class="label">Payment</label>
+                    </div>
+                    <div class="point">
+                        <div class="bullet"></div>
+                        <label class="label">Success        </label>
+                    </div>
+                    </div>
+                </div>
+                </div>-->
+                <div class="row">
+                    <div class="col l8 offset-l2">
+                        <ul class="collection"> 
+                            <li class="collection-item"> Computer Mode -Operational </li>
+                            <li class="collection-item"> Telemetry Stream - Active </li>
+                            <li class="collection-item"> Motor drivers emergency brakes- disengaged </li>
+                            <li class="collection-item"> UI reading of Pod relay state (Hall sensor) * 4 -> 12.7 A </li>
+                            <li class="collection-item"> Battery packs are sufficiently charged. </li>
+                            <li class="collection-item"> UI reading of Battery temperature </li>
+                            <li class="collection-item"> Confirm using LTS that brake pads are still at 32 mm</li>
+                            <li class="collection-item"> Confirm using LTS that levitation module is at 45 mm</li>
+                            <li class="collection-item"> Zero values in accelerometer in all axes</li>
+                            <li class="collection-item"> Zero velocity in all axes</li>
+                            <li class="collection-item"> External pressure is 860Pa</li>
+                            <li class="collection-item"> Nominal temperatures</li>
+                            <li class="collection-item"> SpaceX Pusher Status - Ready</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
     <!-- Compiled and minified JavaScript -->
     <script src="https://unpkg.com/svg-gauge@1.0.2/dist/gauge.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"> </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
     <script src="js/slider.js"></script>
     <script src="js/buttons.js"></script>
     <script src="js/graphs.js"></script>
     <script src="js/gauge.js"></script>
+    <script src="js/progress.js"></script>
 </body>
 
 </html>

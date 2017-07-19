@@ -5,7 +5,6 @@
 /*================================
         SIDEBAR LAYOUTS
 =================================*/
-
 .sidebar {
     background-color: rgba(22, 22, 22, 0.8);
     .card-panel,
@@ -46,6 +45,10 @@
         }
     }
 }
+#left-sidebar {
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+}
 /*================================
       MAIN DASH BOARD LAYOUTS
 =================================*/
@@ -57,6 +60,11 @@
         .card {
             background-color: rgba(120, 120, 120, 0.07);
         }
+    }
+    #velocity, #acceleration {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .levitation, .brakes {
         img {
@@ -83,6 +91,19 @@
     .levitation {
         img {
             width: 70%;
+        }
+    }
+}
+
+#health-check-screen {
+    max-height: 80%;
+    background-color: rgba(33, 33, 33, 1);
+    font-size: 12px;
+    .collection {
+        border: transparent;
+        .collection-item {
+            background-color: transparent;
+            border: transparent;
         }
     }
 }
