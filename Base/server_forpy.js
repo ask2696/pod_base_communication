@@ -64,11 +64,19 @@ var server=net.createServer(function (socket) {
 
                         no_data_packet = no_data_packet +1;
                         
-                        console.log("Data Packet No."+ no_data_packet)
+                        //console.log("Data Packet No."+ no_data_packet)
 
-                        //console.log(typeof(data));
-                        console.log(data);
-                        console.log();
+                        //console.log(data);
+                        //console.log(data.slice(0,data.search('}')+1));
+
+                                                
+                        var comm_node_rcv = JSON.parse(data.slice(0,data.search('}')+1));
+                        //console.log("#");
+                        dataJSON['no_data_packets'] = comm_node_rcv['data_packet_no'];
+                        //console.log("#")
+                        //console.log(dataJSON['no_data_packet'])
+                        //dataJSON['team_id'] = comm_node_rcv['data_packet_no'].toString()
+                        //console.log(dataJSON['team_id'])
                         //console.log(typeof(data));
                         //data_json = JSON.parse(data);
                       
