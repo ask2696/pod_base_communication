@@ -35,7 +35,7 @@ pod_data_packet_can = {"team_id":0,"stat":0,"acceleration":0,"position":0,"veloc
 
 #Dict to update the data that needs to be send to the Base Station backend
 #Created to have different freqs of transmission between (comm node,base) and (comm node, can network)
-pod_data_packet_socket = {"team_id":0,"stat":0,"acceleration":0,"position":0,"velocity":0,"battery_voltage":0,
+pod_data_packet_socket = {"data_packet_no":0,"team_id":0,"stat":0,"acceleration":0,"position":0,"velocity":0,"battery_voltage":0,
                     "battery_current":0,"battery_temperature":0,"pod_temperature":0,"stripe_count":0}
 
 #data frame id info for different nodes
@@ -43,13 +43,15 @@ nodes_data_frames_id = {"power_node":"","nav_node":"","control_node":""}
 #emergency frame id info for different nodes
 node_emergency_frames_id = {"power_node":"","nav_node":"","control_node":""}
 
+#test = {'a':123,'b':231}
+
 comm_node_header ={}
 
 data_rcv = None;
 
 #Set the ip of the base station when deployed
 #Use the local ip in the network
-remote_ip = "192.168.0.51"#"127.0.0.1"#"192.168.0.51"
+remote_ip = "127.0.0.1"#"192.168.0.51"
 host = 'Base Station';
 port = 3000;#Port for TCP comm
 
@@ -116,16 +118,17 @@ def main():
     no_recv_packets = 1;
     #print "#"
     send_flag = False
-    data =bytearray([1, 2, 3]);
+    #data =bytearray([1, 2, 3]);
     #print send_messages
     no_packets_sent =0;    
     try:
         while True:
             #print "#"
-            #json_pod_data = json.dumps(pod_data_packet_socket)
+            pod_data_packet_socket['data_packet_no'] = pod_data_packet_socket['data_packet_no'] +1;
+            json_pod_data = json.dumps(pod_data_packet_socket)
             #json_pod_data = json.loads(json_pod_data)
 
-            s.sendall(str(no_packets_sent)+str(pod_data_packet_socket))
+            s.sendall(json_pod_data)
             no_packets_sent = no_packets_sent+1;
             reply = s.recv(4096)
             #print "Socket Data"
