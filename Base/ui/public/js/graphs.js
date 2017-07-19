@@ -1,8 +1,10 @@
 'use strict';
 
 
-function SpeedGauge(id) { 
-    this.id = id;
+function SpeedGauge(parameters) {
+    for(var x in parameters) {
+        this[x] = parameters[x];
+    }
 }
 
 SpeedGauge.prototype.initGauge = function() {
@@ -20,9 +22,9 @@ SpeedGauge.prototype.initGauge = function() {
     }                            
     html += '</div>' + '<div class="details '+this.id+'">';
 
-    html += '<p class="label '+this.id+'">Velocity</p>' 
-            + '<p class="speed '+this.id+'">87.3</p>'
-            + '<p class="unit '+this.id+'">m/s</p>'
+    html += '<p class="label '+this.id+'">'+this.label+'</p>' 
+            + '<p class="speed '+this.id+'">'+this.value+'</p>'
+            + '<p class="unit '+this.id+'">'+this.unit+'</p>'
             + '</div>'
             + '<div class="guage-progress '+this.id+'"></div>'  
             + '</section>';
@@ -68,7 +70,7 @@ SpeedGauge.prototype.addCSS = function() {
     this.frameCount = 100;
     this.frameInterval = 0.3;
     this.digitValueMax = 160;
-    this.statValueMax = 160;
+    this.statValueMax = this.value;
     this.statValueCurrent = 0;
     this.statValueInterval = this.statValueMax / this.frameCount;
 
@@ -104,16 +106,24 @@ function rad2deg(angle) {
     return angle * (180 / Math.PI);
 }
 
-var v = new SpeedGauge('velocity');
+var v = new SpeedGauge({
+    id: 'velocity',
+    label: 'Velocity',
+    unit: 'm/s',
+    value: 160
+});
 v.initGauge();
 
-var a = new SpeedGauge('acceleration');
+var a = new SpeedGauge({
+    id: 'acceleration',
+    label: 'Acceleration',
+    unit: 'm/s/s',
+    value: 10
+});
 a.initGauge();
 
 window.setInterval(function(){
-    console.log('hello');
     v.statValueCurrent = 0;
     v.statValueMax = Math.random() * (100-0);
-    console.log(statValueMax);
     v.updateDetails();
 }, 500000);

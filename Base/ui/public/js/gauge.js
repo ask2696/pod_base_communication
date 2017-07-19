@@ -41,8 +41,5 @@ var roll = Gauge(
   yaw.setValueAnimated(value1, 1);
   pitch.setValueAnimated(value2, 2);
   roll.setValueAnimated(value3, 1.5);
-  gauge4.setValueAnimated(value4, 2);
-  gauge5.setValueAnimated(value5, 1);
-  gauge6.setValueAnimated(value1, 1);
   window.setTimeout(loop, 6000);
 })();

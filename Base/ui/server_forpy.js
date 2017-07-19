@@ -128,6 +128,8 @@ app.use(
   sassMiddleware({
     src: __dirname + '/public/scss',
     dest: __dirname + '/public/css',
+    prefix: '/css',
+    outputStyle: 'compressed',
     debug: true,
   })
 );
