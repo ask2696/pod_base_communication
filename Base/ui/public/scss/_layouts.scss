@@ -48,7 +48,12 @@
 #left-sidebar {
     padding-left: 7.5px;
     padding-right: 7.5px;
+    overflow: hidden;
+    &:hover {
+        overflow-y: auto;
+    }
 }
+
 /*================================
       MAIN DASH BOARD LAYOUTS
 =================================*/
@@ -99,11 +104,4 @@
     max-height: 80%;
     background-color: rgba(33, 33, 33, 1);
     font-size: 12px;
-    .collection {
-        border: transparent;
-        .collection-item {
-            background-color: transparent;
-            border: transparent;
-        }
-    }
 }

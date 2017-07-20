@@ -20,13 +20,8 @@
             <div class="card-content">
                 <h5>Health Check</h5>
                 <a type="button" href="#health-check-screen" class="btn teal darken-3 waves-effect waves-light">Start Health Check</a>
-                <ul class="collection"> 
-                    <li class="collection-item"> Computer Mode -Operational </li>
-                    <li class="collection-item"> Telemetry Stream - Active </li>
-                    <li class="collection-item"> Motor drivers emergency brakes- disengaged </li>
-                    <li class="collection-item"> UI reading of Pod relay state (Hall sensor) * 4 -> 12.7 A </li>
-                    <li class="collection-item"> Battery packs are sufficiently charged. </li>
-                </ul>
+                <div id="health-display" class="health-display">
+                </div>
             </div>
         </div>
         <div class="card">
@@ -70,10 +65,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col l6">
+                <div class="col l4">
                     <div id="velocity" ></div>
                 </div>
-                <div class="col l6">
+                <div class="col l4">
                     <div id="acceleration"></div>
                 </div>
             </div>
@@ -230,7 +225,7 @@
                 <div class="row">
                     <div class="col l8 offset-l2">
                         <ul class="collection"> 
-                            <li class="collection-item"> Computer Mode -Operational </li>
+                            <li> Computer Mode -Operational </li>
                             <li class="collection-item"> Telemetry Stream - Active </li>
                             <li class="collection-item"> Motor drivers emergency brakes- disengaged </li>
                             <li class="collection-item"> UI reading of Pod relay state (Hall sensor) * 4 -> 12.7 A </li>
