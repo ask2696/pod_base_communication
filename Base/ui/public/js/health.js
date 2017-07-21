@@ -21,7 +21,7 @@ for(var i in checks) {
 }
 
 $('#start-check').click(function() {
-  $('.collapsible').collapsible('open', 0);
+  $('.health .collapsible').collapsible('open', 0);
   startCheck(0);
 });
 

@@ -39,52 +39,67 @@
                 <!-- http://materializecss.com/collapsible.html -->
                 <ul class="collapsible">
                     <li>
+                        <!-- All the health checks are injected here with javascript -->
+                        <!-- js/health.js -->
+                        <div id="health-display" class="health-display collapsible-body"></div>
                         <div class="collapsible-header">
                             <!-- Button triggers collapsible -->
                             <a type="button" id="start-check" class="btn teal darken-3 waves-effect waves-light">Start Health Check</a>
                         </div>
-                        <!-- All the health checks are injected here with javascript -->
-                        <!-- js/health.js -->
-                        <div id="health-display" class="health-display collapsible-body"></div>
+                        
                     </li>
                 </ul>
             </div>
         </div> 
         <div class="card">
             <div class="card-content controls">
-                <h5>Functional Controls</h5>
-                <h6 id="levitation">Levitation
+                <h5>Functional Controls
                     <div class="switch">
-                    <label>
-                        <span class="off">Off</span>
-                        <input type="checkbox">
-                        <span class="lever"></span>
-                        <span class="on">On</span>
-                    </label>
+                        <label>
+                            <input id="controls-toggle" type="checkbox">
+                            <span class="lever"></span>
+                        </label>
                     </div>
-                </h6>
-                <h6 id="clutch">Clutch
-                    <div class="switch">
-                      <label>
-                        <span class="off">Off</span>
-                        <input id="clutch-switch" type="checkbox">
-                        <span class="lever"></span>
-                        <span class="on">On</span>
-                      </label>
-                    </div>
-                </h6>
-                <div class="range-container">
-                    <h6 id="aux-propulsion">Aux.Propulsion</h6>
-                    <div id="range1" class="range">
-                        <input class="range-value browser-default" value=0 type="text">
-                    </div>
-                </div>
-                <div class="range-container">
-                    <h6 id="breaking-actuation">Breaking Actuation</h6>
-                    <div id="range2" class="range">
-                        <input class="range-value browser-default" value=0 type="text">
-                    </div>
-                </div>
+                </h5>
+                <ul class="collapsible">
+                    <li> 
+                        <div class="collapsible-header"></div>
+                        <div class="collapsible-body">
+                            <h6 id="levitation">Levitation
+                                <div class="switch">
+                                <label>
+                                    <span class="off">Off</span>
+                                    <input type="checkbox">
+                                    <span class="lever"></span>
+                                    <span class="on">On</span>
+                                </label>
+                                </div>
+                            </h6>
+                            <h6 id="clutch">Clutch
+                                <div class="switch">
+                                <label>
+                                    <span class="off">Off</span>
+                                    <input id="clutch-switch" type="checkbox">
+                                    <span class="lever"></span>
+                                    <span class="on">On</span>
+                                </label>
+                                </div>
+                            </h6>
+                            <div class="range-container">
+                                <h6 id="aux-propulsion">Aux.Propulsion</h6>
+                                <div id="range1" class="range">
+                                    <input class="range-value browser-default" value=0 type="text">
+                                </div>
+                            </div>
+                            <div class="range-container">
+                                <h6 id="breaking-actuation">Breaking Actuation</h6>
+                                <div id="range2" class="range">
+                                    <input class="range-value browser-default" value=0 type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -239,6 +254,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"> </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+    <script src="js/controls.js"></script>
     <script src="js/slider.js"></script>
     <script src="js/buttons.js"></script>
     <script src="js/speedgauge.js"></script>
