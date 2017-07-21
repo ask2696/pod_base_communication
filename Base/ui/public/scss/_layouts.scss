@@ -99,6 +99,7 @@
 
 }
 #left-sidebar {
+    width: 300px;
     padding-left: 7.5px;
     padding-right: 7.5px;
     overflow: hidden;
@@ -142,13 +143,20 @@
         justify-content: center;
         align-items: center;
     }
+    .ypr {
+        padding-left: calc(50% - 150px); 
+    }
     .levitation, .brakes {
+        text-align: center;
+        vertical-align: middle;
         img {
-            width: 40%;
+            width: 80%;
+            margin-top: 20px;
             margin-bottom: 20px;
         }
         p {
             font-size: 1.2rem;
+            margin-top: 20px;
         }
         span.value {
             color: #fff;
@@ -156,17 +164,27 @@
         }
         span.unit {
             color: #aaa;
+            margin-right: 15px;
         }
         span.dotted-box {
             border: dotted 1px #eee;
             color: #eee;
             padding: 5px;
-            margin-right: 10px;
+            margin-right: 5px;
+        }
+    }
+    .brakes {
+        p {
+            margin-top: 4rem;
         }
     }
     .levitation {
         img {
-            width: 70%;
+            width: 90%;
         }
+    }
+    .foot {
+        padding: 3rem;
+        margin-top: 5rem;
     }
 }

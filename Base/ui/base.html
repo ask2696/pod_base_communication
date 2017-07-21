@@ -125,38 +125,44 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col l6 offset-l3">
+                <div class="col l12 ypr">
                     <div id="yaw" class="gauge-container">Yaw</div>
                     <div id="pitch" class="gauge-container">Pitch</div>
                     <div id="roll" class="gauge-container">Roll</div>
                 </div>
             </div>
             <div class ="row">
-                <div class="col l4 brakes">
-                    <h6> Brake Pad Distance</h6>
-                    <img src="img/brake-pad.png"/>
-                    <p> <span class="dotted-box">Dist</span> <span class="value">8</span><span class="unit"> mm</span></p>
-                </div>
-                <div class ="col l4">
-                      <h6>Pusher Detachment</h6>
-                </div>               
-                <div class="col l4 levitation">
+                <div class="col l6 levitation">
                     <h6> Levitation </h6>
-                    <img src="img/levitation.png"/>
-                    <p> <span class="dotted-box">L1</span> <span class="value">12</span><span class="unit"> mm</span></p>
-                    <p> <span class="dotted-box">L2</span> <span class="value">12</span><span class="unit"> mm</span></p>
-                    <p> <span class="dotted-box">L3</span> <span class="value">12</span><span class="unit"> mm</span></p>
-                    <p> <span class="dotted-box">L4</span> <span class="value">12</span><span class="unit"> mm</span></p>
-
+                    <div class="row">
+                        <div class="col s6">
+                            <img src="img/levitation.png"/>
+                        </div>
+                        <div class="col s6">
+                            <p> <span class="dotted-box">L1</span> <span class="value">12</span><span class="unit"> mm</span>
+                            <span class="dotted-box">L2</span> <span class="value">12</span><span class="unit"> mm</span></p>
+                        <p> <span class="dotted-box">L3</span> <span class="value">12</span><span class="unit"> mm</span>
+                            <span class="dotted-box">L4</span> <span class="value">12</span><span class="unit"> mm</span></p>
+                        </div>
+                    </div>
+                </div>   
+                <div class="col l4 brakes offset-l2">
+                    <h6> Brake Pad Distance</h6>                    
+                    <div class="row">
+                        <div class="col s6">
+                            <img src="img/brake-pad.png"/>                   
+                        </div>
+                        <div class="col s6">
+                            <p> <span class="dotted-box">Dist</span> <span class="value">8</span><span class="unit"> mm</span></p>
+                        </div>
+                     </div>
                 </div>
+                
             </div>
-            <div class="row">
-                <div class="col l4">
+            <div class="row foot">
+                <div class="col l12">
                     <a class=" btn1 btn teal darken-3 waves-effect waves-light">Start</a>
-                </div>
-
-                <div class="col l4" align="right">
-                    <a class="btn2 btn red darken-3 waves-effect waves-light" >Emergency Stop</a>
+                    <a class="btn2 btn red darken-3 waves-effect waves-light right" >Emergency Stop</a>
                 </div>
             </div>
         </div>
@@ -255,6 +261,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"> </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
     <script src="js/controls.js"></script>
+    <script src="js/layout.js"></script>
     <script src="js/slider.js"></script>
     <script src="js/buttons.js"></script>
     <script src="js/speedgauge.js"></script>
