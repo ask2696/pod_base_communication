@@ -43,25 +43,39 @@
                 <h5>Functional Controls</h5>
                 <div class="row">
                     <span id="levitation" style="font-size: 150%"/>Levitation</span>
-                        <a href="#" class="toggle right toggle--on"></a>
+                    <div class="switch">
+                      <label>
+                        Off
+                        <input type="checkbox">
+                        <span class="lever"></span>
+                        On
+                      </label>
+                    </div>
                 </div>
                 <div class="row">
                     <span id="clutch" style="font-size: 150%">Clutch</span>
-                        <a href="#" class="toggle right toggle--on"></a>
+                    <div  class="switch">
+                      <label>
+                        Off
+                        <input id="clutch-switch" type="checkbox">
+                        <span class="lever"></span>
+                        On
+                      </label>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="range-container1">
+                    <div class="range-container">
                         <span id="aux-propulsion" style="font-size: 150%">Aux.Propulsion</span>
-                    <div id="range">
-                        <input id="currentVal" value=0 type="text" class="validate">
+                    <div id="range1" class="range">
+                        <input id="currentVal1" class="range-value" value=0 type="text">
                     </div>
-                    </div>
+                  </div>
                 </div>
                 <div class="row">
-                    <div class="range-container2">
+                    <div class="range-container">
                         <span id="breaking-actuation" style="font-size: 150%">Breaking Actuation</span>
-                        <div id="range1">
-                          <input id="currentVal" value=0 type="text" class="validate">
+                        <div id="range2" class="range">
+                          <input id="currentVal2" class="range-value" value=0 type="text">
                         </div>
                     </div>
                 </div>
@@ -69,7 +83,14 @@
         </div>
         <div class ="power-button row">
             <h5>Power On</h5>
-            <a href="#" class="toggle right toggle--on"></a>
+            <div  class="switch" style="font-size: 150%">
+              <label>
+                <h6>Off
+                <input id="clutch-switch" type="checkbox">
+                <span class="lever"></span>
+                On
+              </label>
+            </div>
         </div>
     </div>
     <div class="row">
