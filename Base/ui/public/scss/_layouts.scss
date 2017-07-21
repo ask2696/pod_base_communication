@@ -11,6 +11,39 @@
     .card, {
         background-color: rgba(120, 120, 120, 0.07);
     }
+    /*================================
+            HEALTH CHECK
+    =================================*/
+    .health {
+        //removing the styling added by materialize to collapsibles 
+        .collapsible-header {
+            padding: 0;
+            &:hover {
+                background-color: initial;
+                cursor: initial;
+            }
+        }
+        .collapsible li, .collapsible-body{
+            line-height: initial;
+            background-color: initial;
+        }
+        //give some space between button and the card title
+        .collapsible {
+            margin-top: 30px;
+        }
+    }
+    .health-display {
+        .check-item {
+            font-size: 12px;
+            margin: 10px 0;
+            .check-item-name {
+                padding-left: 10px;
+            }
+            .status {
+                vertical-align: middle;
+            }
+        }
+    }
     .communication, .pusher-detachment{
         h6 {
             &:after {
@@ -109,12 +142,6 @@
             width: 70%;
         }
     }
-}
-
-#health-check-screen {
-    max-height: 80%;
-    background-color: rgba(33, 33, 33, 1);
-    font-size: 12px;
 }
 .power-button{
     align:center;

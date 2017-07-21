@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <!-- Compiled and minified CSS -->
+    <!-- Compiled and minified CSS for materialize theme -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+    <!-- Material Icon font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Custom stylesheet, compiled from multiple SASS files -->
     <link rel="stylesheet" href="css/style.css">
-
 </head>
-<body class="">
+<body>
+    <!-- Overlay adds the blue-green and purple blur to the background -->
     <div class="overlay"></div>
+    <!-- Left sidebar is created using the Materialize Fixed side-nav feature -->
+    <!-- http://materializecss.com/side-nav.html -->
     <div class="sidebar side-nav fixed" id="left-sidebar">
+        <!-- Hyperloop India logo and Team ID -->
         <div class="card-panel branding">
             <img src="img/logo.png">
             <h6>Team ID: xxx12x1331</h6>
         </div>
-        <div class="card">
+        <!-- Health check panel -->
+        <div class="card health">
             <div class="card-content">
                 <h5>Health Check</h5>
-                <a type="button" href="#health-check-screen" class="btn teal darken-3 waves-effect waves-light">Start Health Check</a>
-                <div id="health-display" class="health-display">
-                </div>
+                <!-- Expandable Panel uses Materialize Collapsible-->
+                <!-- http://materializecss.com/collapsible.html -->
+                <ul class="collapsible">
+                    <li> 
+                        <div class="collapsible-header">
+                            <!-- Button triggers collapsible -->
+                            <a type="button" id="start-check" class="btn teal darken-3 waves-effect waves-light">Start Health Check</a>
+                        </div>
+                        <!-- All the health checks are injected here with javascript -->
+                        <!-- js/health.js -->
+                        <div id="health-display" class="health-display collapsible-body"></div> 
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="card">
@@ -205,64 +219,8 @@
             </div>
         </div>
     </div>
-    <div id="health-check-screen" class="modal bottom-sheet">
-        <div class="modal-content">
-            <div class="container">
-                <h3>Pod Health</h3>
-                <h5> Ready-to-go Checklist </h5>
-                <!--<div class="boxes">
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box">
-                    <div class="health-progress">
-                    <div class="bar">
-                        <div class="bar__fill" style="width: 33%"></div>
-                    </div>
-                    <div class="point point--complete">
-                        <div class="bullet"></div>
-                        <label class="label">Select</label>
-                    </div>
-                    <div class="point point--active">
-                        <div class="bullet"></div>
-                        <label class="label">Review</label>
-                    </div>
-                    <div class="point">
-                        <div class="bullet"></div>
-                        <label class="label">Payment</label>
-                    </div>
-                    <div class="point">
-                        <div class="bullet"></div>
-                        <label class="label">Success        </label>
-                    </div>
-                    </div>
-                </div>
-                </div>-->
-                <div class="row">
-                    <div class="col l8 offset-l2">
-                        <ul class="collection"> 
-                            <li> Computer Mode -Operational </li>
-                            <li class="collection-item"> Telemetry Stream - Active </li>
-                            <li class="collection-item"> Motor drivers emergency brakes- disengaged </li>
-                            <li class="collection-item"> UI reading of Pod relay state (Hall sensor) * 4 -> 12.7 A </li>
-                            <li class="collection-item"> Battery packs are sufficiently charged. </li>
-                            <li class="collection-item"> UI reading of Battery temperature </li>
-                            <li class="collection-item"> Confirm using LTS that brake pads are still at 32 mm</li>
-                            <li class="collection-item"> Confirm using LTS that levitation module is at 45 mm</li>
-                            <li class="collection-item"> Zero values in accelerometer in all axes</li>
-                            <li class="collection-item"> Zero velocity in all axes</li>
-                            <li class="collection-item"> External pressure is 860Pa</li>
-                            <li class="collection-item"> Nominal temperatures</li>
-                            <li class="collection-item"> SpaceX Pusher Status - Ready</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
-    </div>
     <!-- Compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
     <script src="https://unpkg.com/svg-gauge@1.0.2/dist/gauge.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
@@ -272,7 +230,7 @@
     <script src="js/buttons.js"></script>
     <script src="js/graphs.js"></script>
     <script src="js/gauge.js"></script>
-    <script src="js/progress.js"></script>
+    <script src="js/health.js"></script>
 </body>
 
 </html>

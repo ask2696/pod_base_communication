@@ -16,8 +16,3 @@ $('#right-sidebar-control').sideNav({
       onClose: function(el) { /* Do Stuff */ }, // A function to be called when sideNav is closed
     }
   );
-
-// Initialize modal
-$(document).ready(function(){
-    $('.modal').modal();
-});
