@@ -1,9 +1,16 @@
 /*================================
         SPEED GAUGE SYLES
 =================================*/
+
+$height: 18rem;
+
+$label_font_size: 1rem;
+$speed_font_size: 3rem;
+$unit_font_size: 1.4rem;
+
 .speedometer-container {
     width: 25rem;
-    height: 20rem;
+    height: $height;
     position: relative;
 }
 .speedometer {
@@ -11,7 +18,7 @@
         width: 10rem;
         height: 10rem;
         position: absolute;
-        top: calc(50% - 6.5rem);
+        top: calc(50% - 1.5rem);
         left: calc(50% - 5rem);
         &:before,
         &:after {
@@ -37,15 +44,15 @@
     }
     .outer-ring {
         width: 20rem;
-        height: 20rem;
+        height: 18rem;
         position: absolute;
-        top: calc(50% - 12rem);
+        top: calc(50% - 6rem);
         left: calc(50% - 10rem);
         border-radius: 50%;
     }
     .digit-ring {
         position: absolute;
-        top: calc(50% - 2rem);
+        top: calc(50% + 3.5rem);
         left: 50%;
     }
     .tick {
@@ -85,31 +92,32 @@
         -ms-flex-align: center;
         align-items: center;
         width: 21rem;
-        height: 21rem;
+        height: 18rem;
         position: absolute;
-        top: calc(50% - 12.5rem);
+        padding-top: calc(13.8rem - #{$label_font_size} - #{$speed_font_size} - #{$unit_font_size});
+        top: 0;
         left: calc(50% - 10.5rem);
     }
     .label {
         margin: 0;
-        font-size: 1rem;
+        font-size: $label_font_size;
         font-weight: bold;
         text-transform: uppercase;
     }
     .speed {
         margin: 0;
-        font-size: 3rem;
+        font-size: $speed_font_size;
         color: #fff;
     }
     .unit {
         margin: 0;
-        font-size: 1.4rem;
+        font-size: $unit_font_size;
     }
     .guage-progress {
         width: 10rem;
         height: 10rem;
         position: absolute;
-        top: calc(50% - 6.5rem);
+        top: calc(50% - 1.5rem);
         left: calc(50% - 5rem);
         border-radius: 50%;
         &:before {
