@@ -19,16 +19,9 @@ $(".btn1").click(function ()
 /**********************************
 Toggle Button
 **********************************/
-$('.toggle').click(function(e) {
-  var toggle = this;
-
-  e.preventDefault();
-
-  $(toggle).toggleClass('toggle--on')
-         .toggleClass('toggle--off')
-         .addClass('toggle--moving');
-
-  setTimeout(function() {
-    $(toggle).removeClass('toggle--moving');
-  }, 200)
-});
+$('input:checkbox').change(
+    function(){
+        if ($(this).is(':checked')) {
+            $(this).addClass('#36903a');
+        }
+    });
