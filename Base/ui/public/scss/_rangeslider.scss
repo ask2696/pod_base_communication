@@ -4,7 +4,7 @@
 #range {
   width: 180px;
   position: absolute;
-  top: 75%;
+  top: 70%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -22,7 +22,7 @@
   border-radius: 100%;
   background: darken(#b8b8b8,10%);
   border: 0;
-  height: 12px;
+  height: 10px;
   width: 12px;
   outline: none;
   cursor: pointer;
@@ -50,7 +50,7 @@
 #range1 {
   width: 180px;
   position: absolute;
-  top: 70%;
+  top: 90%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -68,7 +68,7 @@
   border-radius: 100%;
   background: darken(#b8b8b8,10%);
   border: 0;
-  height: 12px;
+  height: 11px;
   width: 12px;
   outline: none;
   cursor: pointer;

@@ -26,14 +26,14 @@
                 <!-- Expandable Panel uses Materialize Collapsible-->
                 <!-- http://materializecss.com/collapsible.html -->
                 <ul class="collapsible">
-                    <li> 
+                    <li>
                         <div class="collapsible-header">
                             <!-- Button triggers collapsible -->
                             <a type="button" id="start-check" class="btn teal darken-3 waves-effect waves-light">Start Health Check</a>
                         </div>
                         <!-- All the health checks are injected here with javascript -->
                         <!-- js/health.js -->
-                        <div id="health-display" class="health-display collapsible-body"></div> 
+                        <div id="health-display" class="health-display collapsible-body"></div>
                     </li>
                 </ul>
             </div>
@@ -53,7 +53,7 @@
                     <div class="range-container1">
                         <span id="aux-propulsion" style="font-size: 150%">Aux.Propulsion</span>
                     <div id="range">
-                        <span id="currentVal">0</span>
+                        <input id="currentVal" value=0 type="text" class="validate">
                     </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                     <div class="range-container2">
                         <span id="breaking-actuation" style="font-size: 150%">Breaking Actuation</span>
                         <div id="range1">
-                        <span id="currentVal">0</span>
+                          <input id="currentVal" value=0 type="text" class="validate">
                         </div>
                     </div>
                 </div>
@@ -103,6 +103,9 @@
             </div>
             <div class ="row">
                 <div class ="col l4">
+                  <div class="col l4 pusher-detachment">
+                      <h6>Pusher Detachment</h6>
+                  </div>
                 </div>
                 <div class="col l4 brakes">
                     <h6> Brake Pad Distance</h6>
@@ -124,9 +127,7 @@
                 <div class="col l4">
                     <a class=" btn1 btn teal darken-3 waves-effect waves-light">Start</a>
                 </div>
-                <div class="col l4 pusher-detachment">
-                    <h6>Pusher Detachment</h6>
-                </div>
+
                 <div class="col l4" align="right">
                     <a class="btn2 btn red darken-3 waves-effect waves-light" >Emergency Stop</a>
                 </div>
