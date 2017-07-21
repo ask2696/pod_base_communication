@@ -10,6 +10,15 @@
     .card-panel,
     .card, {
         background-color: rgba(120, 120, 120, 0.07);
+    }    
+    .branding {
+        img {
+            width:100%;
+            max-width: 200px;
+        }
+    }
+    .power{
+        ;
     }
     /*================================
             HEALTH CHECK
@@ -44,6 +53,17 @@
             }
         }
     }
+    .controls {
+        h6 {
+            font-size: 1.5rem;
+            padding-top: 1rem;
+        }
+        .switch {
+            label {
+               font-size: 1rem; 
+            }
+        }
+    }
     .communication {
         h6 {
             &:after {
@@ -55,12 +75,6 @@
                 margin-left: 10px;
                 background-color: crimson;
             }
-        }
-    }
-    .branding {
-        img {
-            width:100%;
-            max-width: 200px;
         }
     }
     .vitals {
@@ -88,9 +102,6 @@
     &:hover {
         overflow-y: auto;
     }
-}
-.range-container{
-  height: 10px;
 }
 .gauge-container{
     width: 100px;
@@ -155,9 +166,4 @@
             width: 70%;
         }
     }
-}
-.power-button{
-    align:center;
-    width: 7rem;
-
 }

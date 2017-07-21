@@ -19,6 +19,18 @@
             <img src="img/logo.png">
             <h6>Team ID: xxx12x1331</h6>
         </div>
+        <div class="card-panel power-button">
+            <h5>Pod Power
+            <div  class="switch">
+              <label>
+                <span class="off">Off</span>
+                <input id="clutch-switch" type="checkbox">
+                <span class="lever"></span>
+                <span class="on">On</span>
+              </label>
+            </div>
+            </h5>
+        </div>
         <!-- Health check panel -->
         <div class="card health">
             <div class="card-content">
@@ -37,59 +49,42 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> 
         <div class="card">
-            <div class="card-content">
+            <div class="card-content controls">
                 <h5>Functional Controls</h5>
-                <div class="row">
-                    <span id="levitation" style="font-size: 150%"/>Levitation</span>
+                <h6 id="levitation">Levitation
                     <div class="switch">
-                      <label>
-                        Off
+                    <label>
+                        <span class="off">Off</span>
                         <input type="checkbox">
                         <span class="lever"></span>
-                        On
-                      </label>
+                        <span class="on">On</span>
+                    </label>
                     </div>
-                </div>
-                <div class="row">
-                    <span id="clutch" style="font-size: 150%">Clutch</span>
-                    <div  class="switch">
+                </h6>
+                <h6 id="clutch">Clutch
+                    <div class="switch">
                       <label>
-                        Off
+                        <span class="off">Off</span>
                         <input id="clutch-switch" type="checkbox">
                         <span class="lever"></span>
-                        On
+                        <span class="on">On</span>
                       </label>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="range-container">
-                        <span id="aux-propulsion" style="font-size: 150%">Aux.Propulsion</span>
+                </h6>
+                <div class="range-container">
+                    <h6 id="aux-propulsion">Aux.Propulsion</h6>
                     <div id="range1" class="range">
-                        <input id="currentVal1" class="range-value" value=0 type="text">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                    <div class="range-container">
-                        <span id="breaking-actuation" style="font-size: 150%">Breaking Actuation</span>
-                        <div id="range2" class="range">
-                          <input id="currentVal2" class="range-value" value=0 type="text">
-                        </div>
+                        <input class="range-value browser-default" value=0 type="text">
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class ="power-button row">
-            <h5>Power On</h5>
-            <div  class="switch" style="font-size: 150%">
-              <label>
-                <h6>Off
-                <input id="clutch-switch" type="checkbox">
-                <span class="lever"></span>
-                On
-              </label>
+                <div class="range-container">
+                    <h6 id="breaking-actuation">Breaking Actuation</h6>
+                    <div id="range2" class="range">
+                        <input class="range-value browser-default" value=0 type="text">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -166,7 +161,7 @@
                                 <div class = "battery-info right ">
                                     <h6> Battery 1 </h6>
                                     <h6> <span class="value">12</span><span class="unit">A</span></h6>
-                                    <h6> <span class="value">30</span><span class="unit">C</span></h6>
+                                    <h6> <span class="value">30</span><span class="unit">&deg;C</span></h6>
                                 </div>
                             </div>
                             <div class="battery-container">
@@ -174,7 +169,7 @@
                                 <div class = "battery-info right ">
                                     <h6> Battery 2 </h6>
                                     <h6> <span class="value">12</span><span class="unit">A</span></h6>
-                                    <h6> <span class="value">30</span><span class="unit">C</span></h6>
+                                    <h6> <span class="value">30</span><span class="unit">&deg;C</span></h6>
                                 </div>
                             </div>
                             <div class="battery-container">
@@ -182,7 +177,7 @@
                                 <div class = "battery-info right ">
                                     <h6> Battery 3 </h6>
                                     <h6> <span class="value">12</span><span class="unit">A</span></h6>
-                                    <h6> <span class="value">30</span><span class="unit">C</span></h6>
+                                    <h6> <span class="value">30</span><span class="unit">&deg;C</span></h6>
                                 </div>
                             </div>
                         </div>
@@ -192,7 +187,7 @@
                                 <div class = "battery-info right ">
                                     <h6> Battery 4 </h6>
                                     <h6> <span class="value">12</span><span class="unit">A</span></h6>
-                                    <h6> <span class="value">30</span><span class="unit">C</span></h6>
+                                    <h6> <span class="value">30</span><span class="unit">&deg;C</span></h6>
                                 </div>
                             </div>
                             <div class="battery-container">
@@ -200,7 +195,7 @@
                                 <div class = "battery-info right ">
                                     <h6> Battery 5 </h6>
                                     <h6> <span class="value">12</span><span class="unit">A</span></h6>
-                                    <h6> <span class="value">30</span><span class="unit">C</span></h6>
+                                    <h6> <span class="value">30</span><span class="unit">&deg;C</span></h6>
                                 </div>
                             </div>
                             <div class="battery-container">
@@ -208,7 +203,7 @@
                                 <div class = "battery-info right ">
                                     <h6> Battery 6 </h6>
                                     <h6> <span class="value">12</span><span class="unit">A</span></h6>
-                                    <h6> <span class="value">30</span><span class="unit">C</span></h6>
+                                    <h6> <span class="value">30</span><span class="unit">&deg;C</span></h6>
                                 </div>
                             </div>
                         </div>
@@ -216,7 +211,7 @@
                     <div class="row">
                         <div class="col l6">
                             <h5>Temperature</h5>
-                            <span class="temp">0</span><span class="unit temp">C</span>
+                            <span class="temp">0</span><span class="unit temp">&deg;C</span>
                         </div>
                         <div class="col l6">
                             <h5>Pressure</h5>

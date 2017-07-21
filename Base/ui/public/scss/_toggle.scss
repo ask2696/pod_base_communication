@@ -29,10 +29,17 @@
 =================================*/
 .switch {
     float: right;
-    .input[type=checkbox]:checked+.lever {
-    background-color: #36903a;
-  }
-}
-.green{
-  background-color: #36903a;
+    input[type=checkbox]:checked+.lever {
+      background-color: #36903a;
+    }
+    &:not(.checked) { 
+      span.off {
+        color: #F44336;
+      }
+    }
+    &.checked {
+      span.on {
+        color: #4CAF50;
+      }
+    }
 }
