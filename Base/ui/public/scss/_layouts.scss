@@ -5,12 +5,44 @@
 /*================================
         SIDEBAR LAYOUTS
 =================================*/
-
 .sidebar {
     background-color: rgba(22, 22, 22, 0.8);
     .card-panel,
-    .card {
+    .card, {
         background-color: rgba(120, 120, 120, 0.07);
+    }
+    /*================================
+            HEALTH CHECK
+    =================================*/
+    .health {
+        //removing the styling added by materialize to collapsibles
+        .collapsible-header {
+            padding: 0;
+            &:hover {
+                background-color: initial;
+                cursor: initial;
+            }
+        }
+        .collapsible li, .collapsible-body{
+            line-height: initial;
+            background-color: initial;
+        }
+        //give some space between button and the card title
+        .collapsible {
+            margin-top: 30px;
+        }
+    }
+    .health-display {
+        .check-item {
+            font-size: 12px;
+            margin: 10px 0;
+            .check-item-name {
+                padding-left: 10px;
+            }
+            .status {
+                vertical-align: middle;
+            }
+        }
     }
     .communication {
         h6 {
@@ -46,6 +78,39 @@
         }
     }
 }
+.pusher-detachment{
+
+}
+#left-sidebar {
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+    overflow: hidden;
+    &:hover {
+        overflow-y: auto;
+    }
+}
+.range-container{
+  height: 10px;
+}
+.gauge-container{
+    width: 100px;
+    //height: 40px;
+    left: 50%;
+    margin: auto;
+}
+.pusher-detachment{
+  h6 {
+      &:after {
+          content: "";
+          position: absolute;
+          width: 0.6rem;
+          height: 0.6rem;
+          border-radius: 10px;
+          margin-left: 10px;
+          background-color: crimson;
+      }
+    }
+}
 /*================================
       MAIN DASH BOARD LAYOUTS
 =================================*/
@@ -58,10 +123,15 @@
             background-color: rgba(120, 120, 120, 0.07);
         }
     }
+    #velocity, #acceleration {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .levitation, .brakes {
         img {
             width: 40%;
-            margin-bottom: 20px; 
+            margin-bottom: 20px;
         }
         p {
             font-size: 1.2rem;
@@ -77,12 +147,17 @@
             border: dotted 1px #eee;
             color: #eee;
             padding: 5px;
-            margin-right: 10px; 
-        } 
+            margin-right: 10px;
+        }
     }
     .levitation {
         img {
             width: 70%;
         }
     }
+}
+.power-button{
+    align:center;
+    width: 7rem;
+
 }

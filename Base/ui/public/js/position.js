@@ -1,39 +1,33 @@
 'use strict';
 
-
-function SpeedGauge(parameters) {
+function PositionIndicator(parameters) {
     for(var x in parameters) {
         this[x] = parameters[x];
     }
 }
 
-SpeedGauge.prototype.initGauge = function() {
-    var html = '<section class="speedometer-container"'+this.id+'>' 
-               + '<div class="speedometer '+this.id+'">'
-               + '<div class="inner-ring '+this.id+'"></div>'
+PositionIndicator.prototype.init = function() {
+    var html = '<section class="position-indicator-container"'+this.id+'>' 
+               + '<div class="position-indicator '+this.id+'">'
                + '<div class="outer-ring '+this.id+'">';
-    for(var i =0; i<49; i++) {
+    for(var i =0; i<41; i++) {
         html += '<span class="tick '+this.id+'"></span>';  
     }                           
-    html += '</div>' + '<div class="digit-ring '+this.id+'">';
-
-    for(var i=0; i<9; i++) {
-        html += '<span class="digit '+this.id+'">'+(i-1)*20+'</span>'; 
-    }                            
+                      
     html += '</div>' + '<div class="details '+this.id+'">';
 
-    html += '<p class="label '+this.id+'">'+this.label+'</p>' 
-            + '<p class="speed '+this.id+'">'+this.value+'</p>'
+    html += '<p class="count-label '+this.id+'">'+this.count_label+' <span class="count"> '+this.count+'</span></p>'
+            + '<p class="label '+this.id+'">'+this.label+'</p>' 
+            + '<p class="value '+this.id+'">'+this.value+'</p>'
             + '<p class="unit '+this.id+'">'+this.unit+'</p>'
-            + '</div>'
-            + '<div class="guage-progress '+this.id+'"></div>'  
+            + '</div>'  
             + '</section>';
 
     $('#'+this.id).append(html);
 
     this.addCSS();
 }
-SpeedGauge.prototype.addCSS = function() {
+PositionIndicator.prototype.addCSS = function() {
     this.ticks = $('.tick.'+this.id);
     this.digits = $('.digit.'+this.id);
     this.details = $('.details.'+this.id);
@@ -43,9 +37,9 @@ SpeedGauge.prototype.addCSS = function() {
     this.digitRingRadius = 65;
     var obj = this;
         this.ticks.each(function (i) {
-        var angle = 210 - i * 5;
+        var angle = 210 - i * 6;
         var theta = deg2rad(angle);
-        var radius = obj.outerRingRadius + (i % 6 ? 0 : 4);
+        var radius = obj.outerRingRadius;
         var x = Math.cos(theta) * radius;
         var y = Math.sin(theta) * -radius;
         var transform = ['translate(' + x + 'px, ' + y + 'px)', 'rotate(' + -angle + 'deg)'].join(' ');
@@ -76,8 +70,7 @@ SpeedGauge.prototype.addCSS = function() {
 
     this.updateDetails();
 }
-SpeedGauge.prototype.updateDetails = function() {
-    console.log(this.statValueCurrent);
+PositionIndicator.prototype.updateDetails = function() {
     if (this.statValueCurrent.toFixed(1) > this.statValueMax) {
         return;
     }
@@ -89,7 +82,7 @@ SpeedGauge.prototype.updateDetails = function() {
     }, this.frameInterval);
 }
 
-SpeedGauge.prototype.setStatValue= function(value) {
+PositionIndicator.prototype.setStatValue= function(value) {
     var angle = -120 + 240 * (value / this.digitValueMax);
 
     this.progress.css({
@@ -106,21 +99,15 @@ function rad2deg(angle) {
     return angle * (180 / Math.PI);
 }
 
-var v = new SpeedGauge({
-    id: 'velocity',
-    label: 'Velocity',
-    unit: 'm/s',
-    value: 160
+var p = new PositionIndicator({
+    id: 'position',
+    label: 'Position',
+    unit: 'm',
+    value: 0,
+    count: 0,
+    count_label: 'Strip' 
 });
-v.initGauge();
-
-var a = new SpeedGauge({
-    id: 'acceleration',
-    label: 'Acceleration',
-    unit: 'm/s/s',
-    value: 10
-});
-a.initGauge();
+p.init();
 
 window.setInterval(function(){
     v.statValueCurrent = 0;
