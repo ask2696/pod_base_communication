@@ -2,9 +2,9 @@
         RANGE SLIDER STYLES
 =================================*/
 #range {
-  width: 160px;
+  width: 180px;
   position: absolute;
-  top: 70%;
+  top: 75%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -22,8 +22,8 @@
   border-radius: 100%;
   background: darken(#b8b8b8,10%);
   border: 0;
-  height: 8px;
-  width: 8px;
+  height: 12px;
+  width: 12px;
   outline: none;
   cursor: pointer;
 }
@@ -43,14 +43,14 @@
   font-size: 12px;
   font-weight: bold;
   color: darken(#b8b8b8,10%);
-  width: 160px;
+  width: 180px;
   text-align: right;
   margin-top: -15px;
 }
 #range1 {
-  width: 160px;
+  width: 180px;
   position: absolute;
-  top: 85%;
+  top: 70%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -68,8 +68,8 @@
   border-radius: 100%;
   background: darken(#b8b8b8,10%);
   border: 0;
-  height: 8px;
-  width: 8px;
+  height: 12px;
+  width: 12px;
   outline: none;
   cursor: pointer;
 }
@@ -89,7 +89,7 @@
   font-size: 12px;
   font-weight: bold;
   color: darken(#b8b8b8,10%);
-  width: 160px;
+  width: 180px;
   text-align: right;
   margin-top: -15px;
 }

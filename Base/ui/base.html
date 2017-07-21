@@ -20,7 +20,7 @@
             <div class="card-content">
                 <h5>Health Check</h5>
                 <a type="button" href="#health-check-screen" class="btn teal darken-3 waves-effect waves-light">Start Health Check</a>
-                <ul class="collection"> 
+                <ul class="collection">
                     <li class="collection-item"> Computer Mode -Operational </li>
                     <li class="collection-item"> Telemetry Stream - Active </li>
                     <li class="collection-item"> Motor drivers emergency brakes- disengaged </li>
@@ -33,30 +33,34 @@
             <div class="card-content">
                 <h5>Functional Controls</h5>
                 <div class="row">
-                    Levitation
+                    <span id="levitation" style="font-size: 150%"/>Levitation</span>
                         <a href="#" class="toggle right toggle--on"></a>
                 </div>
                 <div class="row">
-                    Clutch
+                    <span id="clutch" style="font-size: 150%">Clutch</span>
                         <a href="#" class="toggle right toggle--on"></a>
                 </div>
                 <div class="row">
-                    <div class="range-container">
-                    Aux.Propulsion
+                    <div class="range-container1">
+                        <span id="aux-propulsion" style="font-size: 150%">Aux.Propulsion</span>
                     <div id="range">
                         <span id="currentVal">0</span>
                     </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="range-container">
-                        Breaking Actuation
+                    <div class="range-container2">
+                        <span id="breaking-actuation" style="font-size: 150%">Breaking Actuation</span>
                         <div id="range1">
                         <span id="currentVal">0</span>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class ="power-button row">
+            <h5>Power On</h5>
+            <a href="#" class="toggle right toggle--on"></a>
         </div>
     </div>
     <div class="row">
@@ -79,16 +83,24 @@
             </div>
             <div class="row">
                 <div class="col l4">
-                    <div id="yaw" class="gauge-container">Yaw</div>
-                    <div id="pitch" class="gauge-container">Pitch</div>
-                    <div id="roll" class="gauge-container">Roll</div>
-
+                    <div id="yaw" class="gauge-container" style="align: center">Yaw</div>
+                </div>
+                <div class="col l4">
+                    <div id="pitch" class="gauge-container" style="align: center">Pitch</div>
+                </div>
+                <div class ="col l4">
+                    <div id="roll" class="gauge-container" style="align: center">Roll</div>
+                </div>
+            </div>
+            <div class ="row">
+                <div class ="col l4">
                 </div>
                 <div class="col l4 brakes">
                     <h6> Brake Pad Distance</h6>
                     <img src="img/brake-pad.png"/>
                     <p> <span class="dotted-box">Dist</span> <span class="value">8</span><span class="unit"> mm</span></p>
                 </div>
+
                 <div class="col l4 levitation">
                     <h6> Levitation </h6>
                     <img src="img/levitation.png"/>
@@ -100,10 +112,13 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col l6">
+                <div class="col l4">
                     <a class=" btn1 btn teal darken-3 waves-effect waves-light">Start</a>
                 </div>
-                <div class="col l6" align="right">
+                <div class="col l4 pusher-detachment">
+                    <h6>Pusher Detachment</h6>
+                </div>
+                <div class="col l4" align="right">
                     <a class="btn2 btn red darken-3 waves-effect waves-light" >Emergency Stop</a>
                 </div>
             </div>
@@ -229,7 +244,7 @@
                 </div>-->
                 <div class="row">
                     <div class="col l8 offset-l2">
-                        <ul class="collection"> 
+                        <ul class="collection">
                             <li class="collection-item"> Computer Mode -Operational </li>
                             <li class="collection-item"> Telemetry Stream - Active </li>
                             <li class="collection-item"> Motor drivers emergency brakes- disengaged </li>
