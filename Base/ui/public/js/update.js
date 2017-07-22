@@ -9,10 +9,11 @@ function update(data){
     p.updateStripCount(data.stripe_count);
     v.setStatValue(data.velocity);
     a.setStatValue(data.acceleration);
+    
     // setValueAnimated(value, durationInSecs);
-    yaw.setValueAnimated(data.yaw_value,0.5);
-    pitch.setValueAnimated(data.pitch_value, 0.5);
-    roll.setValueAnimated(data.roll_value, 0.5);
+    yaw.setValueAnimated(data.yaw,0.5);
+    pitch.setValueAnimated(data.pitch, 0.5);
+    roll.setValueAnimated(data.roll, 0.5);
     for (var i ; i<= 4;i++ )
     {
       $('#lev'+i).text(data.levitation_value[i]);//Don't know how to update the values
@@ -27,4 +28,17 @@ function update(data){
         $('.pusher').removeClass('disengage');
         $('.pusher').addClass('engage');
     }
+}
+
+var socket = io.connect();
+socket.on('connect', function() {
+  console.log("Connected!"); 
+});
+
+socket.on('data_send', function(data) { 
+  update(data);
+});
+
+function sendCommand(command_name) {
+  socket.emit('pod_command', command_name);
 }

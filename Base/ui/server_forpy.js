@@ -23,14 +23,17 @@ var dataJSON=new Object();
 dataJSON={  "no_data_packets" : 0,
             "team_id":'0',
             "stat":'0',
-            "acceleration":'0',
-            "position":'0',
-            "velocity":'0',
+            "acceleration":30,
+            "position":10,
+            "velocity":12,
             "battery_voltage":'0',
             "battery_current":'0',
             "battery_temperature":'0',
             "pod_temperature":'0',
-            "stripe_count":'0'
+            "stripe_count":'0',
+            "yaw": 0,
+            "pitch": 100,
+            "roll": 150
         };
 function unpack(arr) 
     {var count = 0;
@@ -201,13 +204,15 @@ listener.sockets.on('connection', function(socket){
         console.log("Client Connected!!")
     });
 
-   
-
+    socket.on('pod_command', function(command_name) {
+        console.log(command_name);
+    });
     setInterval(function(){
         socket.emit('data_send', dataJSON);
     }, 0);
 
 });
+
 
 
 server1.listen(8081,"0.0.0.0");

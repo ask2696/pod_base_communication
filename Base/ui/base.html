@@ -19,9 +19,9 @@
             <img src="img/logo.png">
             <h6>Team ID: <span id="team_id"> xxx </span></h6>
         </div>
-        <div class="card-panel power-button">
+        <div id="power" class="card-panel power-button">
             <h5>Pod Power
-            <div  class="switch">
+            <div  class="switch" command=true on-command="Power On" off-command="Power Off">
               <label>
                 <span class="off">Off</span>
                 <input id="clutch-switch" type="checkbox">
@@ -66,7 +66,7 @@
                         <div class="collapsible-header hide"></div>
                         <div class="collapsible-body">
                             <h6 id="levitation">Levitation
-                                <div class="switch">
+                                <div class="switch" command=true on-command="Levitation On" off-command="Levitation Off">
                                 <label>
                                     <span class="off">Off</span>
                                     <input id="levitation-switch" type="checkbox">
@@ -76,7 +76,7 @@
                                 </div>
                             </h6>
                             <h6 id="clutch">Clutch
-                                <div class="switch">
+                                <div class="switch" command=true on-command="Clutch Engaged" off-command="Clutch Disengaged">
                                 <label>
                                     <span class="off">Off</span>
                                     <input id="clutch-switch" type="checkbox">
@@ -135,28 +135,27 @@
             <div class ="row">
                 <div class="col l6 levitation">
                     <h6> Levitation </h6>
-                    <div class="row">
+                    <!--<div class="row">-->
+                        <!--<div class="col s6">-->
+                        <!--</div>-->
+                        <!--<div class="col s6">
+                            <p> <span class="dotted-box">L1</span> <span class="value">12</span><span class="unit"> mm</span>
+                            <span class="dotted-box">L2</span> <span class="value">12</span><span class="unit"> mm</span></p>
+                        <p> <span class="dotted-box">L3</span> <span class="value">12</span><span class="unit"> mm</span>
+                            <span class="dotted-box">L4</span> <span class="value">12</span><span class="unit"> mm</span></p>
+                        </div>-->
+                    <!--</div>-->
+                </div>   
+                <div class="col l6 brakes">
+                    <h6> Brake Pad Distance</h6>                    
+                    <!--<div class="row">
                         <div class="col s6">
-                            <img src="img/levitation.png"/>
-                        </div>
-                        <div class="col s6">
-                            <p> <span class="dotted-box">L1</span> <span id="lev1" class="value">12</span><span class="unit"> mm</span>
-                            <span class="dotted-box">L2</span> <span id="lev2" class="value">12</span><span class="unit"> mm</span></p>
-                        <p> <span class="dotted-box">L3</span> <span id="lev3" class="value">12</span><span class="unit"> mm</span>
-                            <span class="dotted-box">L4</span> <span id="lev4" class="value">12</span><span class="unit"> mm</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col l4 brakes offset-l2">
-                    <h6> Brake Pad Distance</h6>
-                    <div class="row">
-                        <div class="col s6">
-                            <img src="img/brake-pad.png"/>
+
                         </div>
                         <div class="col s6">
                             <p> <span class="dotted-box">Dist</span> <span id="brake-pad" class="value">8</span><span class="unit"> mm</span></p>
                         </div>
-                     </div>
+                     </div>-->
                 </div>
 
             </div>
@@ -272,6 +271,7 @@
     <script src="js/speedgauge.js"></script>
     <script src="js/position.js"></script>
     <script src="js/gauge.js"></script>
+    <script src="js/update.js"></script>
     <script src="js/controls.js"></script>
     <script src="js/health.js"></script>
 </body>

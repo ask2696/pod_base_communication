@@ -28,7 +28,7 @@ function Slider(parameters) {
   $(input).change(function() {
     if ( $(input).val()<=obj.max && $(input).val()>=obj.min) {
       $('#'+obj.id).slider('value', $(input).val());
-      sendCommand(command_name);
+      //sendCommand(command_name);
     }
   });
 }

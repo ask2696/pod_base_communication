@@ -16,3 +16,23 @@ $('#right-sidebar-control').sideNav({
       onClose: function(el) { /* Do Stuff */ }, // A function to be called when sideNav is closed
     }
   );
+
+var xhr = new XMLHttpRequest;
+xhr.open('get','img/levitation.svg',true);
+xhr.onreadystatechange = function(){
+  if (xhr.readyState != 4) return;
+  var svg = xhr.responseXML.documentElement;
+  svg = document.importNode(svg,true); // surprisingly optional in these browsers
+  $('.levitation').append(svg);
+};
+xhr.send();
+
+var xhr1 = new XMLHttpRequest;
+xhr1.open('get','img/brake-pad.svg',true);
+xhr1.onreadystatechange = function(){
+  if (xhr1.readyState != 4) return;
+  var svg = xhr1.responseXML.documentElement;
+  svg = document.importNode(svg,true); // surprisingly optional in these browsers
+  $('.brakes').append(svg);
+};
+xhr1.send();
