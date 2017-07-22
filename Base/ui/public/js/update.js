@@ -1,9 +1,11 @@
 function update(data){
-    $('.temp').text(data.pod_temperature);
+    $('#tempature').text(data.pod_temperature);
     $('#team_id').text(data.team_id);
-    $('.pressure').text(data.pressure);
-    $('.currentvalue').text(data.battery_current);
-    $('.tempvalue').text(data.battery_temperature);
+    $('#pressure').text(data.pressure);
+    for(i=0;i<=4;i++){
+        $('#battery-current'+i).text(data.battery_current[i]);
+        $('#batter-temperature'+i).text(data.battery_temperature[i]);
+    }
     p.updateStripCount(data.stripe_count);
     v.setStatValue(data.velocity);
     a.setStatValue(data.acceleration);
@@ -18,11 +20,11 @@ function update(data){
     $('#brake-pad').text(data.break_pad_distance);
     $('#pod-status').text(data.status);
     if(data.pusher_value==0){
-      $('.pusher').removeClass('engage');
-      $('.pusher').addClass('disengage');
+        $('.pusher').removeClass('engage');
+        $('.pusher').addClass('disengage');
     }
     else {
-      $('.pusher').removeClass('disengage');
-      $('.pusher').addClass('engage');
+        $('.pusher').removeClass('disengage');
+        $('.pusher').addClass('engage');
     }
 }

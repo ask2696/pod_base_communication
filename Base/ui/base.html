@@ -69,7 +69,7 @@
                                 <div class="switch">
                                 <label>
                                     <span class="off">Off</span>
-                                    <input type="checkbox">
+                                    <input id="levitation-switch" type="checkbox">
                                     <span class="lever"></span>
                                     <span class="on">On</span>
                                 </label>
@@ -170,9 +170,9 @@
         <div class="col l4 sidebar">
             <div class="card-panel communication">
                 <h5>Communication</h5>
-                <h6>Primary Channel</h6>
-                <h6>Secondary Channel</h6>
+                <h6 id="primary-channel">Primary Channel</h6>
             </div>
+            <h6 id="secondary-channel">Secondary Channel</h6>
             <div class="card vitals">
                 <div class="card-content">
                     <div class="row">
@@ -181,24 +181,24 @@
                                 <div class="battery left"></div>
                                 <div class = "battery-info right ">
                                     <h6> Battery 1 </h6>
-                                    <h6> <span class="currentvalue">12</span><span class="unit">A</span></h6>
-                                    <h6> <span class="tempvalue">30</span><span class="unit">&deg;C</span></h6>
+                                    <h6> <span id="battery-current1" class="value">12</span><span class="unit">A</span></h6>
+                                    <h6> <span id="battery-temperature1" class="value">30</span><span class="unit">&deg;C</span></h6>
                                 </div>
                             </div>
                             <div class="battery-container">
                                 <div class="battery left"></div>
                                 <div class = "battery-info right ">
                                     <h6> Battery 2 </h6>
-                                    <h6> <span class="cuurentvalue">12</span><span class="unit">A</span></h6>
-                                    <h6> <span class="tempvalue">30</span><span class="unit">&deg;C</span></h6>
+                                    <h6> <span id="battery-current2" class="value">12</span><span class="unit">A</span></h6>
+                                    <h6> <span id="battery-temperature2" class="value">30</span><span class="unit">&deg;C</span></h6>
                                 </div>
                             </div>
                             <div class="battery-container">
                                 <div class="battery left"></div>
                                 <div class = "battery-info right ">
                                     <h6> Battery 3 </h6>
-                                    <h6> <span class="currentvalue">12</span><span class="unit">A</span></h6>
-                                    <h6> <span class="tempvalue">30</span><span class="unit">&deg;C</span></h6>
+                                    <h6> <span id="battery-current3" class="value">12</span><span class="unit">A</span></h6>
+                                    <h6> <span id="battery-temperature3" class="value">30</span><span class="unit">&deg;C</span></h6>
                                 </div>
                             </div>
                         </div>
@@ -207,24 +207,24 @@
                                 <div class="battery left"></div>
                                 <div class = "battery-info right ">
                                     <h6> Battery 4 </h6>
-                                    <h6> <span class="currentvalue">12</span><span class="unit">A</span></h6>
-                                    <h6> <span class="tempvalue">30</span><span class="unit">&deg;C</span></h6>
+                                    <h6> <span id="battery-current4" class="value">12</span><span class="unit">A</span></h6>
+                                    <h6> <span id="battery-temperature4" class="value">30</span><span class="unit">&deg;C</span></h6>
                                 </div>
                             </div>
                             <div class="battery-container">
                                 <div class="battery left"></div>
                                 <div class = "battery-info right ">
                                     <h6> Battery 5 </h6>
-                                    <h6> <span class="currentvalue">12</span><span class="unit">A</span></h6>
-                                    <h6> <span class="tempvalue">30</span><span class="unit">&deg;C</span></h6>
+                                    <h6> <span id="battery-current5" class="value">12</span><span class="unit">A</span></h6>
+                                    <h6> <span id="battery-temperature5" class="value">30</span><span class="unit">&deg;C</span></h6>
                                 </div>
                             </div>
                             <div class="battery-container">
                                 <div class="battery left"></div>
                                 <div class = "battery-info right ">
                                     <h6> Battery 6 </h6>
-                                    <h6> <span class="currentvalue">12</span><span class="unit">A</span></h6>
-                                    <h6> <span class="tempvalue">30</span><span class="unit">&deg;C</span></h6>
+                                    <h6> <span id="battery-current6" class="value">12</span><span class="unit">A</span></h6>
+                                    <h6> <span id="battery-temperature6" class="value">30</span><span class="unit">&deg;C</span></h6>
                                 </div>
                             </div>
                         </div>
@@ -232,16 +232,16 @@
                     <div class="row">
                         <div class="col s6">
                             <h5>Temperature</h5>
-                            <span class="temp">0</span><span class="unit temp">&deg;C</span>
+                            <span id="temperature" class="temp">0</span><span class="unit temp">&deg;C</span>
                         </div>
                         <div class="col s6">
                             <h5>Pressure</h5>
-                            <span class="pressure">1</span><span class="unit pressure">Bar</span>
+                            <span id="pressure" class="pressure">1</span><span class="unit pressure">Bar</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12">
-                            <h5> Pusher <span class="pusher disengage">Disengaged</span></h5>
+                            <h5> Pusher <span id="pusher-disengage" class="pusher disengage">Disengaged</span></h5>
                         </div>
                     </div>
                 </div>
@@ -266,13 +266,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"> </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
-    <script src="js/controls.js"></script>
     <script src="js/layout.js"></script>
     <script src="js/slider.js"></script>
     <script src="js/buttons.js"></script>
     <script src="js/speedgauge.js"></script>
     <script src="js/position.js"></script>
     <script src="js/gauge.js"></script>
+    <script src="js/controls.js"></script>
     <script src="js/health.js"></script>
 </body>
 
