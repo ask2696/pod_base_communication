@@ -65,7 +65,7 @@ var server=net.createServer(function (socket) {
                         
                         
                         //console.dir(data);
-                        //console.log(data);
+                        console.log(data);
                         dataJSON['no_data_packets'] = dataJSON['no_data_packets']+1; 
                         var arr = Array.prototype.slice.call(data, 0,1);
                          dataJSON.team_id=unpack8(arr);
