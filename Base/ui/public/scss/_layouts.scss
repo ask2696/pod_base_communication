@@ -38,7 +38,7 @@
             HEALTH CHECK
     =================================*/
     .health {
-        
+
         //give some space between button and the card title
         .collapsible {
             margin-top: 30px;
@@ -63,7 +63,7 @@
         }
         .switch {
             label {
-               font-size: 1rem; 
+               font-size: 1rem;
             }
         }
     }
@@ -92,8 +92,18 @@
                 height: 0.6rem;
                 border-radius: 10px;
                 margin-left: 10px;
-                background-color: crimson;
+
             }
+          }
+          .engage{
+            &:after{
+              background-color: green;
+            }
+          }
+          .disengage{
+            &:after {
+              background-color: crimson;
+          }
         }
     }
     .console {
@@ -152,7 +162,7 @@
         align-items: center;
     }
     .ypr {
-        padding-left: calc(50% - 150px); 
+        padding-left: calc(50% - 150px);
     }
     .levitation, .brakes {
         text-align: center;
