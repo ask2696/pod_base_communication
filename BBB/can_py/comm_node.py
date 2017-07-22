@@ -51,7 +51,7 @@ data_rcv = None;
 
 #Set the ip of the base station when deployed
 #Use the local ip in the network
-remote_ip = "127.0.0.1"#"192.168.0.51"
+remote_ip = "192.168.0.51"
 host = 'Base Station';
 port = 3000;#Port for TCP comm
 
@@ -107,8 +107,9 @@ def main():
     conn_status = 111
     try:
         print "Listening For Connections"
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.bind((remote_ip, port))
+        """
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.bind((host, port))
         s.listen(1)
         conn, addr = s.accept()
         """
@@ -116,7 +117,7 @@ def main():
 
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             conn_status = s.connect_ex((remote_ip , port))
-        """ 
+         
         print "Connected to the Base Station Server"
     except socket.error:
         print 'Failed to create socket'
