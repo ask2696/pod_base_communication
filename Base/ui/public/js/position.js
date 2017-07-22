@@ -61,42 +61,33 @@ PositionIndicator.prototype.addCSS = function() {
             'transform': 'translate(' + x + 'px, ' + y + 'px)'
         });
     });
-    this.frameCount = 100;
-    this.frameInterval = 0.3;
-    this.digitValueMax = 160;
-    this.statValueMax = this.value;
-    this.statValueCurrent = 0;
-    this.statValueInterval = this.statValueMax / this.frameCount;
-
-    this.updateDetails();
+    this.updateStripCount();
+    this.updatePosition();
 }
-PositionIndicator.prototype.updateDetails = function() {
-    if (this.statValueCurrent.toFixed(1) > this.statValueMax) {
-        return;
-    }
-    this.setStatValue(this.statValueCurrent.toFixed(1));
-    this.statValueCurrent += this.statValueInterval;
+
+PositionIndicator.prototype.updateStripCount = function(count) {
+    if(count)
+        this.count = count;
     var obj = this;
-    setTimeout(function() {
-        obj.updateDetails();
-    }, this.frameInterval);
-}
-
-PositionIndicator.prototype.setStatValue= function(value) {
-    var angle = -120 + 240 * (value / this.digitValueMax);
-
-    this.progress.css({
-        'transform': 'rotate(' + angle + 'deg)'
+    this.ticks.each(function(i) {
+        if(i+1<=obj.count) {
+            $(this).css({
+                'border-color':'#fff'
+            });
+        }
+        else {
+            $(this).css({
+                'border-color':'#3b3d45'
+            });
+        }
     });
-    this.details.find('.speed').text(value);
+    this.details.find('.count').text(this.count);
 }
 
-function deg2rad(angle) {
-    return angle * (Math.PI / 180);
-}
-
-function rad2deg(angle) {
-    return angle * (180 / Math.PI);
+PositionIndicator.prototype.updatePosition = function() {
+     if(position)
+        this.value = position;
+    this.details.find('.value').text(this.position);
 }
 
 var p = new PositionIndicator({
@@ -107,10 +98,5 @@ var p = new PositionIndicator({
     count: 0,
     count_label: 'Strip' 
 });
-p.init();
 
-window.setInterval(function(){
-    v.statValueCurrent = 0;
-    v.statValueMax = Math.random() * (100-0);
-    v.updateDetails();
-}, 500000);
+p.init();
