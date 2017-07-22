@@ -25,7 +25,7 @@ var socket = io.connect();
     socket.on('data_send', function(data){
     //$('#data_pod').text("teamId:"+data.data_from_pod);
     //$('#data_pod').text(data.data_from_pod);
-        $(ids[0]).text(data.no_data_packets);
+    /*    $(ids[0]).text(data.no_data_packets);
         $(ids[1]).text(data.team_id);
         $(ids[2]).text(data.stat);
        // $(ids[3]).text(data.acceleration);
