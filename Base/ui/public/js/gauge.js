@@ -36,14 +36,4 @@ var roll = Gauge(
     }
   }
 );
-(function loop() {
-  var value1 = Math.round(Math.random() * 360),
-      value2 = Math.round(Math.random() * 360),
-      value3 = Math.round(Math.random() * 360);
 
-  // setValueAnimated(value, durationInSecs);
-  yaw.setValueAnimated(value1, 1);
-  pitch.setValueAnimated(value2, 2);
-  roll.setValueAnimated(value3, 1.5);
-  window.setTimeout(loop, 6000);
-})();
