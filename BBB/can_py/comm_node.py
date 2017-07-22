@@ -107,9 +107,16 @@ def main():
     conn_status = 111
     try:
         print "Listening For Connections"
+<<<<<<< HEAD
         """
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.bind((host, port))
+=======
+        
+        """
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.bind((remote_ip, port))
+>>>>>>> 13db4c4cfbe11111aa88a1d163feec9a26c62af1
         s.listen(1)
         conn, addr = s.accept()
         """
@@ -117,7 +124,11 @@ def main():
 
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             conn_status = s.connect_ex((remote_ip , port))
+<<<<<<< HEAD
          
+=======
+        
+>>>>>>> 13db4c4cfbe11111aa88a1d163feec9a26c62af1
         print "Connected to the Base Station Server"
     except socket.error:
         print 'Failed to create socket'

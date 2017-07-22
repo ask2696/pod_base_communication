@@ -77,7 +77,6 @@ SpeedGauge.prototype.addCSS = function() {
     this.updateDetails();
 }
 SpeedGauge.prototype.updateDetails = function() {
-    console.log(this.statValueCurrent);
     if (this.statValueCurrent.toFixed(1) > this.statValueMax) {
         return;
     }

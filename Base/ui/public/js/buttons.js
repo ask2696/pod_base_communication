@@ -19,16 +19,12 @@ $(".btn1").click(function ()
 /**********************************
 Toggle Button
 **********************************/
-$('.toggle').click(function(e) {
-  var toggle = this;
-
-  e.preventDefault();
-
-  $(toggle).toggleClass('toggle--on')
-         .toggleClass('toggle--off')
-         .addClass('toggle--moving');
-
-  setTimeout(function() {
-    $(toggle).removeClass('toggle--moving');
-  }, 200)
+$('input:checkbox').change( function(){
+    console.log('a');
+    if($(this).is(':checked')) {
+        $(this).closest('div').addClass('checked');
+    }
+    else {
+        $(this).closest('div').removeClass('checked');
+    }
 });
