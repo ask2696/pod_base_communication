@@ -8,25 +8,25 @@ function SpeedGauge(parameters) {
 }
 
 SpeedGauge.prototype.initGauge = function() {
-    var html = '<section class="speedometer-container"'+this.id+'>' 
+    var html = '<section class="speedometer-container"'+this.id+'>'
                + '<div class="speedometer '+this.id+'">'
                + '<div class="inner-ring '+this.id+'"></div>'
                + '<div class="outer-ring '+this.id+'">';
     for(var i =0; i<49; i++) {
-        html += '<span class="tick '+this.id+'"></span>';  
-    }                           
+        html += '<span class="tick '+this.id+'"></span>';
+    }
     html += '</div>' + '<div class="digit-ring '+this.id+'">';
 
     for(var i=0; i<9; i++) {
-        html += '<span class="digit '+this.id+'">'+(i-1)*20+'</span>'; 
-    }                            
+        html += '<span class="digit '+this.id+'">'+(i-1)*20+'</span>';
+    }
     html += '</div>' + '<div class="details '+this.id+'">';
 
-    html += '<p class="label '+this.id+'">'+this.label+'</p>' 
+    html += '<p class="label '+this.id+'">'+this.label+'</p>'
             + '<p class="speed '+this.id+'">'+this.value+'</p>'
             + '<p class="unit '+this.id+'">'+this.unit+'</p>'
             + '</div>'
-            + '<div class="guage-progress '+this.id+'"></div>'  
+            + '<div class="guage-progress '+this.id+'"></div>'
             + '</section>';
 
     $('#'+this.id).append(html);
