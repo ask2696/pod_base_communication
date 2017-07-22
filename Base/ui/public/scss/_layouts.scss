@@ -81,8 +81,19 @@
         }
     }
     .vitals {
-        h5 {
-            margin-bottom: 30px;
+        .pusher {
+            font-size: 12px;
+            position: relative;
+            &:after {
+                top: 3px;
+                content: "";
+                position: absolute;
+                width: 0.6rem;
+                height: 0.6rem;
+                border-radius: 10px;
+                margin-left: 10px;
+                background-color: crimson;
+            }
         }
     }
     .console {
@@ -94,9 +105,6 @@
             font-size: 10px;
         }
     }
-}
-.pusher-detachment{
-
 }
 #left-sidebar {
     width: 300px;

@@ -28,3 +28,7 @@ $('input:checkbox').change( function(){
         $(this).closest('div').removeClass('checked');
     }
 });
+$('.battery').each(function(i) {
+    for(var x=1; x<=4; x++)
+        $(this).append('<div class="bar">');
+});
