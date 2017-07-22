@@ -11,11 +11,8 @@
     .card, {
         background-color: rgba(120, 120, 120, 0.07);
     }
-    /*================================
-            HEALTH CHECK
-    =================================*/
-    .health {
-        //removing the styling added by materialize to collapsibles
+    //removing the styling added by materialize to collapsibles
+    .collapsible {
         .collapsible-header {
             padding: 0;
             &:hover {
@@ -27,6 +24,21 @@
             line-height: initial;
             background-color: initial;
         }
+    }
+    .branding {
+        img {
+            width:100%;
+            max-width: 200px;
+        }
+    }
+    .power{
+        ;
+    }
+    /*================================
+            HEALTH CHECK
+    =================================*/
+    .health {
+        
         //give some space between button and the card title
         .collapsible {
             margin-top: 30px;
@@ -44,6 +56,17 @@
             }
         }
     }
+    .controls {
+        h6 {
+            font-size: 1.5rem;
+            padding-top: 1rem;
+        }
+        .switch {
+            label {
+               font-size: 1rem; 
+            }
+        }
+    }
     .communication {
         h6 {
             &:after {
@@ -55,12 +78,6 @@
                 margin-left: 10px;
                 background-color: crimson;
             }
-        }
-    }
-    .branding {
-        img {
-            width:100%;
-            max-width: 200px;
         }
     }
     .vitals {
@@ -82,15 +99,13 @@
 
 }
 #left-sidebar {
+    width: 300px;
     padding-left: 7.5px;
     padding-right: 7.5px;
     overflow: hidden;
     &:hover {
         overflow-y: auto;
     }
-}
-.range-container{
-  height: 10px;
 }
 .gauge-container{
     width: 100px;
@@ -128,13 +143,20 @@
         justify-content: center;
         align-items: center;
     }
+    .ypr {
+        padding-left: calc(50% - 150px); 
+    }
     .levitation, .brakes {
+        text-align: center;
+        vertical-align: middle;
         img {
-            width: 40%;
+            width: 80%;
+            margin-top: 20px;
             margin-bottom: 20px;
         }
         p {
             font-size: 1.2rem;
+            margin-top: 20px;
         }
         span.value {
             color: #fff;
@@ -142,22 +164,27 @@
         }
         span.unit {
             color: #aaa;
+            margin-right: 15px;
         }
         span.dotted-box {
             border: dotted 1px #eee;
             color: #eee;
             padding: 5px;
-            margin-right: 10px;
+            margin-right: 5px;
+        }
+    }
+    .brakes {
+        p {
+            margin-top: 4rem;
         }
     }
     .levitation {
         img {
-            width: 70%;
+            width: 90%;
         }
     }
-}
-.power-button{
-    align:center;
-    width: 7rem;
-
+    .foot {
+        padding: 3rem;
+        margin-top: 5rem;
+    }
 }

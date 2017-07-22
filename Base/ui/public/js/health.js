@@ -21,12 +21,13 @@ for(var i in checks) {
 }
 
 $('#start-check').click(function() {
-  $('.collapsible').collapsible('open', 0);
+  $('.health .collapsible').collapsible('open', 0);
   startCheck(0);
 });
 
 function startCheck(count) {
   if(count > checks.length) {
+    $('#health-display').append('<p  class="check-item">All Health Checks Passed. Pod is ready for Launch! </p>');
     return;
   }
   $('#chk'+count+' .status')

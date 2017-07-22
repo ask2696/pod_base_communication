@@ -19,9 +19,12 @@ $(".btn1").click(function ()
 /**********************************
 Toggle Button
 **********************************/
-$('input:checkbox').change(
-    function(){
-        if ($(this).is(':checked')) {
-            $(this).addClass('#36903a');
-        }
-    });
+$('input:checkbox').change( function(){
+    console.log('a');
+    if($(this).is(':checked')) {
+        $(this).closest('div').addClass('checked');
+    }
+    else {
+        $(this).closest('div').removeClass('checked');
+    }
+});
