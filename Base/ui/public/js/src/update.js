@@ -1,12 +1,13 @@
 function update(data){
-    $('#tempature').text(data.pod_temperature);
+    $('#temperature').text(data.pod_temperature);
     $('#team_id').text(data.team_id);
     $('#pressure').text(data.pressure);
-    for(i=0;i<=4;i++){
-        $('#battery-current'+i).text(data.battery_current[i]);
-        $('#batter-temperature'+i).text(data.battery_temperature[i]);
+    for(var i=0;i<4;i++){
+        $('#battery-current'+(i+1)).text(data.battery_current[i]);
+        $('#batter-temperature'+(i+1)).text(data.battery_temperature[i]);
     }
     p.updateStripCount(data.stripe_count);
+    p.updatePosition(data.position);
     v.setStatValue(data.velocity);
     a.setStatValue(data.acceleration);
     
@@ -14,9 +15,9 @@ function update(data){
     yaw.setValueAnimated(data.yaw,0.5);
     pitch.setValueAnimated(data.pitch, 0.5);
     roll.setValueAnimated(data.roll, 0.5);
-    for (var i ; i<= 4;i++ )
+    for (var i=0; i<4;i++ )
     {
-      $('#lev'+i).text(data.levitation_value[i]);//Don't know how to update the values
+      $('#lev'+(i+1)).text(data.levitation_value[i]);//Don't know how to update the values
     }
     $('#brake-pad').text(data.break_pad_distance);
     $('#pod-status').text(data.status);

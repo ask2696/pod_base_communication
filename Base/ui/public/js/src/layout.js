@@ -36,3 +36,7 @@ xhr1.onreadystatechange = function(){
   $('.brakes').append(svg);
 };
 xhr1.send();
+
+$('.controls .switch input#controls-toggle').change(function() {
+   $('.controls .collapsible').collapsible('open', 0);
+});

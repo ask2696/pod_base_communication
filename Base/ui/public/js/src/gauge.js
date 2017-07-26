@@ -1,6 +1,13 @@
-
-// Standalone
+/**
+ * **************************
+ * Gauge for Yaw Pitch Roll
+ * **************************
+ * 
+ * This uses the SVG Gauge library 
+ * https://github.com/naikus/svg-gauge
+*/
 var Gauge = window.Gauge;
+
 var yaw = Gauge(
   document.getElementById("yaw"), {
     max: 360,
@@ -36,4 +43,3 @@ var roll = Gauge(
     }
   }
 );
-
