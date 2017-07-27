@@ -17,6 +17,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
     "jquery": "^3.2.1",
     "jquery-ui-dist": "^1.12.1",
     "materialize-css": "^0.100.1",
@@ -31,6 +32,7 @@
     "url": "git+https://github.com/ask2696/pod_base_communication.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preui": "cd ui; gulp build-all",
+    "ui": "node ui/server_forpy.js"
   }
 }

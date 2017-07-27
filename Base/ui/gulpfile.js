@@ -1,8 +1,8 @@
 var gulp = require('gulp'),
+    sass = require('gulp-sass'),
     concat = require('gulp-concat'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
-    sass = require('gulp-sass'),
     minify = require('gulp-minify-css'),
     sourcemaps = require('gulp-sourcemaps');
 
@@ -12,8 +12,11 @@ var cssSrc = 'public/scss/*.scss',
     jsSrc = 'public/js/src/*.js',
     jsDest = 'public/js';
 
-// gulp 'default' task is called first. It points to task 'watch'
-gulp.task('default', ['watch']);
+// gulp 'default' task which runs watch before execution
+gulp.task('default',['watch']);
+
+// 'build-all' task for onetime build
+gulp.task('build-all', ['build-css', 'build-js']);
 
 //watch for changes in scss or js source files, and call build task
 gulp.task('watch', function () {
@@ -33,7 +36,7 @@ gulp.task('build-css', function () {
         .pipe(gulp.dest(cssDest));
 });
 
-
+//conacat js files, minify and write to output
 gulp.task('build-js', function () {
     return gulp.src(jsSrc)
         .pipe(sourcemaps.init()) //Process the original sources
@@ -44,4 +47,3 @@ gulp.task('build-js', function () {
         .pipe(sourcemaps.write('.')) //Add the map to modified source.
         .pipe(gulp.dest(jsDest));
 });
-

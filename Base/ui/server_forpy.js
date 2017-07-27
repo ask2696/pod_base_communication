@@ -79,7 +79,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // The static middleware
- console.log(require.resolve('ess'));
+
 // ui dependencies 
 app.use('/jquery',express.static('node_modules/jquery/dist/'));
 app.use('/jquery-ui',express.static('node_modules/jquery-ui-dist/'));
