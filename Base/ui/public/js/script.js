@@ -506,12 +506,14 @@ function update(data){
     $('#brake-pad').text(data.break_pad_distance);
     $('#pod-status').text(data.status);
     if(data.pusher_value==0){
-        $('.pusher').removeClass('engage');
-        $('.pusher').addClass('disengage');
+        $('.pusher').text('Disengaged')
+          .removeClass('engage')
+          .addClass('disengage');
     }
     else {
-        $('.pusher').removeClass('disengage');
-        $('.pusher').addClass('engage');
+       $('.pusher').text('Engaged')
+        .removeClass('disengage')
+        .addClass('engage');
     }
 }
 
