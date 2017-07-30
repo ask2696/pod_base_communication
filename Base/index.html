@@ -103,10 +103,21 @@
       <br>
    </div>
 
+   <form action="" method="post" enctype="multipart/form-data">
+         
+            
+            <input>
+            <button id="stopBtn" class="action-button blue" >stop</button> 
+            </input>
+            
+            
+            
+         
+      </form>
 
 
     <button id="startBtn" class="action-button green" >start</button>
-    <button id="stopBtn" class="action-button blue" >stop</button>
+   <!-- <button id="stopBtn" class="action-button blue" >stop</button> -->
     <button id="EmgStopBtn" class="action-button red" >Emergency stop</button>
         <br><br>
     <button id="EngBrakeBtn" class=" clr action-button green" >Engage brakes</button>
@@ -192,7 +203,7 @@
                 });
 
 
-                  function poststop() {
+                  /*function poststop() {
                     $.ajax({
                         type: "POST",
                         url: "http://0.0.0.0:8081/index.html",
@@ -208,7 +219,7 @@
 
                 $('#stopBtn').on('click', function() {
                     poststop();
-                });
+                });*/
 
 
                   function postEmgStop() {
