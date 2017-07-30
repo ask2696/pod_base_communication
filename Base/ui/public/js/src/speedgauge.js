@@ -12,12 +12,12 @@ SpeedGauge.prototype.initGauge = function() {
                + '<div class="speedometer '+this.id+'">'
                + '<div class="inner-ring '+this.id+'"></div>'
                + '<div class="outer-ring '+this.id+'">';
-    for(var i =0; i<49; i++) {
+    for(var i=0; i<49; i++) {
         html += '<span class="tick '+this.id+'"></span>';
     }
     html += '</div>' + '<div class="digit-ring '+this.id+'">';
 
-    for(var i=0; i<9; i++) {
+    for(var i=1; i<=9; i++) {
         html += '<span class="digit '+this.id+'">'+(i-1)*20+'</span>';
     }
     html += '</div>' + '<div class="details '+this.id+'">';
@@ -109,7 +109,7 @@ var v = new SpeedGauge({
     id: 'velocity',
     label: 'Velocity',
     unit: 'm/s',
-    value: 160
+    value: 0.1
 });
 v.initGauge();
 
@@ -117,12 +117,6 @@ var a = new SpeedGauge({
     id: 'acceleration',
     label: 'Acceleration',
     unit: 'm/s/s',
-    value: 10
+    value: 0.1
 });
 a.initGauge();
-
-window.setInterval(function(){
-    v.statValueCurrent = 0;
-    v.statValueMax = Math.random() * (100-0);
-    v.updateDetails();
-}, 500000);

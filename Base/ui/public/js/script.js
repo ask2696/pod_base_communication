@@ -8,15 +8,15 @@ $(".btn1").click(function ()
         sendCommand()
         $(this).text("Start");
         sendCommand("Pod Start");
-        $(this).removeClass('red');
-        $(this).addClass('teal');
+        //$(this).removeClass('red');
+        //$(this).addClass('teal');
       }
     else
     {
         $(this).text("Stop");
         sendCommand("Pod Stop");
-        $(this).removeClass('teal');
-        $(this).addClass('red');
+        //$(this).removeClass('teal');
+        //$(this).addClass('red');
     }
 });
 /**********************************
@@ -43,7 +43,12 @@ $('input:checkbox').change( function(){
         }
     }
 });
-
+/**
+ * Event listener for the functional control toggle switch 
+ */
+$('.controls .switch input#controls-toggle').change(function() {
+   $('.controls .collapsible').collapsible('open', 0);
+});
 
 //append 4 bars to each battery
 $('.battery').each(function(i) {
@@ -51,6 +56,7 @@ $('.battery').each(function(i) {
         $(this).append('<div class="bar">');
     }
 });
+
 
 /**
  * **************************
@@ -67,7 +73,7 @@ var yaw = Gauge(
     max: 360,
     dialStartAngle: -90,
     dialEndAngle: -90.001,
-    value: 100,
+    value: 0,
     label: function(value) {
       return value+String.fromCharCode(176);
     }
@@ -79,7 +85,7 @@ var pitch = Gauge(
     max: 360,
     dialStartAngle: -90,
     dialEndAngle: -90.001,
-    value: 100,
+    value: 0,
     label: function(value) {
       return value+String.fromCharCode(176);
     }
@@ -91,7 +97,7 @@ var roll = Gauge(
     max: 360,
     dialStartAngle: -90,
     dialEndAngle: -90.001,
-    value: 100,
+    value: 0,
     label: function(value) {
       return value+String.fromCharCode(176);
     }
@@ -138,7 +144,7 @@ function startCheck(count) {
   setTimeout(function(){startCheck(count+1)},300);
 }
 $('#left-sidebar-control').sideNav({
-      menuWidth: 300, // Default is 300
+      //menuWidth: $(window).width()*(3/12), // Default is 300
       edge: 'left', // Choose the horizontal origin
       closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
       draggable: false, // Choose whether you can drag to open on touch screens,
@@ -147,7 +153,7 @@ $('#left-sidebar-control').sideNav({
     }
   );
 $('#right-sidebar-control').sideNav({
-      menuWidth: 300, // Default is 300
+      //menuWidth: $(window).width()*(3/12), // Default is 300
       edge: 'right', // Choose the horizontal origin
       closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
       draggable: false, // Choose whether you can drag to open on touch screens,
@@ -155,30 +161,31 @@ $('#right-sidebar-control').sideNav({
       onClose: function(el) { /* Do Stuff */ }, // A function to be called when sideNav is closed
     }
   );
+console.log($(window).width());
+/**
+ * **************************
+ * loadSVG
+ * **************************
+ * loads the given svg and appends it to the html element with the given id
+ * 
+ * usage: loadSVG('svg-filename.svg', 'id-of-html-element')
+ */
 
-var xhr = new XMLHttpRequest;
-xhr.open('get','img/levitation.svg',true);
-xhr.onreadystatechange = function(){
-  if (xhr.readyState != 4) return;
-  var svg = xhr.responseXML.documentElement;
-  svg = document.importNode(svg,true); // surprisingly optional in these browsers
-  $('.levitation').append(svg);
-};
-xhr.send();
+loadSVG('levitation.svg', 'levitation-distance');
+loadSVG('brake-pad.svg', 'brake-pad-distance');
 
-var xhr1 = new XMLHttpRequest;
-xhr1.open('get','img/brake-pad.svg',true);
-xhr1.onreadystatechange = function(){
-  if (xhr1.readyState != 4) return;
-  var svg = xhr1.responseXML.documentElement;
-  svg = document.importNode(svg,true); // surprisingly optional in these browsers
-  $('.brakes').append(svg);
-};
-xhr1.send();
+function loadSVG(file,id) {
+  var xhr = new XMLHttpRequest;
+  xhr.open('get','img/'+file,true);
+  xhr.onreadystatechange = function(){
+    if (xhr.readyState != 4) return;
+    var svg = xhr.responseXML.documentElement;
+    svg = document.importNode(svg,true); // surprisingly optional in these browsers
+    $('#'+id).append(svg);
+  };
+  xhr.send();
+}
 
-$('.controls .switch input#controls-toggle').change(function() {
-   $('.controls .collapsible').collapsible('open', 0);
-});
 
 /**
  * ***************************************
@@ -280,7 +287,7 @@ PositionIndicator.prototype.updateStripCount = function (count) {
 PositionIndicator.prototype.updatePosition = function (position) {
     if (position)
         this.value = position;
-    this.details.find('.value').text(this.position);
+    this.details.find('.value').text(this.value);
 }
 
 /**
@@ -367,12 +374,12 @@ SpeedGauge.prototype.initGauge = function() {
                + '<div class="speedometer '+this.id+'">'
                + '<div class="inner-ring '+this.id+'"></div>'
                + '<div class="outer-ring '+this.id+'">';
-    for(var i =0; i<49; i++) {
+    for(var i=0; i<49; i++) {
         html += '<span class="tick '+this.id+'"></span>';
     }
     html += '</div>' + '<div class="digit-ring '+this.id+'">';
 
-    for(var i=0; i<9; i++) {
+    for(var i=1; i<=9; i++) {
         html += '<span class="digit '+this.id+'">'+(i-1)*20+'</span>';
     }
     html += '</div>' + '<div class="details '+this.id+'">';
@@ -464,7 +471,7 @@ var v = new SpeedGauge({
     id: 'velocity',
     label: 'Velocity',
     unit: 'm/s',
-    value: 160
+    value: 0.1
 });
 v.initGauge();
 
@@ -472,40 +479,82 @@ var a = new SpeedGauge({
     id: 'acceleration',
     label: 'Acceleration',
     unit: 'm/s/s',
-    value: 10
+    value: 0.1
 });
 a.initGauge();
-
-window.setInterval(function(){
-    v.statValueCurrent = 0;
-    v.statValueMax = Math.random() * (100-0);
-    v.updateDetails();
-}, 500000);
+var pod_state = [
+  "Pod Running",
+  "Pod Stopped"
+];
 
 function update(data){
-    $('#temperature').text(data.pod_temperature);
+    // comms
+    if(data.comm_primary)  
+      $('#primary-channel').removeClass().addClass('connected');
+    else
+      $('#primary-channel').removeClass();
+
+    if(data.comm_secondary)  
+      $('#secondary-channel').removeClass().addClass('connected');
+    else(data.comm_secondary)  
+      $('#secondary-channel').removeClass();
+    
+    $('#current-channel').text(data.comm_current);
+
+    // team id
     $('#team_id').text(data.team_id);
-    $('#pressure').text(data.pressure);
+    
+    // pod-status
+    $('#pod-status').text(pod_state[data.status_code]);
+
+    // console
+    if(data.console_entry)
+      $('.console .display').append('<p class="console-entry">['+data.timestamp+'] '+data.console_entry+'</p>');
+    // primary battery
     for(var i=0;i<4;i++){
-        $('#battery-current'+(i+1)).text(data.battery_current[i]);
-        $('#batter-temperature'+(i+1)).text(data.battery_temperature[i]);
+        var bat = $('#b-p'+(i+1));
+        bat.find('.temp').text(data.battery_primary_temperature[i]);
+        bat.find('.current').text(data.battery_primary_current[i]);
+        bat.find('.battery').removeClass().addClass('battery soc--'+data.battery_primary_soc[i]);
     }
-    p.updateStripCount(data.stripe_count);
+    // secondary battery
+    $('#b-sec').find('.battery').removeClass().addClass('battery soc--'+data.battery_secondary_soc);
+    $('#b-sec').find('.temp').text(data.battery_secondary_temperature);
+    $('#b-sec').find('.current').text(data.battery_secondary_current);
+    // backup battery
+    $('#b-bk').find('.value').text((data.battery_backup)?'ON':'OFF');
+    
+    // temperature
+    $('#temperature').text(data.pod_temperature);
+    // pressure
+    $('#pressure').text(data.pressure);
+    
+
+    // strip count
+    p.updateStripCount(data.strip_count);
+    // position
     p.updatePosition(data.position);
+    // velocity
     v.setStatValue(data.velocity);
+    // acceleration
     a.setStatValue(data.acceleration);
     
-    // setValueAnimated(value, durationInSecs);
+    // yaw pitch roll
     yaw.setValueAnimated(data.yaw,0.5);
     pitch.setValueAnimated(data.pitch, 0.5);
     roll.setValueAnimated(data.roll, 0.5);
+    
+    // levitation
     for (var i=0; i<4;i++ )
     {
-      $('#lev'+(i+1)).text(data.levitation_value[i]);//Don't know how to update the values
+      $('#lev'+(i+1)).text(data.levitation[i]);//Don't know how to update the values
     }
-    $('#brake-pad').text(data.break_pad_distance);
-    $('#pod-status').text(data.status);
-    if(data.pusher_value==0){
+
+    // brake pads
+    $('#brake-pad').text(data.brake_pad);
+   
+    //pusher
+    if(!data.pusher || data.pusher==0){
         $('.pusher').text('Disengaged')
           .removeClass('engage')
           .addClass('disengage');

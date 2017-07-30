@@ -60,6 +60,9 @@ body {
 /*================================
             LAYOUTS
 =================================*/
+body > .row {
+  margin: 0; }
+
 /*================================
         SIDEBAR LAYOUTS
 =================================*/
@@ -96,14 +99,19 @@ body {
     padding-top: 1rem; }
   .sidebar .controls .switch label {
     font-size: 1rem; }
-  .sidebar .communication h6:after {
-    content: "";
-    position: absolute;
-    width: 0.6rem;
-    height: 0.6rem;
-    border-radius: 10px;
-    margin-left: 10px;
-    background-color: crimson; }
+  .sidebar .communication h6 {
+    position: relative; }
+    .sidebar .communication h6:after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 10px;
+      margin-left: 10px;
+      background-color: crimson; }
+    .sidebar .communication h6.connected:after {
+      background-color: #00695c; }
   .sidebar .vitals .pusher {
     font-size: 12px;
     position: relative; }
@@ -119,12 +127,20 @@ body {
     background-color: green; }
   .sidebar .vitals .disengage:after {
     background-color: crimson; }
+  .sidebar .vitals .value {
+    color: #a1a1a1; }
+  .sidebar .vitals .unit {
+    color: #a1a1a1; }
   .sidebar .console .display {
     background-color: #000;
-    padding: 30px 5px;
+    padding: 5px;
     color: white;
     font-family: monospace;
-    font-size: 10px; }
+    font-size: 10px;
+    height: 185px;
+    overflow-y: hidden; }
+    .sidebar .console .display:hover {
+      overflow-y: auto; }
 
 #left-sidebar {
   width: 300px;
@@ -134,33 +150,35 @@ body {
   #left-sidebar:hover {
     overflow-y: auto; }
 
-.gauge-container {
-  width: 100px;
-  left: 50%;
-  margin: auto; }
-
-.pusher-detachment h6:after {
-  content: "";
-  position: absolute;
-  width: 0.6rem;
-  height: 0.6rem;
-  border-radius: 10px;
-  margin-left: 10px;
-  background-color: crimson; }
-
 /*================================
       MAIN DASH BOARD LAYOUTS
 =================================*/
 .main-dash .top-center-bar {
+  position: relative;
   background-color: rgba(22, 22, 22, 0.8); }
   .main-dash .top-center-bar .card-panel,
   .main-dash .top-center-bar .card {
-    background-color: rgba(120, 120, 120, 0.07); }
+    background-color: rgba(120, 120, 120, 0.07);
+    text-align: center; }
+  .main-dash .top-center-bar .label {
+    position: absolute;
+    left: 2.5rem;
+    top: 35px; }
+  .main-dash .top-center-bar #pod-status {
+    font-size: 2rem;
+    color: #808080;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 30px #fff; }
 
 .main-dash #velocity, .main-dash #acceleration {
   display: flex;
   justify-content: center;
   align-items: center; }
+
+.main-dash .gauge-container {
+  width: 100px;
+  left: 50%;
+  margin: auto; }
 
 .main-dash .ypr {
   padding-left: calc(50% - 150px); }
@@ -194,8 +212,7 @@ body {
   width: 90%; }
 
 .main-dash .foot {
-  padding: 3rem;
-  margin-top: 5rem; }
+  padding: 1rem; }
 
 /*================================
         SPEED GAUGE SYLES
@@ -420,16 +437,17 @@ body {
         BATTERY SYLES
 =================================*/
 .battery-container {
-  clear: both;
   padding-top: 10px;
-  padding-right: 40px; }
+  position: relative; }
   .battery-container .battery {
+    position: absolute;
     display: inline-block;
     width: 2.2rem;
     background-color: transparent;
     box-sizing: border-box;
     border: .2em #505050 solid;
     margin-top: 1em;
+    top: 5px;
     padding-left: 0.2rem;
     padding-right: 0.2rem;
     padding-bottom: 0.2rem; }
@@ -440,14 +458,31 @@ body {
       background-color: #505050;
       position: absolute;
       margin-top: -.5em;
-      margin-left: .3em; }
+      margin-left: .2em; }
     .battery-container .battery .bar {
+      background-color: transparent;
       height: 0.75rem;
       width: 100%;
-      background-color: #19ad38;
       margin-top: 2px; }
-  .battery-container .battery-info > h5 {
+    .battery-container .battery.soc--4 .bar {
+      background-color: #19ad38; }
+    .battery-container .battery.soc--3 .bar {
+      background-color: #19ad38; }
+    .battery-container .battery.soc--3 .bar:first-child {
+      background-color: transparent; }
+    .battery-container .battery.soc--2 .bar {
+      background-color: #19ad38; }
+    .battery-container .battery.soc--2 .bar:nth-child(-n+2) {
+      background-color: transparent; }
+    .battery-container .battery.soc--1 .bar {
+      background-color: #f8774b; }
+    .battery-container .battery.soc--1 .bar:nth-child(-n+3) {
+      background-color: transparent; }
+  .battery-container .battery-info {
+    padding-left: 30px;
     display: inline-block; }
+  .battery-container .title {
+    color: #717171; }
 
 /*================================
            GAUGE STYLES
@@ -485,6 +520,19 @@ body {
     color: #F44336; }
   .switch.checked span.on {
     color: #4CAF50; }
+
+/*================================
+     ROUND BUTTON STYLES
+=================================*/
+.btn.round {
+  border: 5px solid #fff;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border-radius: 400px;
+  background: transparent; }
+  .btn.round span {
+    vertical-align: middle; }
 
 /*================================
         RANGE SLIDER STYLES

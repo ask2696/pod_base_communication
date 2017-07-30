@@ -98,7 +98,7 @@ PositionIndicator.prototype.updateStripCount = function (count) {
 PositionIndicator.prototype.updatePosition = function (position) {
     if (position)
         this.value = position;
-    this.details.find('.value').text(this.position);
+    this.details.find('.value').text(this.value);
 }
 
 /**
