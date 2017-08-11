@@ -103,19 +103,9 @@
       <br>
    </div>
 
-   <form action="" method="post" enctype="multipart/form-data">
-         
-            
-            <input>
-            <button id="stopBtn" class="action-button blue" >stop</button> 
-            </input>
-            
-            
-            
-         
-      </form>
-
-
+  
+    <button id="stopBtn" class="action-button blue" >stop</button> 
+      
     <button id="startBtn" class="action-button green" >start</button>
    <!-- <button id="stopBtn" class="action-button blue" >stop</button> -->
     <button id="EmgStopBtn" class="action-button red" >Emergency stop</button>
@@ -187,7 +177,7 @@
                   function poststart() {
                     $.ajax({
                         type: "POST",
-                        url: "http://192.168.0.51:8081/index.html",
+                        url: "/index.html",
                         
                         data: {name:"start" },
                         success: function(data) {
@@ -203,7 +193,7 @@
                 });
 
 
-                  /*function poststop() {
+                  function poststop() {
                     $.ajax({
                         type: "POST",
                         url: "http://0.0.0.0:8081/index.html",
@@ -211,7 +201,7 @@
                         data: {name:"stop" },
                         success: function(data) {
                             
-                            alert('Success!')
+                            //alert('Success!')
                         }
                         
                     });
@@ -219,18 +209,18 @@
 
                 $('#stopBtn').on('click', function() {
                     poststop();
-                });*/
+                });
 
 
                   function postEmgStop() {
                     $.ajax({
                         type: "POST",
-                        url: "http://192.168.0.51:8081/index.html",
+                        url: "/index.html",
                         
                         data: {name:"Emergency stop" },
                         success: function(data) {
                             
-                            alert('Success!')
+                            //alert('Success!')
                         }
                         
                     });
@@ -246,12 +236,12 @@
                   function postEngBrake() {
                     $.ajax({
                         type: "POST",
-                        url: "http://0.0.0.0:8081/index.html",
+                        url: "/index.html",
                         
                         data: {name:"Engage brakes" },
                         success: function(data) {
                             
-                            alert('Success!')
+                            //alert('Success!')
                         }
                         
                     });
@@ -266,12 +256,12 @@
                   function postDisengBrake() {
                     $.ajax({
                         type: "POST",
-                        url: "http://0.0.0.0:8081/index.html",
+                        url: "/index.html",
                         
                         data: {name:"Disengage brakes" },
                         success: function(data) {
                             
-                            alert('Success!')
+                            //alert('Success!')
                         }
                         
                     });
@@ -285,12 +275,12 @@
                   function postActLev() {
                     $.ajax({
                         type: "POST",
-                        url: "http://0.0.0.0:8081/index.html",
+                        url: "/index.html",
                         
                         data: {name:"Actuate Levitation module" },
                         success: function(data) {
                             
-                            alert('Success!')
+                            //alert('Success!')
                         }
                         
                     });
@@ -303,12 +293,12 @@
                 function postUnactLev() {
                     $.ajax({
                         type: "POST",
-                        url: "http://0.0.0.0:8081/index.html",
+                        url: "/index.html",
                         
                         data: {name:"Unactuate Levitation module" },
                         success: function(data) {
                             
-                            alert('Success!')
+                            //alert('Success!')
                         }
                         
                     });
@@ -321,12 +311,12 @@
                 function postEngAuxProp() {
                     $.ajax({
                         type: "POST",
-                        url: "http://0.0.0.0:8081/index.html",
+                        url: "/index.html",
                         
                         data: {name:"Engage Auxiliary Propulsion" },
                         success: function(data) {
                             
-                            alert('Success!')
+                            //alert('Success!')
                         }
                         
                     });
@@ -340,12 +330,12 @@
                 function postDisengAuxProp() {
                     $.ajax({
                         type: "POST",
-                        url: "http://0.0.0.0:8081/index.html",
+                        url: "/index.html",
                         
                         data: {name:"Disengage Auxiliary Propulsion" },
                         success: function(data) {
                             
-                            alert('Success!')
+                            //alert('Success!')
                         }
                         
                     });
