@@ -1,7 +1,9 @@
 /*================================
             LAYOUTS
 =================================*/
-
+body > .row {
+    margin: 0;
+}
 /*================================
         SIDEBAR LAYOUTS
 =================================*/
@@ -69,14 +71,21 @@
     }
     .communication {
         h6 {
+            position: relative;
             &:after {
                 content: "";
                 position: absolute;
+                top: 2px;
                 width: 0.6rem;
                 height: 0.6rem;
                 border-radius: 10px;
                 margin-left: 10px;
                 background-color: crimson;
+            }
+            &.connected {
+                &:after {
+                    background-color: #00695c;
+                }
             }
         }
     }
@@ -105,14 +114,25 @@
               background-color: crimson;
           }
         }
+        .value {
+            color: #a1a1a1;
+        }
+        .unit {
+            color: #a1a1a1;
+        }
     }
     .console {
         .display {
             background-color: #000;
-            padding: 30px 5px;
+            padding: 5px;
             color: white;
             font-family: monospace;
             font-size: 10px;
+            height: 185px;
+            overflow-y: hidden;
+            &:hover {
+                overflow-y: auto;
+            }
         }
     }
 }
@@ -125,41 +145,41 @@
         overflow-y: auto;
     }
 }
-.gauge-container{
-    width: 100px;
-    //height: 40px;
-    left: 50%;
-    margin: auto;
-}
-.pusher-detachment{
-  h6 {
-      &:after {
-          content: "";
-          position: absolute;
-          width: 0.6rem;
-          height: 0.6rem;
-          border-radius: 10px;
-          margin-left: 10px;
-          background-color: crimson;
-      }
-    }
-}
 /*================================
       MAIN DASH BOARD LAYOUTS
 =================================*/
 
 .main-dash {
     .top-center-bar {
+        position: relative;
         background-color: rgba(22, 22, 22, 0.8);
         .card-panel,
         .card {
             background-color: rgba(120, 120, 120, 0.07);
+            text-align: center;
+        }
+        .label {
+            position: absolute;
+            left: 2.5rem;
+            top: 35px;
+        }
+        #pod-status {
+            font-size: 2rem;
+            color: #808080;
+            text-transform: uppercase;
+            text-shadow: 0px 0px 30px #fff;
         }
     }
     #velocity, #acceleration {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .gauge-container{
+        width: 100px;
+        //height: 40px;
+        left: 50%;
+        margin: auto;
     }
     .ypr {
         padding-left: calc(50% - 150px);
@@ -202,7 +222,7 @@
         }
     }
     .foot {
-        padding: 3rem;
-        margin-top: 5rem;
+        padding: 1rem;
+        //margin-top: 2rem;
     }
 }

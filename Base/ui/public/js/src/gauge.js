@@ -13,7 +13,7 @@ var yaw = Gauge(
     max: 360,
     dialStartAngle: -90,
     dialEndAngle: -90.001,
-    value: 100,
+    value: 0,
     label: function(value) {
       return value+String.fromCharCode(176);
     }
@@ -25,7 +25,7 @@ var pitch = Gauge(
     max: 360,
     dialStartAngle: -90,
     dialEndAngle: -90.001,
-    value: 100,
+    value: 0,
     label: function(value) {
       return value+String.fromCharCode(176);
     }
@@ -37,7 +37,7 @@ var roll = Gauge(
     max: 360,
     dialStartAngle: -90,
     dialEndAngle: -90.001,
-    value: 100,
+    value: 0,
     label: function(value) {
       return value+String.fromCharCode(176);
     }

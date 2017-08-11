@@ -8,15 +8,15 @@ $(".btn1").click(function ()
         sendCommand()
         $(this).text("Start");
         sendCommand("Pod Start");
-        $(this).removeClass('red');
-        $(this).addClass('teal');
+        //$(this).removeClass('red');
+        //$(this).addClass('teal');
       }
     else
     {
         $(this).text("Stop");
         sendCommand("Pod Stop");
-        $(this).removeClass('teal');
-        $(this).addClass('red');
+        //$(this).removeClass('teal');
+        //$(this).addClass('red');
     }
 });
 /**********************************
@@ -43,7 +43,12 @@ $('input:checkbox').change( function(){
         }
     }
 });
-
+/**
+ * Event listener for the functional control toggle switch 
+ */
+$('.controls .switch input#controls-toggle').change(function() {
+   $('.controls .collapsible').collapsible('open', 0);
+});
 
 //append 4 bars to each battery
 $('.battery').each(function(i) {
@@ -51,3 +56,4 @@ $('.battery').each(function(i) {
         $(this).append('<div class="bar">');
     }
 });
+

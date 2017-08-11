@@ -43,3 +43,18 @@
       }
     }
 }
+
+/*================================
+     ROUND BUTTON STYLES
+=================================*/
+.btn.round {
+  border: 5px solid #fff;
+  width: 100px; 
+  height: 100px;
+  padding: 10px;
+  border-radius: 400px;
+  background: transparent;
+  span {
+    vertical-align: middle;
+  }
+} 

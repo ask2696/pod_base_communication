@@ -1,33 +1,84 @@
+var pod_state = [
+  "Pod Running",
+  "Pod Stopped"
+];
+
 function update(data){
-    $('#temperature').text(data.pod_temperature);
+    // comms
+    if(data.comm_primary)  
+      $('#primary-channel').removeClass().addClass('connected');
+    else
+      $('#primary-channel').removeClass();
+
+    if(data.comm_secondary)  
+      $('#secondary-channel').removeClass().addClass('connected');
+    else(data.comm_secondary)  
+      $('#secondary-channel').removeClass();
+    
+    $('#current-channel').text(data.comm_current);
+
+    // team id
     $('#team_id').text(data.team_id);
-    $('#pressure').text(data.pressure);
+    
+    // pod-status
+    $('#pod-status').text(pod_state[data.status_code]);
+
+    // console
+    if(data.console_entry)
+      $('.console .display').append('<p class="console-entry">['+data.timestamp+'] '+data.console_entry+'</p>');
+    // primary battery
     for(var i=0;i<4;i++){
-        $('#battery-current'+(i+1)).text(data.battery_current[i]);
-        $('#batter-temperature'+(i+1)).text(data.battery_temperature[i]);
+        var bat = $('#b-p'+(i+1));
+        bat.find('.temp').text(data.battery_primary_temperature[i]);
+        bat.find('.current').text(data.battery_primary_current[i]);
+        bat.find('.battery').removeClass().addClass('battery soc--'+data.battery_primary_soc[i]);
     }
-    p.updateStripCount(data.stripe_count);
+    // secondary battery
+    $('#b-sec').find('.battery').removeClass().addClass('battery soc--'+data.battery_secondary_soc);
+    $('#b-sec').find('.temp').text(data.battery_secondary_temperature);
+    $('#b-sec').find('.current').text(data.battery_secondary_current);
+    // backup battery
+    $('#b-bk').find('.value').text((data.battery_backup)?'ON':'OFF');
+    
+    // temperature
+    $('#temperature').text(data.pod_temperature);
+    // pressure
+    $('#pressure').text(data.pressure);
+    
+
+    // strip count
+    p.updateStripCount(data.strip_count);
+    // position
     p.updatePosition(data.position);
+    // velocity
     v.setStatValue(data.velocity);
+    // acceleration
     a.setStatValue(data.acceleration);
     
-    // setValueAnimated(value, durationInSecs);
+    // yaw pitch roll
     yaw.setValueAnimated(data.yaw,0.5);
     pitch.setValueAnimated(data.pitch, 0.5);
     roll.setValueAnimated(data.roll, 0.5);
+    
+    // levitation
     for (var i=0; i<4;i++ )
     {
-      $('#lev'+(i+1)).text(data.levitation_value[i]);//Don't know how to update the values
+      $('#lev'+(i+1)).text(data.levitation[i]);//Don't know how to update the values
     }
-    $('#brake-pad').text(data.break_pad_distance);
-    $('#pod-status').text(data.status);
-    if(data.pusher_value==0){
-        $('.pusher').removeClass('engage');
-        $('.pusher').addClass('disengage');
+
+    // brake pads
+    $('#brake-pad').text(data.brake_pad);
+   
+    //pusher
+    if(!data.pusher || data.pusher==0){
+        $('.pusher').text('Disengaged')
+          .removeClass('engage')
+          .addClass('disengage');
     }
     else {
-        $('.pusher').removeClass('disengage');
-        $('.pusher').addClass('engage');
+       $('.pusher').text('Engaged')
+        .removeClass('disengage')
+        .addClass('engage');
     }
 }
 

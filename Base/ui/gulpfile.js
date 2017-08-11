@@ -20,13 +20,13 @@ gulp.task('build-all', ['build-css', 'build-js']);
 
 //watch for changes in scss or js source files, and call build task
 gulp.task('watch', function () {
-    gulp.watch('public/scss/*.scss', ['build-css']);
-    gulp.watch('public/js/src/*.js', ['build-js']);
+    gulp.watch(cssSrc, ['build-css']);
+    gulp.watch(jsSrc, ['build-js']);
 });
 
 //compile scss files, minify and write to output
 gulp.task('build-css', function () {
-    return gulp.src(cssSrc)
+    return gulp.src('public/scss/style.scss')
         .pipe(sourcemaps.init()) //Process the original sources
         .pipe(sass())            // convert scss to css
         .pipe(gulp.dest(cssDest))

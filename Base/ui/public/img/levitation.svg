@@ -127,7 +127,7 @@
          id="lev1"
          x="78.343094"
          y="224.90585"
-         style="font-size:26.66666603px;fill:#ffffff">12</tspan></text>
+         style="font-size:26.66666603px;fill:#ffffff"> </tspan></text>
 <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:26.66666603px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -149,7 +149,7 @@
          y="224.90585"
          x="198.34308"
          id="lev2"
-         sodipodi:role="line">12</tspan></text>
+         sodipodi:role="line"> </tspan></text>
 <text
        id="text4640"
        y="224.55229"
@@ -171,7 +171,7 @@
          id="lev3"
          x="294.34308"
          y="102.90585"
-         style="font-size:26.66666603px;fill:#ffffff">12</tspan></text>
+         style="font-size:26.66666603px;fill:#ffffff"> </tspan></text>
 <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:26.66666603px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -193,7 +193,7 @@
          y="106.90585"
          x="414.34308"
          id="lev4"
-         sodipodi:role="line">12</tspan></text>
+         sodipodi:role="line"> </tspan></text>
 <text
        id="text4656"
        y="106.55229"

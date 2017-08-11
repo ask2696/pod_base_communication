@@ -1,5 +1,5 @@
 $('#left-sidebar-control').sideNav({
-      menuWidth: 300, // Default is 300
+      //menuWidth: $(window).width()*(3/12), // Default is 300
       edge: 'left', // Choose the horizontal origin
       closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
       draggable: false, // Choose whether you can drag to open on touch screens,
@@ -8,7 +8,7 @@ $('#left-sidebar-control').sideNav({
     }
   );
 $('#right-sidebar-control').sideNav({
-      menuWidth: 300, // Default is 300
+      //menuWidth: $(window).width()*(3/12), // Default is 300
       edge: 'right', // Choose the horizontal origin
       closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
       draggable: false, // Choose whether you can drag to open on touch screens,
@@ -16,27 +16,28 @@ $('#right-sidebar-control').sideNav({
       onClose: function(el) { /* Do Stuff */ }, // A function to be called when sideNav is closed
     }
   );
+console.log($(window).width());
+/**
+ * **************************
+ * loadSVG
+ * **************************
+ * loads the given svg and appends it to the html element with the given id
+ * 
+ * usage: loadSVG('svg-filename.svg', 'id-of-html-element')
+ */
 
-var xhr = new XMLHttpRequest;
-xhr.open('get','img/levitation.svg',true);
-xhr.onreadystatechange = function(){
-  if (xhr.readyState != 4) return;
-  var svg = xhr.responseXML.documentElement;
-  svg = document.importNode(svg,true); // surprisingly optional in these browsers
-  $('.levitation').append(svg);
-};
-xhr.send();
+loadSVG('levitation.svg', 'levitation-distance');
+loadSVG('brake-pad.svg', 'brake-pad-distance');
 
-var xhr1 = new XMLHttpRequest;
-xhr1.open('get','img/brake-pad.svg',true);
-xhr1.onreadystatechange = function(){
-  if (xhr1.readyState != 4) return;
-  var svg = xhr1.responseXML.documentElement;
-  svg = document.importNode(svg,true); // surprisingly optional in these browsers
-  $('.brakes').append(svg);
-};
-xhr1.send();
+function loadSVG(file,id) {
+  var xhr = new XMLHttpRequest;
+  xhr.open('get','img/'+file,true);
+  xhr.onreadystatechange = function(){
+    if (xhr.readyState != 4) return;
+    var svg = xhr.responseXML.documentElement;
+    svg = document.importNode(svg,true); // surprisingly optional in these browsers
+    $('#'+id).append(svg);
+  };
+  xhr.send();
+}
 
-$('.controls .switch input#controls-toggle').change(function() {
-   $('.controls .collapsible').collapsible('open', 0);
-});

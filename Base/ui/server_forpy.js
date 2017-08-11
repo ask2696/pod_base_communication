@@ -11,27 +11,34 @@ var input_base = "NULL";
 
 var dataJSON = new Object();
 dataJSON = {
-    "no_data_packets": 0,
-    "team_id": '1337haxor',
-    "stat": 'Running',
     "acceleration": 30,
-    "position": 10,
-    "velocity": 12,
-    "battery_voltage": '0',
-    "battery_current": '0',
-    "battery_temperature": '0',
-    "pod_temperature": 12,
-    "pressure": 67,
-    "stripe_count": 12,
-    "yaw": 0,
+    "battery_backup": 1,
+    "battery_primary_current": [ 2.1 , 3.4 , 4.5 , 1.1],
+    "battery_primary_soc": [1, 2, 3, 4],
+    "battery_primary_temperature": [30, 31, 32, 33],
+    "battery_secondary_current": 4.5,
+    "battery_secondary_soc" : 4,
+    "battery_secondary_temperature" : 34,
+    "brake_pad_distance": 8,
+    "comm_current":0 1,
+    "comm_primary": 1,
+    "comm_secondary": 1,
+    "console_entry": "Console Entry", 
+    "levitation_value": [13, 21, 34, 41],
+    "no_data_packets": 0,
     "pitch": 100,
+    "pod_temperature": 12,
+    "position": 10,
+    "pressure": 67,
+    "pusher": 0,
     "roll": 150,
-    "break_pad_distance": 8,
-    "levitation_value": [
-        1, 2, 3, 4
-    ]
+    "status_code": 1,
+    "strip_count": 12,
+    "team_id": "hyperloop-india-111",
+    "timestamp":  new Date().toLocaleTimeString(),
+    "velocity": 12,
+    "yaw": 0
 };
-
 var server = net.createServer(function (socket) {
     socket.setEncoding('utf8');
     socket.on('error', function () {
@@ -136,7 +143,7 @@ listener.sockets.on('connection', function (socket) {
     });
     setInterval(function () {
         socket.emit('data_send', dataJSON);
-    }, 0);
+    },5000);
 
 });
 
