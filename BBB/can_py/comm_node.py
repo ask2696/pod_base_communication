@@ -60,8 +60,10 @@ pod_data_packet_can = {"team_id":0,"stat":0,"acceleration":0,"position":0,"veloc
 pod_data_packet_socket = {"data_packet_no":0,"team_id":0,"stat":0,"acceleration":0,"position":0,"velocity":0,"battery_voltage":0,
                     "battery_current":0,"battery_temperature":0,"pod_temperature":0,"stripe_count":0}
 
+#Valid ids on the CAN bus
+valid_ids = [001,005,009,010,011,012,013,014,00A,00B,00C]
 #data frame id info for different nodes
-nodes_data_frames_id = {"power_node":"","nav_node":"","control_node":""}
+nodes_data_frames_id = {"power_node":"","nav_node":[001,005,009,010,011,012,013,014,00A,00B,00C],"control_node":""}
 #emergency frame id info for different nodes
 node_emergency_frames_id = {"power_node":"","nav_node":"","control_node":""}
 
@@ -96,8 +98,17 @@ def can_rcv(Message):#To handle the data processing from the canbus
     now = datetime.datetime.now()
     timeString = now.strftime("%d.%m.%Y %H:%M:%S")
 
+    #Timestamp for logging on BeagleBone
+    #Write logging code
+
     ##print "extended",Message.extended_id
     data_rcv = Message.data[0:8] # The 8 byte data recieved from the can bus
+    message_id = Message.arbitration_id
+    if(message_id in valid_ids):
+        update_canData(data_rcv,message_id)
+    else:
+        print "Invalid Message ID"
+
     ##print "is_remote",Message.is_remote_frame
     ##print "type",Message.id_type
     ##print "is_error",Message.is_error_frame
@@ -128,9 +139,11 @@ def can_send(reply):
 
     return Message
 
-def update_canData(data,frame_header):
+def update_canData(data,msg_id):
     #update data in pod_data_packet_can according to Header frame
     print""
+
+    if()
 
 def update_socketData():
     #update data in pod_data_packet_socket according to Header frame

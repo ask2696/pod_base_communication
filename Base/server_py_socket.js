@@ -151,6 +151,7 @@ var server1=http.createServer(app);
 app.get('/', function (req,res){
 
     res.send("Base Station!");
+    res.end();
 
 });
 
@@ -183,7 +184,7 @@ app.post('/index.html',function(request,response){
                     //console.log("Got Post!!");
                     console.log('COMMAND: ' + request.body.name);
                     input_base = 'Y'+request.body.name;
-                    response.end('Thanks');
+                    response.end();
 });
                     
                      

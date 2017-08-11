@@ -11,10 +11,13 @@
 #include <arpa/inet.h>
 #include <stdint.h>
 #include <inttypes.h>
+#include <errno.h>
+#include <sys/unistd.h>
+#include <sys/fcntl.h>
 
 
 #define PORT 3000
-
+#define IP_Addr "127.0.0.1"
 
 uint8_t team_id;
 uint8_t status;
@@ -31,9 +34,8 @@ char buffer[34];
 char a[50];
 int no_recv_data_packets = 0;
 
-// Task 1: Modify this function to recieve data from the CAN bus.OR write a new one.
-
-void sCComm(int fd) 
+// Task 1: Modify this function to recieve data from pipe/buffer
+void read_buffer(int fd) 
 {   
          do {
            printf("Client: ");
@@ -161,30 +163,14 @@ void recvPacket_pod(int fd){
         //printf("%s\n",a);
         printf("%d\n",(++no_recv_data_packets));
     }
-    a==" ";
+    a== " ";
 
     //a = " ";
 }
 
 
 
-/*int createTCPSocket()
-{    //creating a server side socket 
-    int fd=socket(AF_INET,SOCK_STREAM,0);
-    //int fd=socket(AF_INET,SOCK_DGRAM,0);
-    //storing the details of the server in addr 
-    /*struct sockaddr_in addr;
-    
-    addr.sin_family = AF_INET;
-    addr.sin_addr.s_addr =inet_addr("127.0.0.1");
-    addr.sin_port = htons(PORT);
-    if(connect(fd,(struct sockaddr*) &addr,sizeof(addr))>=0)
-        printf("Client side connection estd.\n");
 
-    printf("%d",fd); 
-    return fd;
-
-}*/
 
 
 
@@ -193,65 +179,44 @@ void recvPacket_pod(int fd){
 int main()
 {
     int client;
-    //calling func for creating socket and assigning its fd to fdQueue 
-    //client=createTCPSocket();
-    client =socket(AF_INET,SOCK_STREAM,0);
-
+    
+    client =socket(AF_INET,SOCK_STREAM ,0);//| SOCK_NONBLOCK
 
     int cnt = 0;
     struct sockaddr_in addr1;
     
     addr1.sin_family = AF_INET;
-    addr1.sin_addr.s_addr =inet_addr("127.0.0.1");
+    addr1.sin_addr.s_addr =inet_addr(IP_Addr);
     addr1.sin_port = htons(PORT);
 
-    /*int bind_out = bind(client, (struct sockaddr*) &addr1, sizeof(addr1));
-    int no_of_connections = 5;
-    int listen_out =  listen(client,no_of_connections);
-    printf("%d\n",listen_out );
-    
+    //Uncomment for Non- Blocking Socket
+    //int non_blockid = fcntl(client, F_SETFL, fcntl(client, F_GETFL, 0) | O_NDELAY);
 
-    for (;;)
-        {
-        // Fetch a new connection off the queue.
-        int acc = accept(client,NULL,NULL);
-        if (acc == -1)
-        {
-        // Oh dear! Something’s gone wrong! Whimper and die.
-        perror("Could not accept incoming connection.");
-        exit(EXIT_FAILURE);
-        }
-        // Got a connection! Handle it.
-        printf("Client side connection estd!!!//!.\n");
-        }*/
-
-    //printf("%d\n",acc );
-    //printf("%d\n",listen_out);
-    //printf("connection estd.\n");
-    //sCComm(client);
     printf("Listening For connections\n");
     while(true){
-        //client=createTCPSocket();
-        //printf("%d\n", ++cnt);
+        
         
         int cn_d = connect(client,(struct sockaddr*) &addr1,sizeof(addr1));
-        //printf("%d\n",cn_d);
-        /*if(){
-        printf("Client side connection estd!!!!!!!!!.\n");
-        }*/
-        if(cn_d>=0){
+        
+        if(cn_d==0){
             printf("Client side connection estd!!!!!!!!!.\n");
 
             while(true){
 
             sendPacket_pod(client);
-            //printf("#\n");
+            
             recvPacket_pod(client);
             
             }
         }
+            else{
 
-    }
+            //printf("Connection Lost. Status %d", cn_d);
+            
+            }
+        }
+
+    
 
     //close(client);
     printf("connection terminated\n");
