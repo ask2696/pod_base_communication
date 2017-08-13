@@ -54,7 +54,7 @@ char buffer[72];
 char a[50];
 int no_recv_data_packets = 0;
 
-void update_packet(int fd,int data){
+void update_packet(int fd,int message_id,int data){
 
          Team_Id = 1;
          Status =1;
@@ -83,44 +83,68 @@ void update_packet(int fd,int data){
         
         *(int32_t*)(buffer+4)=Status;
         
-        // Message id = A1 ;Nav
-        *((int32_t*)(buffer+8))=Nav_Acceleration;
-        *((int32_t*)(buffer+12))=Nav_Yaw;
-        *((int32_t*)(buffer+16))=Nav_Pitch;
-        *((int32_t*)(buffer+20))=Nav_Roll;
+        printf("Read ID = %d\n",message_id);
 
-        // Message id = A2 ;Nav
-        *((int32_t*)(buffer+24))=Nav_Position;
-        *((int32_t*)(buffer+28))=Nav_Velocity;
-
-        // Message id = A3 ;Nav
-        *((int32_t*)(buffer+32))=Nav_LTS_Brake_1_2;
-
-        // Message id = A4 ;Nav
-        *((int32_t*)(buffer+36))=Nav_LTS_Brake_3_4;
-
-        // Message id = A5 ;Nav
-        *((int32_t*)(buffer+40))=Nav_RR_Strip_Count;
-
-        // Message id = C1; Power
-        *((int32_t*)(buffer+44))=PWR_Voltage;
-
-        // Message id = C2; Power
-        *((int32_t*)(buffer+48))=PWR_Current;
-        
-        // Message id = C3; Power
-        *((int32_t*)(buffer+52))=PWR_Temperature;
-        
-        // Message id = E1; Control
-        *((int32_t*)(buffer+56))=CTRL_Temperature;
-        *((int32_t*)(buffer+60))=CTRL_Pressure;
-        
-        // Message id = E2; Control
-        *((int32_t*)(buffer+64))=CTRL_LTS_Height_1_2;
-        
-        // Message id = E3; Control
-        *((int32_t*)(buffer+68))=CTRL_LTS_Height_3_4;
-        
+        if(message_id == 161){
+            // Message id = A1 ;Nav
+            printf("Received CAN Broadcast 1 from Navigation Node \n");
+            *((int32_t*)(buffer+8))=Nav_Acceleration;
+            *((int32_t*)(buffer+12))=Nav_Yaw;
+            *((int32_t*)(buffer+16))=Nav_Pitch;
+            *((int32_t*)(buffer+20))=Nav_Roll;
+        }
+        else if(message_id == 162){
+            // Message id = A2 ;Nav
+            printf("Received CAN Broadcast 2 from Navigation Node \n");
+            *((int32_t*)(buffer+24))=Nav_Position;
+            *((int32_t*)(buffer+28))=Nav_Velocity;
+        }
+        else if(message_id == 163){
+            // Message id = A3 ;Nav
+            printf("Received CAN Broadcast 3 from Navigation Node \n");
+            *((int32_t*)(buffer+32))=Nav_LTS_Brake_1_2;
+        }
+        else if(message_id == 164){
+            // Message id = A4 ;Nav
+            printf("Received CAN Broadcast 4 from Navigation Node \n");
+            *((int32_t*)(buffer+36))=Nav_LTS_Brake_3_4;
+        }
+        else if(message_id == 165){
+            // Message id = A5 ;Nav
+            printf("Received CAN Broadcast 5 from Navigation Node \n");
+            *((int32_t*)(buffer+40))=Nav_RR_Strip_Count;
+        }
+        else if(message_id == 193){
+            // Message id = C1; Power
+            printf("Received CAN Broadcast 1 from Power Node \n");
+            *((int32_t*)(buffer+44))=PWR_Voltage;
+        }
+        else if(message_id == 194){
+            // Message id = C2; Power
+            printf("Received CAN Broadcast 2 from Power Node \n");
+            *((int32_t*)(buffer+48))=PWR_Current;
+        }
+        else if(message_id == 195){
+            // Message id = C3; Power
+            printf("Received CAN Broadcast 3 from Power Node \n");
+            *((int32_t*)(buffer+52))=PWR_Temperature;
+        }
+        else if(message_id == 225){
+            // Message id = E1; Control
+            printf("Received CAN Broadcast 1 from Control Node \n");
+            *((int32_t*)(buffer+56))=CTRL_Temperature;
+            *((int32_t*)(buffer+60))=CTRL_Pressure;
+        }
+        else if(message_id == 226){
+            // Message id = E2; Control
+            printf("Received CAN Broadcast 2 from Control Node \n");
+            *((int32_t*)(buffer+64))=CTRL_LTS_Height_1_2;
+        }
+        else if(message_id == 227){
+            // Message id = E3; Control
+            printf("Received CAN Broadcast 3 from Control Node \n");
+            *((int32_t*)(buffer+68))=CTRL_LTS_Height_3_4;
+        }
         
 
         send(fd, buffer,72, 0);
@@ -217,13 +241,13 @@ int main(void)
                 fprintf(stderr, "read: incomplete CAN frame\n");
                 return 1;
             }
-            printf("Read ID = %d\n",frame.can_id);
+            
             printf("Payload Data Length = %d \n bytes", frame.can_dlc);
             printf("%d\n",frame.data[0]);
 
             payload_data = frame.data[0];
 
-            update_packet(client,payload_data);
+            update_packet(client,frame.can_id,payload_data);
             
             recv_packet(client);
     }
