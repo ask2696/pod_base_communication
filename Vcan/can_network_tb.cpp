@@ -205,7 +205,7 @@ int main(void)
 
         usleep(3000000);
 
-        // Control Node CAN Broadcast 3  = LTS 3 and 4
+        // Control Node CAN Broadcast 3  = LTS 3 and 
         frame.can_id  = 0x0E3;
         frame.can_dlc = 8;
         frame.data[0] = 0x09; //LTS Braking 3
