@@ -20,7 +20,7 @@ dataJSON = {
     "battery_secondary_soc" : 4,
     "battery_secondary_temperature" : 34,
     "brake_pad_distance": 8,
-    "comm_current":0 1,
+    "comm_current": 2,
     "comm_primary": 1,
     "comm_secondary": 1,
     "console_entry": "Console Entry", 
