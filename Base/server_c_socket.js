@@ -25,16 +25,24 @@ var input_base = "NULL";
 
 var dataJSON=new Object();
 dataJSON={  "no_data_packets" : 0,
-            "team_id":'0',
-            "stat":'0',
-            "acceleration":'0',
-            "position":'0',
-            "velocity":'0',
-            "battery_voltage":'0',
-            "battery_current":'0',
-            "battery_temperature":'0',
-            "pod_temperature":'0',
-            "stripe_count":'0'
+            "Team_Id":'0',
+            "Status":'0',
+            "Nav_Acceleration":'0',
+            "Nav_Yaw":'0',
+            "Nav_Pitch":'0',
+            "Nav_Roll":'0',
+            "Nav_Position":'0',
+            "Nav_Velocity":'0',
+            "Nav_LTS_Brake_1_2":'0',
+            "Nav_LTS_Brake_3_4":'0',
+            "Nav_RR_Strip_Count":'0',
+            "PWR_Voltage":'0',
+            "PWR_Current":'0',
+            "PWR_Temperature":'0',
+            "CTRL_Temperature":'0',
+            "CTRL_Pressure":'0',
+            "CTRL_LTS_Height_1_2":'0',
+            "CTRL_LTS_Height_3_4":'0'
         };
 function unpack(arr) 
     {var count = 0;
@@ -66,27 +74,45 @@ var server=net.createServer(function (socket) {
                         
                         //console.dir(data);
                         //console.log(data);
+
                         dataJSON['no_data_packets'] = dataJSON['no_data_packets']+1; 
-                        var arr = Array.prototype.slice.call(data, 0,1);
-                         dataJSON.team_id=unpack8(arr);
-                        arr = Array.prototype.slice.call(data, 1,2);
-                         dataJSON.stat=unpack8(arr);
-                         arr = Array.prototype.slice.call(data, 2,6);
-                        dataJSON.acceleration=unpack(arr);
-                         arr = Array.prototype.slice.call(data, 6,10);
-                         dataJSON.position =unpack(arr);
-                        arr = Array.prototype.slice.call(data, 10,14);
-                         dataJSON.velocity=unpack(arr);
-                         arr = Array.prototype.slice.call(data,14,18);
-                        dataJSON.battery_voltage=unpack(arr);
-                         arr = Array.prototype.slice.call(data, 18,22);
-                         dataJSON.battery_current=unpack(arr);
-                          arr = Array.prototype.slice.call(data, 22,26);
-                         dataJSON.battery_temperature=unpack(arr);
-                         arr = Array.prototype.slice.call(data, 26,30);
-                        dataJSON.pod_temperature=unpack(arr);
-                         arr = Array.prototype.slice.call(data,30,34);
-                        dataJSON.stripe_count=unpack(arr);
+                        var arr = Array.prototype.slice.call(data, 0,4);
+                         dataJSON.Team_Id=unpack(arr);
+                        arr = Array.prototype.slice.call(data, 4,8);
+                         dataJSON.Status=unpack(arr);
+                         console.log(dataJSON.Status);
+                         arr = Array.prototype.slice.call(data, 8,12);
+                        dataJSON.Nav_Acceleration=unpack(arr);
+                         arr = Array.prototype.slice.call(data, 12,16);
+                         dataJSON.Nav_Yaw =unpack(arr);
+                        arr = Array.prototype.slice.call(data, 16,20);
+                         dataJSON.Nav_Pitch=unpack(arr);
+                         arr = Array.prototype.slice.call(data,20,24);
+                        dataJSON.Nav_Roll=unpack(arr);
+                         arr = Array.prototype.slice.call(data, 24,28);
+                         dataJSON.Nav_Position=unpack(arr);
+                          arr = Array.prototype.slice.call(data, 28,32);
+                         dataJSON.Nav_Velocity=unpack(arr);
+                         arr = Array.prototype.slice.call(data, 32,36);
+                        dataJSON.Nav_LTS_Brake_1_2=unpack(arr);
+                         arr = Array.prototype.slice.call(data,36,40);
+                        dataJSON.Nav_LTS_Brake_3_4=unpack(arr);
+                        arr = Array.prototype.slice.call(data,40,44);
+                        dataJSON.Nav_RR_Strip_Count=unpack(arr);
+                        arr = Array.prototype.slice.call(data,44,48);
+                        dataJSON.PWR_Voltage=unpack(arr);
+                        arr = Array.prototype.slice.call(data,48,52);
+                        dataJSON.PWR_Current=unpack(arr);
+                        arr = Array.prototype.slice.call(data,52,56);
+                        dataJSON.PWR_Temperature=unpack(arr);
+                        arr = Array.prototype.slice.call(data,56,60);
+                        dataJSON.CTRL_Temperature=unpack(arr);
+                        arr = Array.prototype.slice.call(data,60,64);
+                        dataJSON.CTRL_Pressure=unpack(arr);
+                        arr = Array.prototype.slice.call(data,64,68);
+                        dataJSON.CTRL_LTS_Height_1_2=unpack(arr);
+                        arr = Array.prototype.slice.call(data,68,72);
+                        dataJSON.CTRL_LTS_Height_3_4=unpack(arr);
 
                         no_data_packet = no_data_packet +1;
                         //console.log(no_data_packet)
