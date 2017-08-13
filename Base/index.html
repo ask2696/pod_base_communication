@@ -69,35 +69,60 @@
           </tr>
 
           <tr>
-              <th>TEAM ID</th> <td id="team_id"></td>
+              <th>TEAM ID</th> <td id="Team_Id"></td>
           </tr>
            <tr>
-              <th>status</th> <td id="stat"></td>
+              <th>Status</th> <td id="Status"></td>
           </tr>
            <tr>
-              <th>acceleration</th> <td id="acceleration"></td>
+              <th>Nav_Acceleration</th> <td id="Nav_Acceleration"></td>
           </tr>
            <tr>
-              <th>position</th> <td id="position"></td>
+              <th>Nav_Yaw</th> <td id="Nav_Yaw"></td>
           </tr>
            <tr>
-              <th>velocity</th> <td id="velocity"></td>
+              <th>Nav_Pitch</th> <td id="Nav_Pitch"></td>
           </tr>
            <tr>
-              <th>battery_voltage</th> <td id="battery_voltage"></td>
+              <th>Nav_Roll</th> <td id="Nav_Roll"></td>
           </tr>
            <tr>
-              <th>battery_current</th> <td id="battery_current"></td>
+              <th>Nav_Position</th> <td id="Nav_Position"></td>
           </tr>
            <tr>
-              <th>battery_temperature</th> <td id="battery_temperature"></td>
+              <th>Nav_Velocity</th> <td id="Nav_Velocity"></td>
           </tr>
            <tr>
-              <th>pod_temperature</th> <td id="pod_temperature"></td>
+              <th>Nav_LTS_Brake_1_2</th> <td id="Nav_LTS_Brake_1_2"></td>
           </tr>
            <tr>
-              <th>stripe_count</th> <td id="stripe_count"></td>
+              <th>Nav_LTS_Brake_3_4</th> <td id="Nav_LTS_Brake_3_4"></td>
           </tr>
+           <tr>
+              <th>Nav_RR_Strip_Count</th> <td id="Nav_RR_Strip_Count"></td>
+          </tr>
+           <tr>
+              <th>PWR_Voltage</th> <td id="PWR_Voltage"></td>
+          </tr>
+           <tr>
+              <th>PWR_Current</th> <td id="PWR_Current"></td>
+          </tr>
+           <tr>
+              <th>PWR_Temperature</th> <td id="PWR_Temperature"></td>
+          </tr>
+           <tr>
+              <th>CTRL_Temperature</th> <td id="CTRL_Temperature"></td>
+          </tr>
+           <tr>
+              <th>CTRL_Pressure</th> <td id="CTRL_Pressure"></td>
+          </tr>
+           <tr>
+              <th>CTRL_LTS_Height_1_2</th> <td id="CTRL_LTS_Height_1_2"></td>
+          </tr>
+           <tr>
+              <th>CTRL_LTS_Height_3_4</th> <td id="CTRL_LTS_Height_3_4"></td>
+          </tr>
+
       </table>
       <br>
       <br>
@@ -121,48 +146,67 @@
 
 <!--js code-->
      <script  type="text/javascript"  >
+
                   var socket = io.connect();
+
                   var packet_pod_no = document.getElementById("packet_pod_no"); 
-                  var team_id=document.getElementById("team_id");
-                  var stat=document.getElementById("stat");
-                  var acceleration=document.getElementById("acceleration");
-                  var position=document.getElementById("position");
-                  var velocity=document.getElementById("velocity");
-                  var battery_voltage=document.getElementById("battery_voltage");
-                  var battery_current=document.getElementById("battery_current");
-                  var battery_temperature=document.getElementById("battery_temperature");
-                  var pod_temperature=document.getElementById("pod_temperature");
-                  var stripe_count=document.getElementById("stripe_count");
-                  /*socket.on('now_playing', function(data){
-                    $('#now_playing').text(data.now_playing);
-                  });*/
-
-                 /* socket.on('available_songs', function(data){
-                    $('#available_songs').text(data.available_songs);
-                  });*/
-
+                  var team_id =document.getElementById("Team_Id");
+                  var status =document.getElementById("Status");
+                  var nav_acceleration =document.getElementById("Nav_Acceleration");
+                  var nav_yaw =document.getElementById("Nav_Yaw");
+                  var nav_pitch =document.getElementById("Nav_Pitch");
+                  var nav_roll =document.getElementById("Nav_Roll");
+                  var nav_position =document.getElementById("Nav_Position");
+                  var nav_velocity =document.getElementById("Nav_Velocity");
+                  var nav_LTS_Brake_1_2 =document.getElementById("Nav_LTS_Brake_1_2");
+                  var nav_LTS_Brake_3_4 =document.getElementById("Nav_LTS_Brake_3_4");
+                  var nav_RR_Strip_Count =document.getElementById("Nav_RR_Strip_Count");
+                  var pwr_Voltage =document.getElementById("PWR_Voltage");
+                  var pwr_Current =document.getElementById("PWR_Current");
+                  var pwr_Temperature =document.getElementById("PWR_Temperature");
+                  var ctrl_Temperature =document.getElementById("CTRL_Temperature");
+                  var ctrl_Pressure =document.getElementById("CTRL_Pressure");
+                  var ctrl_LTS_Height_1_2 =document.getElementById("CTRL_LTS_Height_1_2");
+                  var ctrl_LTS_Height_3_4 =document.getElementById("CTRL_LTS_Height_3_4");
+               
                   socket.on('data_send', function(data){
                     //$('#data_pod').text("teamId:"+data.data_from_pod);
                     //$('#data_pod').text(data.data_from_pod);
                     packet_pod_no.innerHTML = data.no_data_packets;
-                    team_id.innerHTML=data.team_id;
-                    stat.innerHTML=data.stat;
+                    team_id.innerHTML=data.Team_Id;
+                    status.innerHTML=data.Status;
+
+                    nav_acceleration.innerHTML=data.Nav_Acceleration;
                  
-                    acceleration.innerHTML=data.acceleration;
+                    nav_yaw.innerHTML=data.Nav_Yaw;
                  
-                    position.innerHTML=data.position;
+                    nav_pitch.innerHTML=data.Nav_Pitch;
                  
-                    velocity.innerHTML=data.velocity;
+                    nav_roll.innerHTML=data.Nav_Roll;
                  
-                    battery_voltage.innerHTML=data.battery_voltage;
+                    nav_position.innerHTML=data.Nav_Position;
                  
-                    battery_current.innerHTML=data.battery_current;
+                    nav_velocity.innerHTML=data.Nav_Velocity;
                  
-                    battery_temperature.innerHTML=data.battery_temperature;
+                    nav_LTS_Brake_1_2.innerHTML=data.Nav_LTS_Brake_1_2;
                  
-                    pod_temperature.innerHTML=data.pod_temperature;
-                 
-                    stripe_count.innerHTML=data.stripe_count;
+                    nav_LTS_Brake_3_4.innerHTML=data.Nav_LTS_Brake_3_4;
+
+                    nav_RR_Strip_Count.innerHTML=data.Nav_RR_Strip_Count;
+
+                    pwr_Voltage.innerHTML=data.PWR_Voltage;
+
+                    pwr_Current.innerHTML=data.PWR_Current;
+
+                    pwr_Temperature.innerHTML=data.PWR_Temperature;
+
+                    ctrl_Temperature.innerHTML=data.CTRL_Temperature;
+
+                    ctrl_Pressure.innerHTML=data.CTRL_Pressure;
+
+                    ctrl_LTS_Height_1_2.innerHTML=data.CTRL_LTS_Height_1_2;
+
+                    ctrl_LTS_Height_3_4.innerHTML=data.CTRL_LTS_Height_3_4;
                  
                   });
 
