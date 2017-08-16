@@ -26,7 +26,7 @@ var input_base = "NULL";
 var dataJSON=new Object();
 dataJSON={  "no_data_packets" : 0,
             "Team_Id":'0',
-            "Status":'0',
+            "Status_pod":'0',
             "Nav_Acceleration":'0',
             "Nav_Yaw":'0',
             "Nav_Pitch":'0',
@@ -79,8 +79,8 @@ var server=net.createServer(function (socket) {
                         var arr = Array.prototype.slice.call(data, 0,4);
                          dataJSON.Team_Id=unpack(arr);
                         arr = Array.prototype.slice.call(data, 4,8);
-                         dataJSON.Status=unpack(arr);
-                         console.log(dataJSON.Status);
+                         dataJSON.Status_pod=unpack(arr);
+                         //console.log(dataJSON.Status_pod);
                          arr = Array.prototype.slice.call(data, 8,12);
                         dataJSON.Nav_Acceleration=unpack(arr);
                          arr = Array.prototype.slice.call(data, 12,16);
@@ -133,7 +133,7 @@ var server=net.createServer(function (socket) {
                         }
                         else{
 
-                            socket.write(" ");
+                            socket.write("NULL");
 
                         }
                     },0);
@@ -202,7 +202,7 @@ app.post('/index.html',function(request,response){
 
                     //console.log("Got Post!!");
                     console.log('COMMAND: ' + request.body.name);
-                    input_base = 'Y'+request.body.name;
+                    input_base = 'Y'+request.body.name+'Z';
                     response.end('Thanks');
 });
                     

@@ -72,7 +72,7 @@
               <th>TEAM ID</th> <td id="Team_Id"></td>
           </tr>
            <tr>
-              <th>Status</th> <td id="Status"></td>
+              <th>Status</th> <td id="Status_POD"></td>
           </tr>
            <tr>
               <th>Nav_Acceleration</th> <td id="Nav_Acceleration"></td>
@@ -151,7 +151,7 @@
 
                   var packet_pod_no = document.getElementById("packet_pod_no"); 
                   var team_id =document.getElementById("Team_Id");
-                  var status =document.getElementById("Status");
+                  var status_pod =document.getElementById("Status_POD");
                   var nav_acceleration =document.getElementById("Nav_Acceleration");
                   var nav_yaw =document.getElementById("Nav_Yaw");
                   var nav_pitch =document.getElementById("Nav_Pitch");
@@ -173,8 +173,11 @@
                     //$('#data_pod').text("teamId:"+data.data_from_pod);
                     //$('#data_pod').text(data.data_from_pod);
                     packet_pod_no.innerHTML = data.no_data_packets;
+
                     team_id.innerHTML=data.Team_Id;
-                    status.innerHTML=data.Status;
+
+                    status_pod.innerHTML=data.Status_pod;
+                    //console.log(status_pod.innerHTML)
 
                     nav_acceleration.innerHTML=data.Nav_Acceleration;
                  
