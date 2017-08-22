@@ -1,14 +1,24 @@
 # Base Station UI
 
+
+## Read this if you you want to just Setup and Run UI
+
+Navigate to `/base/` folder and run
+
+    npm install
+    npm run ui
+
+Requirements - NodeJS, NPM
+
 ## How the build works 
 
-We are using Gulp to run the build tasks.  CSS and JS files are compiled from multiple source files and minified. 
+We are using Gulp to run the build tasks.  CSS and JS files are compiled from multiple source files and minified. While developing, we make Gulp watch for any changes and compile files.
 
-To run the build tasks, run 
+To run the watch and build task, run 
 
     gulp 
 
-from the `/ui/` folder
+from the `base/ui/` folder
 
 ## Directory Structure 
 

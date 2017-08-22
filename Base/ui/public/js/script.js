@@ -483,11 +483,26 @@ var a = new SpeedGauge({
 });
 a.initGauge();
 var pod_state = [
-  "Pod Running",
-  "Pod Stopped"
+  "LVElec",
+  "Idle",
+  "Ready",
+  "AwaitPusherAttach",
+  "Pushing",
+  "LevAndBraking",
+  "DescAndBrakeRetr",
+  "Rolling",
+  "LSD",
+  "PodStop",
+  "EmStop",
+  "Fault",
+  "EB0",
+  "EB1",
+  "EB2",
+  "PowerOff"
 ];
 
 function update(data){
+    console.log(data);
     // comms
     if(data.comm_primary)  
       $('#primary-channel').removeClass().addClass('connected');
@@ -502,59 +517,82 @@ function update(data){
     $('#current-channel').text(data.comm_current);
 
     // team id
-    $('#team_id').text(data.team_id);
+    if(data.Team_Id)
+      $('#team_id').text(parseFloat(data.Team_Id));
     
     // pod-status
-    $('#pod-status').text(pod_state[data.status_code]);
+    if(data.Status_pod)
+      $('#pod-status').text(pod_state[data.Status_pod]);
 
     // console
     if(data.console_entry)
       $('.console .display').append('<p class="console-entry">['+data.timestamp+'] '+data.console_entry+'</p>');
+    
+    
     // primary battery
-    for(var i=0;i<4;i++){
-        var bat = $('#b-p'+(i+1));
-        bat.find('.temp').text(data.battery_primary_temperature[i]);
-        bat.find('.current').text(data.battery_primary_current[i]);
-        bat.find('.battery').removeClass().addClass('battery soc--'+data.battery_primary_soc[i]);
-    }
+    for(var i=1;i<=2;i++){
+        var bat = $('#b-p'+(i));
+        bat.find('.temp').text(data['PWR_Temperature_'+i]);
+        bat.find('.current').text(data['PWR_Current_'+i]);
+        bat.find('.voltage').text(data['PWR_Voltage_'+i]);
+        //bat.find('.battery').removeClass().addClass('battery soc--'+data.battery_primary_soc[i]);
+        bat.find('.battery').removeClass().addClass('battery soc--4');
+
+      }
     // secondary battery
-    $('#b-sec').find('.battery').removeClass().addClass('battery soc--'+data.battery_secondary_soc);
+    /*$('#b-sec').find('.battery').removeClass().addClass('battery soc--'+data.battery_secondary_soc);
     $('#b-sec').find('.temp').text(data.battery_secondary_temperature);
     $('#b-sec').find('.current').text(data.battery_secondary_current);
     // backup battery
     $('#b-bk').find('.value').text((data.battery_backup)?'ON':'OFF');
-    
+    */   
     // temperature
-    $('#temperature').text(data.pod_temperature);
+    if(data.CTRL_Temperature)
+      $('#temperature').text(data.CTRL_Temperature);
+    
     // pressure
-    $('#pressure').text(data.pressure);
+    if(data.CTRL_Pressure)
+      $('#pressure').text(data.CTRL_Pressure);
     
 
     // strip count
-    p.updateStripCount(data.strip_count);
+    if(data.Nav_RR_Strip_Count)
+      p.updateStripCount(data.Nav_RR_Strip_Count);
     // position
-    p.updatePosition(data.position);
+    if(data.Nav_Position)
+      p.updatePosition(data.Nav_Position);
     // velocity
-    v.setStatValue(data.velocity);
+    if(data.Nav_Velocity)
+      v.setStatValue(data.Nav_Velocity);
     // acceleration
-    a.setStatValue(data.acceleration);
+    if(data.Nav_Acceleration)
+      a.setStatValue(data.Nav_Acceleration);
     
     // yaw pitch roll
-    yaw.setValueAnimated(data.yaw,0.5);
-    pitch.setValueAnimated(data.pitch, 0.5);
-    roll.setValueAnimated(data.roll, 0.5);
+    if(data.Nav_Yaw)
+      yaw.setValueAnimated(data.Nav_Yaw,0.5);
+    
+    if(data.Nav_Pitch)
+      pitch.setValueAnimated(data.Nav_Pitch, 0.5);
+    
+    if(data.Nav_Roll)
+      roll.setValueAnimated(data.Nav_Roll, 0.5);
     
     // levitation
-    for (var i=0; i<4;i++ )
-    {
-      $('#lev'+(i+1)).text(data.levitation[i]);//Don't know how to update the values
-    }
+    if(data.CTRL_LTS_Height_1_2)
+      $('#lev1').text(data.CTRL_LTS_Height_1_2);
+    
+    if(data.CTRL_LTS_Height_3_4)
+      $('#lev2').text(data.CTRL_LTS_Height_3_4);
 
     // brake pads
-    $('#brake-pad').text(data.brake_pad);
+    if(data.Nav_LTS_Brake_1_2 && data.Nav_LTS_Brake_3_4){ 
+      var avg_Brake_Pad = ( data.Nav_LTS_Brake_1_2 + data.Nav_LTS_Brake_3_4 )/2;
+      $('#brake-pad').text(avg_Brake_Pad);
+    }
    
     //pusher
-    if(!data.pusher || data.pusher==0){
+    /*if(!data.pusher || data.pusher==0){
         $('.pusher').text('Disengaged')
           .removeClass('engage')
           .addClass('disengage');
@@ -563,7 +601,7 @@ function update(data){
        $('.pusher').text('Engaged')
         .removeClass('disengage')
         .addClass('engage');
-    }
+    }*/
 }
 
 var socket = io.connect();
