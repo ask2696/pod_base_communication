@@ -18,7 +18,6 @@ var pod_state = [
 ];
 
 function update(data){
-    console.log(data);
     // comms
     if(data.comm_primary)  
       $('#primary-channel').removeClass().addClass('connected');
@@ -127,6 +126,7 @@ socket.on('connect', function() {
 
 socket.on('data_send', function(data) { 
   update(data);
+  DATA = data;
 });
 
 function sendCommand(command_name) {
