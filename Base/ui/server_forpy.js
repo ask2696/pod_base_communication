@@ -88,6 +88,8 @@ app.use('/jquery',express.static('node_modules/jquery/dist/'));
 app.use('/jquery-ui',express.static('node_modules/jquery-ui-dist/'));
 app.use('/materialize',express.static('node_modules/materialize-css/dist/'));
 app.use('/svg-gauge',express.static('node_modules/svg-gauge/dist/'));
+app.use('/material-icons',express.static('node_modules/material-design-icons/iconfont/'));
+app.use('/gsap',express.static('node_modules/gsap/src/minified'));
 
 // All other static assets like images and javascript files 
 app.use(express.static(path.join(__dirname, 'public')));
