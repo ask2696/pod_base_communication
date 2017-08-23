@@ -35,6 +35,6 @@
   },
   "scripts": {
     "preui": "cd ui; gulp build-all",
-    "ui": "node ui/server_forpy.js"
+    "ui": "node server_c_socket.js"
   }
 }
