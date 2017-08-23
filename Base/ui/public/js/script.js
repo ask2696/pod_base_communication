@@ -1,6 +1,7 @@
 /**********************************
 Start/Emergency Stop Button
 **********************************/
+/*
 $(".btn1").click(function ()
 {
     if ($(this).text()=="Stop")
@@ -8,17 +9,17 @@ $(".btn1").click(function ()
         sendCommand()
         $(this).text("Start");
         sendCommand("Pod Start");
-        //$(this).removeClass('red');
-        //$(this).addClass('teal');
+        $(this).removeClass('red');
+        $(this).addClass('teal');
       }
     else
     {
         $(this).text("Stop");
         sendCommand("Pod Stop");
-        //$(this).removeClass('teal');
-        //$(this).addClass('red');
+        $(this).removeClass('teal');
+        $(this).addClass('red');
     }
-});
+});*/
 /**********************************
 Toggle Button
 **********************************/
@@ -50,12 +51,20 @@ $('.controls .switch input#controls-toggle').change(function() {
    $('.controls .collapsible').collapsible('open', 0);
 });
 
+/**
+ * Event listener for command buttons 
+ */
+$('button[command=true').click(function() {
+   sendCommand($(this).attr('commandByte'));
+});
+
 //append 4 bars to each battery
 $('.battery').each(function(i) {
     for(var x=1; x<=4; x++){
         $(this).append('<div class="bar">');
     }
 });
+
 
 
 /**
@@ -379,7 +388,6 @@ function Slider(parameters) {
   $(input).change(function () {
     if ($(input).val() <= obj.max && $(input).val() >= obj.min) {
       $('#' + obj.id).slider('value', $(input).val());
-      //sendCommand(command_name);
     }
   });
 }
@@ -399,6 +407,11 @@ var aux = new Slider({
   'max': 50,
   'min': 0
 });
+
+$('#range1 input').change(function() {
+    sendCommand("3");
+    sendCommand($(this).val());
+}); 
 'use strict';
 
 

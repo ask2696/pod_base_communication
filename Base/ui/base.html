@@ -21,7 +21,7 @@
         </div>
         <div id="power" class="card-panel power-button">
             <h5>Pod Power
-            <div  class="switch" command=true on-command="Power On" off-command="Power Off">
+            <div  class="switch">
               <label>
                 <span class="off">Off</span>
                 <input id="clutch-switch" type="checkbox">
@@ -65,7 +65,7 @@
                     <li>
                         <div class="collapsible-header hide"></div>
                         <div class="collapsible-body">
-                            <h6 id="levitation">Levitation
+                            <!--<h6 id="levitation">Levitation
                                 <div class="switch" command=true on-command="Levitation On" off-command="Levitation Off">
                                 <label>
                                     <span class="off">Off</span>
@@ -74,9 +74,31 @@
                                     <span class="on">On</span>
                                 </label>
                                 </div>
+                            </h6>-->
+                            <h6 id="linear-actuation">
+                                Linear Actuation 
                             </h6>
+                            <button type="button" command=true commandByte="1" class="btn teal darken-4 waves-effect waves-light" > 
+                                Up <i class="material-icons">keyboard_arrow_up</i> 
+                            </button> 
+                            <button type="button"  command=true commandByte="2" class="btn teal darken-4 waves-effect waves-light"> 
+                                Down <i class="material-icons">keyboard_arrow_down</i> </span>
+                            </button>
+                            <div class="range-container">
+                                <h6 id="aux-propulsion">Low Speed Drive</h6>
+                                <div id="range1" class="range">
+                                    <input class="range-value browser-default" value=0 type="text">
+                                </div>
+                            </div>
+                            <div class="range-container">
+                                <h6 id="breaking-actuation">Braking</h6>
+                                <div id="range2" class="range">
+                                    <input class="range-value browser-default" value=0 type="text">
+                            </div>
+                                </div>
+                            <br>
                             <h6 id="clutch">Clutch
-                                <div class="switch" command=true on-command="Clutch Engaged" off-command="Clutch Disengaged">
+                                <div class="switch" command=true on-command="4" off-command="5">
                                 <label>
                                     <span class="off">Off</span>
                                     <input id="clutch-switch" type="checkbox">
@@ -85,18 +107,8 @@
                                 </label>
                                 </div>
                             </h6>
-                            <div class="range-container">
-                                <h6 id="aux-propulsion">Aux.Propulsion</h6>
-                                <div id="range1" class="range">
-                                    <input class="range-value browser-default" value=0 type="text">
-                                </div>
-                            </div>
-                            <div class="range-container">
-                                <h6 id="breaking-actuation">Breaking Actuation</h6>
-                                <div id="range2" class="range">
-                                    <input class="range-value browser-default" value=0 type="text">
-                                </div>
-                            </div>
+                            <h6> Comm </h6>
+                            <button type="button" command=true commandByte="7" id="go-online" class="btn teal darken-4 waves-effect waves-light">Go Online</button>
                         </div>
                     </li>
                 </ul>
@@ -144,8 +156,8 @@
             </div>
             <div class="row foot">
                 <div class="col l12">
-                    <button class="btn1 btn teal darken-3 waves-effect waves-light"><span>Start</span></button>
-                    <button class="btn2 btn red darken-3 waves-effect waves-light right" ><span>Emergency Stop</span></button>
+                    <button type="button" command=true commandByte="8" class="btn1 btn teal darken-3 waves-effect waves-light"><span>Start</span></button>
+                    <button type="button" command=true commandByte="6" class="btn2 btn red darken-3 waves-effect waves-light right" ><span>Emergency Stop</span></button>
                 </div>
             </div>
         </div>

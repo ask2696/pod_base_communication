@@ -35,7 +35,6 @@ function Slider(parameters) {
   $(input).change(function () {
     if ($(input).val() <= obj.max && $(input).val() >= obj.min) {
       $('#' + obj.id).slider('value', $(input).val());
-      //sendCommand(command_name);
     }
   });
 }
@@ -55,3 +54,8 @@ var aux = new Slider({
   'max': 50,
   'min': 0
 });
+
+$('#range1 input').change(function() {
+    sendCommand("3");
+    sendCommand($(this).val());
+}); 
