@@ -102,7 +102,7 @@ typedef void (*IntFunctionWithOneParameter) (int s);
 //podOp0
 void LinActUp(int sk){
 	if (system_state < Ready){	//Check if Pod is offline
-		prinft("LinActUp");
+		//prinft("LinActUp");
    	   packet.can_id = 0x84;
 	   packet.can_dlc = 1;
 	   packet.data[0] = 0x01;	//Enable HBridge(MSBits), Set direction to up(LSBits)		
