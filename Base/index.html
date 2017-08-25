@@ -129,20 +129,20 @@
    </div>
 
   
-    <button id="stopBtn" class="action-button blue" >stop</button> 
+    <button id="LinActUp" class="action-button blue" >Linear Actuator Up</button> 
       
-    <button id="startBtn" class="action-button green" >start</button>
+    <button id="LinActDown" class="action-button green" >Linear Actuator Down</button>
    <!-- <button id="stopBtn" class="action-button blue" >stop</button> -->
-    <button id="EmgStopBtn" class="action-button red" >Emergency stop</button>
+    <button id="LowSpeedDrive" class="action-button green" >Low Speed Drive</button>
         <br><br>
-    <button id="EngBrakeBtn" class=" clr action-button green" >Engage brakes</button>
-    <button id="DisengBrakeBtn" class="action-button red" >Disengage brakes</button>
+    <button id="Braking" class=" clr action-button red" >Engage Brakes</button>
+    <button id="ClutchEng" class="action-button red" >Engage brakes</button>
     <br><br>
-    <button id="ActLevBtn" class=" clr action-button blue" >Actuate Levitation module</button>
-    <button id="UnactLevBtn" class="action-button red" >Unactuate Levitation module</button>
+    <button id="ClutchDiseng" class=" clr action-button blue" >Disengage Clutch</button>
+    <button id="EmBrake" class="action-button red" >Emergency Brakes</button>
       <br><br>
-    <button id="EngAuxPropBtn" class="clr action-button green" >Engage Auxiliary Propulsion</button>
-    <button id="DisengAuxPropBtn" class="action-button red" >Disengage Auxiliary Propulsion</button>
+    <button id="GoOnline" class="clr action-button green" >Go Online</button>
+    <button id="PowerOn" class="action-button red" >Power On</button>
 
 <!--js code-->
      <script  type="text/javascript"  >
@@ -221,12 +221,13 @@
 
 
 
-                  function poststart() {
+                  function linActUp() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        data: {name:"start" },
+                        //data: {name:"Linear Actuator Up" },
+                        data: {name:"0" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -235,36 +236,18 @@
                     });
                 }
 
-                $('#startBtn').on('click', function() {
-                    poststart();
+                $('#LinActUp').on('click', function() {
+                    linActUp();
                 });
 
 
-                  function poststop() {
-                    $.ajax({
-                        type: "POST",
-                        url: "http://0.0.0.0:8081/index.html",
-                        
-                        data: {name:"stop" },
-                        success: function(data) {
-                            
-                            //alert('Success!')
-                        }
-                        
-                    });
-                }
-
-                $('#stopBtn').on('click', function() {
-                    poststop();
-                });
-
-
-                  function postEmgStop() {
+                  function linActDown() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        data: {name:"Emergency stop" },
+                        //data: {name:"Linear Actuator Down" },
+                        data: {name:"1" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -273,19 +256,18 @@
                     });
                 }
 
-                $('#EmgStopBtn').on('click', function() {
-                    postEmgStop();
+                $('#LinActDown').on('click', function() {
+                    linActDown();
                 });
 
 
-
-
-                  function postEngBrake() {
+                  function lowSpeedDrive() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        data: {name:"Engage brakes" },
+                        //data: {name:"Low Speed Drive" },
+                        data: {name:"2" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -294,18 +276,20 @@
                     });
                 }
 
-                $('#EngBrakeBtn').on('click', function() {
-                    postEngBrake();
+                $('#LowSpeedDrive').on('click', function() {
+                    lowSpeedDrive();
                 });
 
 
 
-                  function postDisengBrake() {
+
+                  function braking() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        data: {name:"Disengage brakes" },
+                        //data: {name:"Braking" },
+                        data: {name:"3" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -314,17 +298,19 @@
                     });
                 }
 
-                $('#DisengBrakeBtn').on('click', function() {
-                    postDisengBrake();
+                $('#Braking').on('click', function() {
+                    braking();
                 });
 
 
-                  function postActLev() {
+
+                  function eng_clutch() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        data: {name:"Actuate Levitation module" },
+                        //data: {name:"Engage Clutch" },
+                        data: {name:"4" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -333,16 +319,18 @@
                     });
                 }
 
-                $('#ActLevBtn').on('click', function() {
-                    postActLev();
+                $('#ClutchEng').on('click', function() {
+                    eng_clutch();
                 });
 
-                function postUnactLev() {
+
+                  function clutch_diseng() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        data: {name:"Unactuate Levitation module" },
+                        //data: {name:"Clutch Disengage" },
+                        data: {name:"5" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -351,16 +339,17 @@
                     });
                 }
 
-                $('#UnactLevBtn').on('click', function() {
-                    postUnactLev();
+                $('#ClutchDiseng').on('click', function() {
+                    clutch_diseng();
                 });
 
-                function postEngAuxProp() {
+                function embrake() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        data: {name:"Engage Auxiliary Propulsion" },
+                        //data: {name:"Emergency Brake" },
+                        data: {name:"6" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -369,17 +358,17 @@
                     });
                 }
 
-                $('#EngAuxPropBtn').on('click', function() {
-                    postEngAuxProp();
+                $('#EmBrake').on('click', function() {
+                    embrake();
                 });
 
-
-                function postDisengAuxProp() {
+                function goonline() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        data: {name:"Disengage Auxiliary Propulsion" },
+                        //data: {name:"Go Online" },
+                        data: {name:"7" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -388,11 +377,31 @@
                     });
                 }
 
-                $('#DisengAuxPropBtn').on('click', function() {
-                    postDisengAuxProp();
+                $('#GoOnline').on('click', function() {
+                    goonline();
+                });
+
+                function poweron() {
+                    $.ajax({
+                        type: "POST",
+                        url: "/index.html",
+                        
+                        //data: {name:"Power On" },
+                        data: {name:"9" },
+                        success: function(data) {
+                            
+                            //alert('Success!')
+                        }
+                        
+                    });
+                }
+
+                $('#PowerOn').on('click', function() {
+                    poweron();
                 });
 
 
+        
      </script> 
      
   </body>

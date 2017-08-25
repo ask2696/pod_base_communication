@@ -102,6 +102,7 @@ typedef void (*IntFunctionWithOneParameter) (int s);
 //podOp0
 void LinActUp(int sk){
 	if (system_state < Ready){	//Check if Pod is offline
+		prinft("LinActUp");
    	   packet.can_id = 0x84;
 	   packet.can_dlc = 1;
 	   packet.data[0] = 0x01;	//Enable HBridge(MSBits), Set direction to up(LSBits)		
@@ -609,10 +610,12 @@ void *connection_handler(void *socket_desc) // Handle Data from Base
     // write(sock , message , strlen(message));
      
     //Receive a message from client
-    while( (read_size = read(sock , client_message , 200)0) > 0 )
+    while( (read_size = read(sock , client_message , 1) ) > 0 )
     {
-        //podOp[(int) client_message[0]](sock);
-		printf("Received Message from Base: %s \n",client_message);
+        
+        //printf("Received Message from Base: %s \n",client_message[0]);
+        podOp[(int) client_message[0]](sock);
+		
 		memset(client_message, 0, 2000);
     }
      
