@@ -530,7 +530,7 @@ int spacexTelemetry()
 
 int remoteControlTask()
 {
-	int socket_desc , c;
+	int socket_desc , c_size;
     struct sockaddr_in server ;
      
     //Create socket
@@ -544,7 +544,7 @@ int remoteControlTask()
     //Prepare the sockaddr_in structure
     server.sin_family = AF_INET;
     server.sin_addr.s_addr = INADDR_ANY;
-    server.sin_port = htons( 8888 );
+    server.sin_port = htons(3000);
      
     //Bind
     if( bind(socket_desc,(struct sockaddr *)&server , sizeof(server)) < 0)
@@ -561,11 +561,11 @@ int remoteControlTask()
      
     //Accept and incoming connection
     puts("Waiting for incoming connections...");
-    c = sizeof(struct sockaddr_in);
+    c_size = sizeof(struct sockaddr_in);
 	pthread_t thread_id;
 	
 	for (int i=0; i<2; i++){
-	    client_sock[i] = accept(socket_desc, (struct sockaddr *)&client[i], (socklen_t*)&c);
+	    client_sock[i] = accept(socket_desc, (struct sockaddr *)&client[i], (socklen_t*)&c_size);
 	    puts("Connection accepted");
 	         
 	        if( pthread_create( &thread_id , NULL ,  connection_handler , (void*) &client_sock[i]) < 0)
@@ -593,7 +593,7 @@ int fail(const char* a)
 	return 0;
 }
 
-void *connection_handler(void *socket_desc)
+void *connection_handler(void *socket_desc) // Handle Data from Base
 {
     //Get the socket descriptor
 	//TCP socket desc
@@ -609,9 +609,10 @@ void *connection_handler(void *socket_desc)
     // write(sock , message , strlen(message));
      
     //Receive a message from client
-    while( (read_size = recv(sock , client_message , 1 , 0)) > 0 )
+    while( (read_size = read(sock , client_message , 200)0) > 0 )
     {
-        podOp[(int) client_message[0]](sock);
+        //podOp[(int) client_message[0]](sock);
+		printf("Received Message from Base: %s \n",client_message);
 		memset(client_message, 0, 2000);
     }
      

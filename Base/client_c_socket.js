@@ -71,12 +71,13 @@ client.on('data', function(data) {
     console.log('Received: ' + data);
 
     dataJSON['no_data_packets'] = dataJSON['no_data_packets']+1; 
-                        var arr = Array.prototype.slice.call(data, 0,4);
-                         dataJSON.Team_Id=unpack(arr);
-                        arr = Array.prototype.slice.call(data, 4,8);
-                         dataJSON.Status_pod=unpack(arr);
-                         //console.log(dataJSON.Status_pod);
-                         arr = Array.prototype.slice.call(data, 8,12);
+                        var arr = Array.prototype.slice.call(data, 0,1);
+                         dataJSON.Team_Id=unpack8(arr);
+                         console.log(dataJSON.Team_Id);
+                        arr = Array.prototype.slice.call(data, 1,2);
+                         dataJSON.Status_pod=unpack8(arr);
+                         console.log(dataJSON.Status_pod);
+                         arr = Array.prototype.slice.call(data, 2,6);
                         dataJSON.Nav_Acceleration=unpack(arr);
                          arr = Array.prototype.slice.call(data, 12,16);
                          dataJSON.Nav_Yaw =unpack(arr);
