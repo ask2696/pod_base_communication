@@ -44,7 +44,7 @@ int main(void)
         while(1){
                 // Navigation Node 
         // Navigation Node CAN Broadcast 1 = Acc, Yaw, Pitch, Roll
-        frame.can_id  = 0x0A1;
+        frame.can_id  = 0x51;
         frame.can_dlc = 8;
         frame.data[0] = 0x11; //Acc
         frame.data[1] = 0x22; 
