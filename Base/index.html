@@ -93,10 +93,16 @@
               <th>Nav_Velocity</th> <td id="Nav_Velocity"></td>
           </tr>
            <tr>
-              <th>Nav_LTS_Brake_1_2</th> <td id="Nav_LTS_Brake_1_2"></td>
+              <th>Nav_LTS_Brake_1</th> <td id="Nav_LTS_Brake_1"></td>
+          </tr>
+          <tr>
+              <th>Nav_LTS_Brake_2</th> <td id="Nav_LTS_Brake_2"></td>
           </tr>
            <tr>
-              <th>Nav_LTS_Brake_3_4</th> <td id="Nav_LTS_Brake_3_4"></td>
+              <th>Nav_LTS_Brake_3</th> <td id="Nav_LTS_Brake_3"></td>
+          </tr>
+          <tr>
+              <th>Nav_LTS_Brake_4</th> <td id="Nav_LTS_Brake_4"></td>
           </tr>
            <tr>
               <th>Nav_RR_Strip_Count</th> <td id="Nav_RR_Strip_Count"></td>
@@ -105,7 +111,7 @@
               <th>PWR_Voltage</th> <td id="PWR_Voltage"></td>
           </tr>
            <tr>
-              <th>PWR_Current</th> <td id="PWR_Current"></td>
+              <th>PWR_Pressure</th> <td id="PWR_Pressure"></td>
           </tr>
            <tr>
               <th>PWR_Temperature</th> <td id="PWR_Temperature"></td>
@@ -117,10 +123,16 @@
               <th>CTRL_Pressure</th> <td id="CTRL_Pressure"></td>
           </tr>
            <tr>
-              <th>CTRL_LTS_Height_1_2</th> <td id="CTRL_LTS_Height_1_2"></td>
+              <th>CTRL_LTS_Height_1</th> <td id="CTRL_LTS_Height_1"></td>
+          </tr>
+          <tr>
+              <th>CTRL_LTS_Height_2</th> <td id="CTRL_LTS_Height_2"></td>
+          </tr>
+          <tr>
+              <th>CTRL_LTS_Height_3</th> <td id="CTRL_LTS_Height_3"></td>
           </tr>
            <tr>
-              <th>CTRL_LTS_Height_3_4</th> <td id="CTRL_LTS_Height_3_4"></td>
+              <th>CTRL_LTS_Height_4</th> <td id="CTRL_LTS_Height_4"></td>
           </tr>
 
       </table>
@@ -158,16 +170,20 @@
                   var nav_roll =document.getElementById("Nav_Roll");
                   var nav_position =document.getElementById("Nav_Position");
                   var nav_velocity =document.getElementById("Nav_Velocity");
-                  var nav_LTS_Brake_1_2 =document.getElementById("Nav_LTS_Brake_1_2");
-                  var nav_LTS_Brake_3_4 =document.getElementById("Nav_LTS_Brake_3_4");
+                  var nav_LTS_Brake_1 =document.getElementById("Nav_LTS_Brake_1");
+                  var nav_LTS_Brake_2 =document.getElementById("Nav_LTS_Brake_2");
+                  var nav_LTS_Brake_3 =document.getElementById("Nav_LTS_Brake_3");
+                  var nav_LTS_Brake_4 =document.getElementById("Nav_LTS_Brake_4");
                   var nav_RR_Strip_Count =document.getElementById("Nav_RR_Strip_Count");
                   var pwr_Voltage =document.getElementById("PWR_Voltage");
-                  var pwr_Current =document.getElementById("PWR_Current");
+                  var pwr_Pressure =document.getElementById("PWR_Pressure");
                   var pwr_Temperature =document.getElementById("PWR_Temperature");
                   var ctrl_Temperature =document.getElementById("CTRL_Temperature");
                   var ctrl_Pressure =document.getElementById("CTRL_Pressure");
-                  var ctrl_LTS_Height_1_2 =document.getElementById("CTRL_LTS_Height_1_2");
-                  var ctrl_LTS_Height_3_4 =document.getElementById("CTRL_LTS_Height_3_4");
+                  var ctrl_LTS_Height_1 =document.getElementById("CTRL_LTS_Height_1");
+                  var ctrl_LTS_Height_2 =document.getElementById("CTRL_LTS_Height_2");
+                  var ctrl_LTS_Height_3 =document.getElementById("CTRL_LTS_Height_3");
+                  var ctrl_LTS_Height_4 =document.getElementById("CTRL_LTS_Height_3");
                
                   socket.on('data_send', function(data){
                     //$('#data_pod').text("teamId:"+data.data_from_pod);
@@ -191,15 +207,20 @@
                  
                     nav_velocity.innerHTML=data.Nav_Velocity;
                  
-                    nav_LTS_Brake_1_2.innerHTML=data.Nav_LTS_Brake_1_2;
+                    nav_LTS_Brake_1.innerHTML=data.Nav_LTS_Brake_1;
+
+                    nav_LTS_Brake_2.innerHTML=data.Nav_LTS_Brake_2;
+                    
+                    nav_LTS_Brake_3.innerHTML=data.Nav_LTS_Brake_3;
                  
-                    nav_LTS_Brake_3_4.innerHTML=data.Nav_LTS_Brake_3_4;
+                    nav_LTS_Brake_4.innerHTML=data.Nav_LTS_Brake_4;
 
                     nav_RR_Strip_Count.innerHTML=data.Nav_RR_Strip_Count;
 
                     pwr_Voltage.innerHTML=data.PWR_Voltage;
 
-                    pwr_Current.innerHTML=data.PWR_Current;
+                    pwr_Pressure.innerHTML=data.PWR_Pressure;
+                    //pwr_Current.innerHTML=data.PWR_Current;
 
                     pwr_Temperature.innerHTML=data.PWR_Temperature;
 
@@ -207,9 +228,13 @@
 
                     ctrl_Pressure.innerHTML=data.CTRL_Pressure;
 
-                    ctrl_LTS_Height_1_2.innerHTML=data.CTRL_LTS_Height_1_2;
+                    ctrl_LTS_Height_1.innerHTML=data.CTRL_LTS_Height_1;
 
-                    ctrl_LTS_Height_3_4.innerHTML=data.CTRL_LTS_Height_3_4;
+                    ctrl_LTS_Height_2.innerHTML=data.CTRL_LTS_Height_2;
+
+                    ctrl_LTS_Height_3.innerHTML=data.CTRL_LTS_Height_3;
+
+                    ctrl_LTS_Height_4.innerHTML=data.CTRL_LTS_Height_4;
                  
                   });
 
