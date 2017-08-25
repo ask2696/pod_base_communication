@@ -105,7 +105,7 @@ void LinActUp(int sk){
    	   packet.can_id = 0x84;
 	   packet.can_dlc = 1;
 	   packet.data[0] = 0x01;	//Enable HBridge(MSBits), Set direction to up(LSBits)
-       printf("Can Packet 0x84 sent\n");		
+       printf("Can Packet 0x84 Data: 0x01 sent\n");		
 	   write(can_sock, &packet, sizeof(struct can_frame));
 	}
 }   
@@ -115,7 +115,8 @@ void LinActDown(int sk){
     if (system_state < Ready){	//Check if Pod is offline
    		packet.can_id = 0x84;
    		packet.can_dlc = 1;
-   		packet.data[0] = 0x00;	//Enable HBridge(MSBits), Set direction to down(LSBits)		 
+   		packet.data[0] = 0x00;	//Enable HBridge(MSBits), Set direction to down(LSBits)	
+        printf("Can Packet 0x84 Data: 0x00 sent\n");	 
    		write(can_sock, &packet, sizeof(struct can_frame));
    	}
 }
@@ -176,6 +177,7 @@ void ClutchEng(int sk){
     	packet.can_id = 0x81;
    		packet.can_dlc = 1;
    		packet.data[0] = activateClutch;		//Clutch Pin = 1 => Clutch Engaged
+        printf("Can Packet 0x81 Data: 0x01 sent\n");
    		write(can_sock, &packet, sizeof(struct can_frame));
    	}
 }
@@ -186,6 +188,7 @@ void ClutchDiseng(int sk){
     	packet.can_id = 0x81;
    		packet.can_dlc = 1;
    		packet.data[0] = deactivateClutch;		//Clutch Pin = 0 => Clutch Disengaged
+        printf("Can Packet 0x81 Data: 0x00 sent\n");
    		write(can_sock, &packet, sizeof(struct can_frame));
 	}
 }
@@ -195,6 +198,7 @@ void EmBrake(int sk){
 	packet.can_id = 0xE0;
 	packet.can_dlc = 1;
 	packet.data[0] = deactivateClutch;		//Disengage Clutch
+    printf("Can Packet 0xE0 sent\n");
 	write(can_sock, &packet, sizeof(struct can_frame));
 }
 
@@ -202,7 +206,8 @@ void EmBrake(int sk){
 void GoOnline(int sk){
     packet.can_id = 0x24;		//Change system state to Awaiting Pusher Attachment
 	packet.can_dlc = 1;
-	packet.data[0] = AwaitPusherAttach;		
+	packet.data[0] = AwaitPusherAttach;
+    printf("Can Packet 0x24 sent\n");		
 	write(can_sock, &packet, sizeof(struct can_frame));
 }
 
@@ -210,7 +215,8 @@ void GoOnline(int sk){
 void PowerOn (int sk){
 	packet.can_id = 0x24;		//Change system state to Idle state
 	packet.can_dlc = 1;
-	packet.data[0] = Idle;		
+	packet.data[0] = Idle;
+    printf("Can Packet 0x24 Idle sent\n");		
 	write(can_sock, &packet, sizeof(struct can_frame));	
 }
 
