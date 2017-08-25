@@ -133,13 +133,13 @@
       
     <button id="LinActDown" class="action-button green" >Linear Actuator Down</button>
    <!-- <button id="stopBtn" class="action-button blue" >stop</button> -->
-    <button id="LowSpeedDrive" class="action-button green" >Low Speed Drive</button>
+    <button id="LowSpeedDrive" class="action-button red" >Low Speed Drive</button>
         <br><br>
-    <button id="Braking" class=" clr action-button red" >Engage Brakes</button>
-    <button id="ClutchEng" class="action-button red" >Engage brakes</button>
+    <button id="Braking" class=" clr action-button green" >Braking</button>
+    <button id="ClutchEng" class="action-button red" >Engage Clutch</button>
     <br><br>
     <button id="ClutchDiseng" class=" clr action-button blue" >Disengage Clutch</button>
-    <button id="EmBrake" class="action-button red" >Emergency Brakes</button>
+    <button id="EmBrake" class="action-button red" >Emergency Braking</button>
       <br><br>
     <button id="GoOnline" class="clr action-button green" >Go Online</button>
     <button id="PowerOn" class="action-button red" >Power On</button>
@@ -226,7 +226,6 @@
                         type: "POST",
                         url: "/index.html",
                         
-                        //data: {name:"Linear Actuator Up" },
                         data: {name:"0" },
                         success: function(data) {
                             
@@ -241,12 +240,11 @@
                 });
 
 
-                  function linActDown() {
+                  function linActdwm() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        //data: {name:"Linear Actuator Down" },
                         data: {name:"1" },
                         success: function(data) {
                             
@@ -257,16 +255,15 @@
                 }
 
                 $('#LinActDown').on('click', function() {
-                    linActDown();
+                    linActdwm();
                 });
 
 
-                  function lowSpeedDrive() {
+                  function lowspeeddrive() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        //data: {name:"Low Speed Drive" },
                         data: {name:"2" },
                         success: function(data) {
                             
@@ -277,7 +274,7 @@
                 }
 
                 $('#LowSpeedDrive').on('click', function() {
-                    lowSpeedDrive();
+                    lowspeeddrive();
                 });
 
 
@@ -288,7 +285,6 @@
                         type: "POST",
                         url: "/index.html",
                         
-                        //data: {name:"Braking" },
                         data: {name:"3" },
                         success: function(data) {
                             
@@ -304,12 +300,11 @@
 
 
 
-                  function eng_clutch() {
+                  function clutchengage() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        //data: {name:"Engage Clutch" },
                         data: {name:"4" },
                         success: function(data) {
                             
@@ -320,16 +315,15 @@
                 }
 
                 $('#ClutchEng').on('click', function() {
-                    eng_clutch();
+                    clutchengage();
                 });
 
 
-                  function clutch_diseng() {
+                  function clutchdisengage() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        //data: {name:"Clutch Disengage" },
                         data: {name:"5" },
                         success: function(data) {
                             
@@ -340,15 +334,14 @@
                 }
 
                 $('#ClutchDiseng').on('click', function() {
-                    clutch_diseng();
+                    clutchdisengage();
                 });
 
-                function embrake() {
+                function emgncyBrake() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        //data: {name:"Emergency Brake" },
                         data: {name:"6" },
                         success: function(data) {
                             
@@ -359,15 +352,14 @@
                 }
 
                 $('#EmBrake').on('click', function() {
-                    embrake();
+                    emgncyBrake();
                 });
 
-                function goonline() {
+                function gooonline() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        //data: {name:"Go Online" },
                         data: {name:"7" },
                         success: function(data) {
                             
@@ -378,16 +370,16 @@
                 }
 
                 $('#GoOnline').on('click', function() {
-                    goonline();
+                    gooonline();
                 });
+
 
                 function poweron() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        //data: {name:"Power On" },
-                        data: {name:"9" },
+                        data: {name:"8" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -401,7 +393,6 @@
                 });
 
 
-        
      </script> 
      
   </body>

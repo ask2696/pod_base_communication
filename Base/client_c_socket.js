@@ -111,12 +111,119 @@ client.on('data', function(data) {
                         dataJSON.CTRL_LTS_Height_3_4=unpack(arr);
 
                         no_data_packet = no_data_packet +1;
-                        client.write('N');
 
                         
-   
+    client.write('N');
+    //console.log("\n");
+    //client.destroy(); // kill client after server's response
 });
 
+/*client.on('close', function() {
+    console.log('Connection closed');
+});*/
+
+/*
+var server=net.createServer(function (socket) {
+               // socket.setEncoding('utf8');
+                    socket.on('error',function (){
+                        console.log("error occured");
+                    });
+                    socket.on('end',function (){
+                        console.log("ended");
+                    });
+
+
+                    socket.on('data',function (data){
+
+                        
+                        
+                        //console.dir(data);
+                        //console.log(data);
+
+                        dataJSON['no_data_packets'] = dataJSON['no_data_packets']+1; 
+                        var arr = Array.prototype.slice.call(data, 0,4);
+                         dataJSON.Team_Id=unpack(arr);
+                        arr = Array.prototype.slice.call(data, 4,8);
+                         dataJSON.Status_pod=unpack(arr);
+                         //console.log(dataJSON.Status_pod);
+                         arr = Array.prototype.slice.call(data, 8,12);
+                        dataJSON.Nav_Acceleration=unpack(arr);
+                         arr = Array.prototype.slice.call(data, 12,16);
+                         dataJSON.Nav_Yaw =unpack(arr);
+                        arr = Array.prototype.slice.call(data, 16,20);
+                         dataJSON.Nav_Pitch=unpack(arr);
+                         arr = Array.prototype.slice.call(data,20,24);
+                        dataJSON.Nav_Roll=unpack(arr);
+                         arr = Array.prototype.slice.call(data, 24,28);
+                         dataJSON.Nav_Position=unpack(arr);
+                          arr = Array.prototype.slice.call(data, 28,32);
+                         dataJSON.Nav_Velocity=unpack(arr);
+                         arr = Array.prototype.slice.call(data, 32,36);
+                        dataJSON.Nav_LTS_Brake_1_2=unpack(arr);
+                         arr = Array.prototype.slice.call(data,36,40);
+                        dataJSON.Nav_LTS_Brake_3_4=unpack(arr);
+                        arr = Array.prototype.slice.call(data,40,44);
+                        dataJSON.Nav_RR_Strip_Count=unpack(arr);
+                        arr = Array.prototype.slice.call(data,44,48);
+                        dataJSON.PWR_Voltage=unpack(arr);
+                        arr = Array.prototype.slice.call(data,48,52);
+                        dataJSON.PWR_Current=unpack(arr);
+                        arr = Array.prototype.slice.call(data,52,56);
+                        dataJSON.PWR_Temperature=unpack(arr);
+                        arr = Array.prototype.slice.call(data,56,60);
+                        dataJSON.CTRL_Temperature=unpack(arr);
+                        arr = Array.prototype.slice.call(data,60,64);
+                        dataJSON.CTRL_Pressure=unpack(arr);
+                        arr = Array.prototype.slice.call(data,64,68);
+                        dataJSON.CTRL_LTS_Height_1_2=unpack(arr);
+                        arr = Array.prototype.slice.call(data,68,72);
+                        dataJSON.CTRL_LTS_Height_3_4=unpack(arr);
+
+                        no_data_packet = no_data_packet +1;
+                        //console.log(no_data_packet)
+                        //console.log("Data Packet No."+ no_data_packet)
+                        //console.log(dataJSON);  
+                        
+                     //   app.get('/data.html', browserdisp );
+                         });
+                    //socket.write("input_base");
+
+                    //console.log(input_base);
+                
+                    setInterval(function(){
+                    if (input_base !== 'NULL'){
+                        socket.write(input_base);
+                        input_base = 'NULL'
+                        console.log(input_base);
+                        }
+                        else{
+
+                            socket.write("NULL");
+
+                        }
+                    },0);
+
+        });
+/*var data_to_pod = {"Test1":"1","Test2":"2"};
+var listener = io.listen(server);
+listener.sockets.on('connection',function(socket_to_pod){
+
+   setInterval(function(){
+    socket_to_pod.emit('data_send',data_to_pod);
+    console.log(typeof data_to_pod.Test1);
+   },0); 
+
+
+});*/
+
+   
+/*
+server.listen(3000,function (){
+    var address=server.address().port;
+    console.log("server is listening at "+address);
+  //192.168.0.144
+});
+*/
 
 
 //Frontend - Webapp
@@ -161,9 +268,9 @@ app.post('/index.html',function(request,response){
                     //console.log("Got Post!!");
                     console.log('COMMAND: ' + request.body.name);
                     input_base = request.body.name;
-                    
-                       // if(input_base == "")
+
                     client.write(input_base);
+
                     response.end('Thanks');
 });
                     
