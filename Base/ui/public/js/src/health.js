@@ -56,9 +56,9 @@ function startCheck() {
   
   markCheck(4, (data.CTRL_LTS_Height_1_2 && data.CTRL_LTS_Height_3_4 && data.CTRL_LTS_Height_1_2>LEVITATION && data.CTRL_LTS_Height_3_4 > LEVITATION)?true:false);
   
-  markCheck(5, (data.Nav_Acceleration > 0)?true:false);
+  markCheck(5, (data.Nav_Acceleration == 0)?true:false);
   
-  markCheck(6, (data.Nav_Velocity > 0)?true:false);
+  markCheck(6, (data.Nav_Velocity == 0)?true:false);
   
   markCheck(7, (data.CTRL_Pressure > MAX_PRESSURE)?true:false);
   

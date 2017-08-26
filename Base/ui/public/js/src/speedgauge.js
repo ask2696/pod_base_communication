@@ -120,3 +120,7 @@ var a = new SpeedGauge({
     value: 0.1
 });
 a.initGauge();
+
+// only way to initialize these values to 0.
+v.setStatValue(0);
+a.setStatValue(0);
