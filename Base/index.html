@@ -2,7 +2,7 @@
 <html>
   <head>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>  </head>
+    <script src="/js/jquery.js"></script>  </head>
     <link rel="stylesheet" href="./main.css">
         
         <!--css stylings-->
@@ -93,10 +93,16 @@
               <th>Nav_Velocity</th> <td id="Nav_Velocity"></td>
           </tr>
            <tr>
-              <th>Nav_LTS_Brake_1_2</th> <td id="Nav_LTS_Brake_1_2"></td>
+              <th>Nav_LTS_Brake_1</th> <td id="Nav_LTS_Brake_1"></td>
+          </tr>
+          <tr>
+              <th>Nav_LTS_Brake_2</th> <td id="Nav_LTS_Brake_2"></td>
           </tr>
            <tr>
-              <th>Nav_LTS_Brake_3_4</th> <td id="Nav_LTS_Brake_3_4"></td>
+              <th>Nav_LTS_Brake_3</th> <td id="Nav_LTS_Brake_3"></td>
+          </tr>
+          <tr>
+              <th>Nav_LTS_Brake_4</th> <td id="Nav_LTS_Brake_4"></td>
           </tr>
            <tr>
               <th>Nav_RR_Strip_Count</th> <td id="Nav_RR_Strip_Count"></td>
@@ -105,7 +111,7 @@
               <th>PWR_Voltage</th> <td id="PWR_Voltage"></td>
           </tr>
            <tr>
-              <th>PWR_Current</th> <td id="PWR_Current"></td>
+              <th>PWR_Pressure</th> <td id="PWR_Pressure"></td>
           </tr>
            <tr>
               <th>PWR_Temperature</th> <td id="PWR_Temperature"></td>
@@ -117,10 +123,16 @@
               <th>CTRL_Pressure</th> <td id="CTRL_Pressure"></td>
           </tr>
            <tr>
-              <th>CTRL_LTS_Height_1_2</th> <td id="CTRL_LTS_Height_1_2"></td>
+              <th>CTRL_LTS_Height_1</th> <td id="CTRL_LTS_Height_1"></td>
+          </tr>
+          <tr>
+              <th>CTRL_LTS_Height_2</th> <td id="CTRL_LTS_Height_2"></td>
+          </tr>
+          <tr>
+              <th>CTRL_LTS_Height_3</th> <td id="CTRL_LTS_Height_3"></td>
           </tr>
            <tr>
-              <th>CTRL_LTS_Height_3_4</th> <td id="CTRL_LTS_Height_3_4"></td>
+              <th>CTRL_LTS_Height_4</th> <td id="CTRL_LTS_Height_4"></td>
           </tr>
 
       </table>
@@ -129,20 +141,20 @@
    </div>
 
   
-    <button id="stopBtn" class="action-button blue" >stop</button> 
+    <button id="LinActUp" class="action-button blue" >Linear Actuator Up</button> 
       
-    <button id="startBtn" class="action-button green" >start</button>
+    <button id="LinActDown" class="action-button green" >Linear Actuator Down</button>
    <!-- <button id="stopBtn" class="action-button blue" >stop</button> -->
-    <button id="EmgStopBtn" class="action-button red" >Emergency stop</button>
+    <button id="LowSpeedDrive" class="action-button red" >Low Speed Drive</button>
         <br><br>
-    <button id="EngBrakeBtn" class=" clr action-button green" >Engage brakes</button>
-    <button id="DisengBrakeBtn" class="action-button red" >Disengage brakes</button>
+    <button id="Braking" class=" clr action-button green" >Braking</button>
+    <button id="ClutchEng" class="action-button red" >Engage Clutch</button>
     <br><br>
-    <button id="ActLevBtn" class=" clr action-button blue" >Actuate Levitation module</button>
-    <button id="UnactLevBtn" class="action-button red" >Unactuate Levitation module</button>
+    <button id="ClutchDiseng" class=" clr action-button blue" >Disengage Clutch</button>
+    <button id="EmBrake" class="action-button red" >Emergency Braking</button>
       <br><br>
-    <button id="EngAuxPropBtn" class="clr action-button green" >Engage Auxiliary Propulsion</button>
-    <button id="DisengAuxPropBtn" class="action-button red" >Disengage Auxiliary Propulsion</button>
+    <button id="GoOnline" class="clr action-button green" >Go Online</button>
+    <button id="PowerOn" class="action-button red" >Power On</button>
 
 <!--js code-->
      <script  type="text/javascript"  >
@@ -158,16 +170,20 @@
                   var nav_roll =document.getElementById("Nav_Roll");
                   var nav_position =document.getElementById("Nav_Position");
                   var nav_velocity =document.getElementById("Nav_Velocity");
-                  var nav_LTS_Brake_1_2 =document.getElementById("Nav_LTS_Brake_1_2");
-                  var nav_LTS_Brake_3_4 =document.getElementById("Nav_LTS_Brake_3_4");
+                  var nav_LTS_Brake_1 =document.getElementById("Nav_LTS_Brake_1");
+                  var nav_LTS_Brake_2 =document.getElementById("Nav_LTS_Brake_2");
+                  var nav_LTS_Brake_3 =document.getElementById("Nav_LTS_Brake_3");
+                  var nav_LTS_Brake_4 =document.getElementById("Nav_LTS_Brake_4");
                   var nav_RR_Strip_Count =document.getElementById("Nav_RR_Strip_Count");
                   var pwr_Voltage =document.getElementById("PWR_Voltage");
-                  var pwr_Current =document.getElementById("PWR_Current");
+                  var pwr_Pressure =document.getElementById("PWR_Pressure");
                   var pwr_Temperature =document.getElementById("PWR_Temperature");
                   var ctrl_Temperature =document.getElementById("CTRL_Temperature");
                   var ctrl_Pressure =document.getElementById("CTRL_Pressure");
-                  var ctrl_LTS_Height_1_2 =document.getElementById("CTRL_LTS_Height_1_2");
-                  var ctrl_LTS_Height_3_4 =document.getElementById("CTRL_LTS_Height_3_4");
+                  var ctrl_LTS_Height_1 =document.getElementById("CTRL_LTS_Height_1");
+                  var ctrl_LTS_Height_2 =document.getElementById("CTRL_LTS_Height_2");
+                  var ctrl_LTS_Height_3 =document.getElementById("CTRL_LTS_Height_3");
+                  var ctrl_LTS_Height_4 =document.getElementById("CTRL_LTS_Height_3");
                
                   socket.on('data_send', function(data){
                     //$('#data_pod').text("teamId:"+data.data_from_pod);
@@ -191,15 +207,20 @@
                  
                     nav_velocity.innerHTML=data.Nav_Velocity;
                  
-                    nav_LTS_Brake_1_2.innerHTML=data.Nav_LTS_Brake_1_2;
+                    nav_LTS_Brake_1.innerHTML=data.Nav_LTS_Brake_1;
+
+                    nav_LTS_Brake_2.innerHTML=data.Nav_LTS_Brake_2;
+                    
+                    nav_LTS_Brake_3.innerHTML=data.Nav_LTS_Brake_3;
                  
-                    nav_LTS_Brake_3_4.innerHTML=data.Nav_LTS_Brake_3_4;
+                    nav_LTS_Brake_4.innerHTML=data.Nav_LTS_Brake_4;
 
                     nav_RR_Strip_Count.innerHTML=data.Nav_RR_Strip_Count;
 
                     pwr_Voltage.innerHTML=data.PWR_Voltage;
 
-                    pwr_Current.innerHTML=data.PWR_Current;
+                    pwr_Pressure.innerHTML=data.PWR_Pressure;
+                    //pwr_Current.innerHTML=data.PWR_Current;
 
                     pwr_Temperature.innerHTML=data.PWR_Temperature;
 
@@ -207,9 +228,13 @@
 
                     ctrl_Pressure.innerHTML=data.CTRL_Pressure;
 
-                    ctrl_LTS_Height_1_2.innerHTML=data.CTRL_LTS_Height_1_2;
+                    ctrl_LTS_Height_1.innerHTML=data.CTRL_LTS_Height_1;
 
-                    ctrl_LTS_Height_3_4.innerHTML=data.CTRL_LTS_Height_3_4;
+                    ctrl_LTS_Height_2.innerHTML=data.CTRL_LTS_Height_2;
+
+                    ctrl_LTS_Height_3.innerHTML=data.CTRL_LTS_Height_3;
+
+                    ctrl_LTS_Height_4.innerHTML=data.CTRL_LTS_Height_4;
                  
                   });
 
@@ -221,12 +246,12 @@
 
 
 
-                  function poststart() {
+                  function linActUp() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        data: {name:"start" },
+                        data: {name:"0" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -235,36 +260,17 @@
                     });
                 }
 
-                $('#startBtn').on('click', function() {
-                    poststart();
+                $('#LinActUp').on('click', function() {
+                    linActUp();
                 });
 
 
-                  function poststop() {
-                    $.ajax({
-                        type: "POST",
-                        url: "http://0.0.0.0:8081/index.html",
-                        
-                        data: {name:"stop" },
-                        success: function(data) {
-                            
-                            //alert('Success!')
-                        }
-                        
-                    });
-                }
-
-                $('#stopBtn').on('click', function() {
-                    poststop();
-                });
-
-
-                  function postEmgStop() {
+                  function linActdwm() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        data: {name:"Emergency stop" },
+                        data: {name:"1" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -273,19 +279,38 @@
                     });
                 }
 
-                $('#EmgStopBtn').on('click', function() {
-                    postEmgStop();
+                $('#LinActDown').on('click', function() {
+                    linActdwm();
+                });
+
+
+                  function lowspeeddrive() {
+                    $.ajax({
+                        type: "POST",
+                        url: "/index.html",
+                        
+                        data: {name:"2" },
+                        success: function(data) {
+                            
+                            //alert('Success!')
+                        }
+                        
+                    });
+                }
+
+                $('#LowSpeedDrive').on('click', function() {
+                    lowspeeddrive();
                 });
 
 
 
 
-                  function postEngBrake() {
+                  function braking() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        data: {name:"Engage brakes" },
+                        data: {name:"3" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -294,18 +319,18 @@
                     });
                 }
 
-                $('#EngBrakeBtn').on('click', function() {
-                    postEngBrake();
+                $('#Braking').on('click', function() {
+                    braking();
                 });
 
 
 
-                  function postDisengBrake() {
+                  function clutchengage() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        data: {name:"Disengage brakes" },
+                        data: {name:"4" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -314,17 +339,17 @@
                     });
                 }
 
-                $('#DisengBrakeBtn').on('click', function() {
-                    postDisengBrake();
+                $('#ClutchEng').on('click', function() {
+                    clutchengage();
                 });
 
 
-                  function postActLev() {
+                  function clutchdisengage() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        data: {name:"Actuate Levitation module" },
+                        data: {name:"5" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -333,16 +358,16 @@
                     });
                 }
 
-                $('#ActLevBtn').on('click', function() {
-                    postActLev();
+                $('#ClutchDiseng').on('click', function() {
+                    clutchdisengage();
                 });
 
-                function postUnactLev() {
+                function emgncyBrake() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        data: {name:"Unactuate Levitation module" },
+                        data: {name:"6" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -351,16 +376,16 @@
                     });
                 }
 
-                $('#UnactLevBtn').on('click', function() {
-                    postUnactLev();
+                $('#EmBrake').on('click', function() {
+                    emgncyBrake();
                 });
 
-                function postEngAuxProp() {
+                function gooonline() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        data: {name:"Engage Auxiliary Propulsion" },
+                        data: {name:"7" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -369,17 +394,17 @@
                     });
                 }
 
-                $('#EngAuxPropBtn').on('click', function() {
-                    postEngAuxProp();
+                $('#GoOnline').on('click', function() {
+                    gooonline();
                 });
 
 
-                function postDisengAuxProp() {
+                function poweron() {
                     $.ajax({
                         type: "POST",
                         url: "/index.html",
                         
-                        data: {name:"Disengage Auxiliary Propulsion" },
+                        data: {name:"8" },
                         success: function(data) {
                             
                             //alert('Success!')
@@ -388,8 +413,8 @@
                     });
                 }
 
-                $('#DisengAuxPropBtn').on('click', function() {
-                    postDisengAuxProp();
+                $('#PowerOn').on('click', function() {
+                    poweron();
                 });
 
 

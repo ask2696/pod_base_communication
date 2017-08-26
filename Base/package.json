@@ -10,6 +10,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "formidable": "^1.1.1",
+    "gsap": "^1.20.2",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-minify-css": "^1.2.4",
@@ -20,6 +21,7 @@
     "gulp-util": "^3.0.8",
     "jquery": "^3.2.1",
     "jquery-ui-dist": "^1.12.1",
+    "material-design-icons": "^3.0.1",
     "materialize-css": "^0.100.1",
     "socket.io": "^2.0.3",
     "svg-gauge": "^1.0.2"
@@ -33,6 +35,6 @@
   },
   "scripts": {
     "preui": "cd ui; gulp build-all",
-    "ui": "node ui/server_forpy.js"
+    "ui": "node client_c_socket.js"
   }
 }
