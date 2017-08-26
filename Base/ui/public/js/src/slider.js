@@ -1,15 +1,15 @@
 /**
  ****************************
- * Slider code 
+ * Slider code
  ****************************
- * We define a new class 
+ * We define a new class
  * Each slider is an object declared using this class
- * The sliders used are defined at the end of the file 
+ * The sliders used are defined at the end of the file
  */
 
 /**
  * Constructor for @class Slider which initializes the Slider and attaches event handlers
- */ 
+ */
 function Slider(parameters) {
   // 'this' refers to the object. We Store the passed parameters as properties of the new object
   for (var x in parameters) {
@@ -54,8 +54,13 @@ var aux = new Slider({
   'max': 50,
   'min': 0
 });
-
-$('#range1 input').change(function() {
+$('#range2 input').change(function() {
     sendCommand("3");
-    sendCommand($(this).val());
-}); 
+    sendCommand($(this).val(ui.value));
+    sendCommand($(input).val())
+  });
+$('#range1 input').change(function() {
+    sendCommand("2");
+    sendCommand($(this).val(ui.value));
+    sendCommand($(input).val())
+});
