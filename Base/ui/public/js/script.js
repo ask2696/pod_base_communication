@@ -398,19 +398,22 @@ function Slider(parameters) {
  */
 var brakes = new Slider({
   'id': 'range1',
-  'max': 38,
-  'min': 8
+  'max': 100,
+  'min': 0
 });
 
 var aux = new Slider({
   'id': 'range2',
-  'max': 50,
+  'max': 100,
   'min': 0
 });
 
 $('#range1 input').change(function() {
-    sendCommand("3");
-    sendCommand($(this).val());
+    sendCommand("Braking", $(this).val());
+});
+  
+$('#range2 input').change(function() {
+  sendCommand("LowSpeedDrive", $(this).val());
 }); 
 'use strict';
 
@@ -583,9 +586,9 @@ function update(data){
     // primary battery
     for(var i=1;i<=2;i++){
         var bat = $('#b-p'+(i));
-        bat.find('.temp').text(data['PWR_Temperature_'+i]);
-        bat.find('.current').text(data['PWR_Current_'+i]);
-        bat.find('.voltage').text(data['PWR_Voltage_'+i]);
+        bat.find('.temp').text(data['PWR_Temperature']);
+        bat.find('.current').text(data['PWR_Current']);
+        bat.find('.voltage').text(data['PWR_Voltage']);
         //bat.find('.battery').removeClass().addClass('battery soc--'+data.battery_primary_soc[i]);
         bat.find('.battery').removeClass().addClass('battery soc--4');
 
@@ -665,6 +668,26 @@ socket.on('data_send', function(data) {
   DATA = data;
 });
 
-function sendCommand(command_name) {
-  socket.emit('pod_command', command_name);
+var commands =  {
+      "LinActUp" : 0, 
+      "LinActDown" : 1,
+      "LowSpeedDrive" : 2,
+      "Braking" : 3,
+      "ClutchEng" : 4,
+      "ClutchDiseng" : 5,
+      "EmBrake" : 6,
+      "GoOnline": 7,
+      "PowerOn" : 8	
+}
+
+function sendCommand(command_name, values) {
+  socket.emit('pod_command', commands[command_name]);
+  if(command_name == 'Braking' || command_name == 'LowSpeedDrive')
+  { 
+    // just check if string is a number or not
+    console.log(command_name);
+    console.log(values);
+    if(!isNaN(values))
+      socket.emit('pod_command', values);
+  } 
 }

@@ -78,10 +78,10 @@
                             <h6 id="linear-actuation">
                                 Linear Actuation 
                             </h6>
-                            <button type="button" command=true commandByte="1" class="btn teal darken-4 waves-effect waves-light" > 
+                            <button type="button" command=true commandByte="LinActUp" class="btn teal darken-4 waves-effect waves-light" > 
                                 Up <i class="material-icons">keyboard_arrow_up</i> 
                             </button> 
-                            <button type="button"  command=true commandByte="2" class="btn teal darken-4 waves-effect waves-light"> 
+                            <button type="button"  command=true commandByte="LinActDown" class="btn teal darken-4 waves-effect waves-light"> 
                                 Down <i class="material-icons">keyboard_arrow_down</i> </span>
                             </button>
                             <div class="range-container">
@@ -98,7 +98,7 @@
                                 </div>
                             <br>
                             <h6 id="clutch">Clutch
-                                <div class="switch" command=true on-command="4" off-command="5">
+                                <div class="switch" command=true on-command="ClutchEng" off-command="ClutchDiseng">
                                 <label>
                                     <span class="off">Off</span>
                                     <input id="clutch-switch" type="checkbox">
@@ -108,7 +108,7 @@
                                 </div>
                             </h6>
                             <h6> Comm </h6>
-                            <button type="button" command=true commandByte="7" id="go-online" class="btn teal darken-4 waves-effect waves-light">Go Online</button>
+                            <button type="button" command=true commandByte="GoOnline" id="go-online" class="btn teal darken-4 waves-effect waves-light">Go Online</button>
                         </div>
                     </li>
                 </ul>
@@ -156,8 +156,8 @@
             </div>
             <div class="row foot">
                 <div class="col l12">
-                    <button type="button" command=true commandByte="8" class="btn1 btn teal darken-3 waves-effect waves-light"><span>Start</span></button>
-                    <button type="button" command=true commandByte="6" class="btn2 btn red darken-3 waves-effect waves-light right" ><span>Emergency Stop</span></button>
+                    <button type="button" command=true commandByte="PowerOn" class="btn1 btn teal darken-3 waves-effect waves-light"><span>Start</span></button>
+                    <button type="button" command=true commandByte="EmBrake" class="btn2 btn red darken-3 waves-effect waves-light right" ><span>Emergency Stop</span></button>
                 </div>
             </div>
         </div>

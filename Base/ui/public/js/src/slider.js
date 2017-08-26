@@ -45,17 +45,20 @@ function Slider(parameters) {
  */
 var brakes = new Slider({
   'id': 'range1',
-  'max': 38,
-  'min': 8
+  'max': 100,
+  'min': 0
 });
 
 var aux = new Slider({
   'id': 'range2',
-  'max': 50,
+  'max': 100,
   'min': 0
 });
 
 $('#range1 input').change(function() {
-    sendCommand("3");
-    sendCommand($(this).val());
+    sendCommand("Braking", $(this).val());
+});
+  
+$('#range2 input').change(function() {
+  sendCommand("LowSpeedDrive", $(this).val());
 }); 
