@@ -255,8 +255,11 @@ var app=express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.use(express.static('public_secui'));
+
 app.use(bodyParser.json());
 var server1=http.createServer(app);
+
 
 app.get('/', function (req,res){
 
