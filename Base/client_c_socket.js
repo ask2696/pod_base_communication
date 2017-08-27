@@ -336,7 +336,10 @@ listener.sockets.on('connection', function(socket){
         console.log("Client Connected!!")
     });
 
-   
+   socket.on('pod_command', function (command_name) {
+        //input_base = 'Y' + command_name; 
+        console.log(command_name);
+    });
 
     setInterval(function(){
         socket.emit('data_send', dataJSON);
