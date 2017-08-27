@@ -253,11 +253,27 @@ var express=require('express');
 
 var app=express();
 var bodyParser = require('body-parser');
+var path = require('path'); // Also loading the path module
+
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static('public_secui'));
 
 app.use(bodyParser.json());
+
+// The static middleware
+
+// ui dependencies 
+app.use('/jquery',express.static('node_modules/jquery/dist/'));
+app.use('/jquery-ui',express.static('node_modules/jquery-ui-dist/'));
+app.use('/materialize',express.static('node_modules/materialize-css/dist/'));
+app.use('/svg-gauge',express.static('node_modules/svg-gauge/dist/'));
+app.use('/material-icons',express.static('node_modules/material-design-icons/iconfont/'));
+app.use('/gsap',express.static('node_modules/gsap/src/minified'));
+
+// All other static assets like images and javascript files 
+app.use(express.static(path.join(__dirname, '/ui/public')));
+
 var server1=http.createServer(app);
 
 
@@ -278,6 +294,18 @@ app.get('/index.html',function(req,res){
 
 });
 
+app.get('/base.html', function (req, res) {
+
+
+    fs.readFile(__dirname + "/ui/base.html", function (error, data) {
+        res.writeHead(200, {
+            "Content-Type": "text/html"
+        });
+        res.write(data, "utf8");
+        res.end();
+    });
+
+});
 
 
 
