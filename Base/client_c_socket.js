@@ -72,7 +72,7 @@ client.connect(3000, '127.0.0.1', function() {
 });
 
 client.on('data', function(data) {
-    console.log('Received: ' + data);
+    //console.log('Received: ' + data);
 
     dataJSON['no_data_packets'] = dataJSON['no_data_packets']+1; 
                         var arr = Array.prototype.slice.call(data, 0,1);

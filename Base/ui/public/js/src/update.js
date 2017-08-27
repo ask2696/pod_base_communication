@@ -121,9 +121,9 @@ function update(data){
 
 //Global variable to store Data
 var DATA;
-
+var socket;
 setTimeout(function() {
-  var socket = io.connect();
+  socket = io.connect();
   
   socket.on('connect', function() {
     console.log("Connected!"); 
