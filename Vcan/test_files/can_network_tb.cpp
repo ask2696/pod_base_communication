@@ -62,10 +62,10 @@ int main(void)
         // Nav CAN Broadcast 2  = Position, Velocity
         frame.can_id  = 0x57;
         frame.can_dlc = 8;
-        frame.data[0] = 0x01; //Position
-        frame.data[1] = 0x22; 
+        frame.data[0] = 0x00; //Position
+        frame.data[1] = 0x00; 
         frame.data[2] = 0x00; 
-        frame.data[3] = 0x00; 
+        frame.data[3] = 0x01; 
         frame.data[4] = 0x05; //Velocity
         frame.data[5] = 0x20;
         frame.data[6] = 0x00;
